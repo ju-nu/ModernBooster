@@ -18,9 +18,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for Shopware 6.6.10.*.
 
 ### Changed
-- Rebranded from TcinnCustomizing to JunuModernBooster.
-- Updated namespace from `Tcinn\Customizing` to `Junu\ModernBooster`.
-- Dependency on `tcinn/themeware-modern` (<=3.6.5).
 
 ### Fixed
 - N/A
