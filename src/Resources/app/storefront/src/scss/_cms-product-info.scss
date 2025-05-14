@@ -1,0 +1,56 @@
+.junu {
+
+    .junu-cms-product-information {
+
+        .card-tabs .nav-item .nav-link {
+            font-weight: 600;
+        }
+
+        .product-detail-tabs-content,
+        .product-detail-tab-navigation-list {
+            max-width: calc(#{$twt-container-max-width}px - 40px);
+            margin: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 100%;
+        }
+
+        .product-detail-description-text {
+            text-align: center;
+            padding-top: 1.5rem;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: 400;
+                font-size: 2.5rem;
+                line-height: 3.5rem;
+                margin-bottom: 1.75rem;
+                letter-spacing: 0.03rem;
+            }
+
+            font,
+            span {
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: -0.1px;
+            }
+
+            p:not(:has(> font)) {
+                font-size: 1.15rem;
+                line-height: 1.85rem;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+        }
+    }
+
+
+
+
+
+
+}

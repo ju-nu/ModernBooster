@@ -1,0 +1,89 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+
+{% block buy_widget_buy_quantity_container %}
+	{# Hide the quantity selector and include a hidden input for the quantity #}
+	<input
+	type="hidden" name="lineItems[{{ product.id }}][quantity]" value="{{ product.minPurchase }}">
+	{# Visually hidden label for accessibility #}
+	<span class="visually-hidden">
+		{{ 'component.product.quantitySelect.label'|trans|striptags }}:
+		{{ product.minPurchase }}
+	</span>
+{% endblock %}
+
+{% block buy_widget_buy_button_container %}
+	{# Override the button container to use col-12 and avoid nested col-8 #}
+	<div class="col-12">
+		{% block buy_widget_buy_button %}
+			<div class="d-grid">
+				<button class="btn btn-primary btn-buy" type="submit" title="{{ 'detail.addProduct'|trans|striptags }}" aria-label="{{ 'detail.addProduct'|trans|striptags }}" data-bs-toggle="offcanvas" data-bs-target="#offCanvasCart" data-bs-backdrop="true" data-cart-offcanvas="true">
+					<i class="fa-solid fa-cart-circle-plus"></i>
+					{{ 'detail.addProduct'|trans|sw_sanitize }}
+				</button>
+			</div>
+		{% endblock %}
+	</div>
+	<div class="junu-product-usp">
+		<div>
+			<i class="fa-regular fa-truck-fast"></i>
+			<span>
+				<strong>GRATIS</strong>
+				Versand ab 69€</span>
+		</div>
+		<div>
+			<i class="fa-regular fa-truck-fast"></i>
+			<span>Risikoloser Kauf auf Rechnung</span>
+		</div>
+		<div>
+			<i class="fa-regular fa-truck-fast"></i>
+			<span>Geld-zurück-Garantie</span>
+		</div>
+		<div>
+			<i class="fa-kit fa-trustedshops"></i>
+			<span>Zertifiziert bei
+				<strong>Trusted Shops™</strong>
+			</span>
+		</div>
+	</div>
+	<div style="
+									    display: flex;
+									    justify-content: center;
+			                            column-gap: 10px;
+			                            margin:0;
+									">
+
+		{% set twtWidgetPaymentLogoMaxHeight = 32 %}
+		{% for paymentMethod in page.salesChannelPaymentMethods.elements %}
+			{% if paymentMethod.media %}
+				<div class="">
+					{% sw_thumbnails 'payment-method-image-thumbnails' with {
+                        media: paymentMethod.media,
+                        sizes: {
+                            default: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px'
+                        },
+                        attributes: {
+                            class: 'junu-product-payment-logos',
+                            alt: paymentMethod.media.translated.alt ?: paymentMethod.translated.name,
+                            title: paymentMethod.media.translated.title ?: paymentMethod.translated.name,
+                            height: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px',
+                            width: (twtWidgetPaymentLogoMaxHeight|number_format * 1.96)|round(0, 'floor') ~ 'px',
+                            'draggable': 'false',
+                            'fetchpriority': 'high',
+                            loading: 'eager'
+                        }
+                    } %}
+				</div>
+			{% endif %}
+		{% endfor %}
+
+	</div>
+	<div class="junu-product-guarantee-banner">
+		<div class="junu-product-image-container">
+			<img src="http://localhost/media/1c/75/23/1746527562/30tage.svg?ts=1746527562" alt="30 Day Money Back Guarantee" draggable="false" fetchpriority="high">
+		</div>
+		<div class="junu-product-text-container">
+			<p class="junu-product-title">30 Day Money Back Guarantee</p>
+			<p class="junu-product-description">If you are not satisfied with the product, simply return it and we will refund your money.</p>
+		</div>
+	</div>
+{% endblock %}

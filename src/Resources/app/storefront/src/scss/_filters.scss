@@ -1,0 +1,33 @@
+.junu {
+    .cms-element-category-navigation .category-navigation-box > .category-navigation.level-0 > .category-navigation-entry > .category-navigation-link {
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+    }
+    .cms-element-category-navigation .category-navigation-box > .category-navigation.level-0 > .category-navigation-entry > .category-navigation.level-1 > .category-navigation-entry > .category-navigation-link {
+        font-size: 0.95rem;
+    }
+    .filter-panel-item button {
+        padding: 0.25rem 1rem;
+
+        &:not(.disabled) {
+            border-bottom: 0;
+        }
+    }
+
+    .filter-panel-items-container {
+        &>div:first-of-type button {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        &>div:last-of-type {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    .filter-panel.is--sidebar .filter-panel-item-dropdown {
+        border-top: 0;
+        border-radius: 0;
+    }
+}

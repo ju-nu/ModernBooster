@@ -1,0 +1,57 @@
+{#
+ # Copyright (c) 2025 JUNU Marketing Group
+ # All rights reserved.
+ #
+ # This source code is the confidential, proprietary information of Junu Corporation.
+ # Unauthorized use, reproduction, modification, or distribution is strictly prohibited.
+ #
+ # @package Storefront
+ # @subpackage Blocks
+ # @author Junu Development Team <devteam@junu corp.com>
+ # @description Extends the gallery buybox name two block to display dynamic product viewer count
+ # @license Proprietary
+ #}
+
+{% sw_extends '@Storefront/storefront/block/cms-block-twt-gallery-buybox-name-two.html.twig' %}
+
+{% block block_twt_gallery_buybox_name_two_column_right_top %}
+    {# Retrieve product ID from element data #}
+    {% set productId = element.data.product.id %}
+    
+    {# Get current hour (0-23) as a number #}
+    {% set currentHour = 'now'|date('H')|number_format %}
+    
+    {# Split product ID by hyphens to process parts #}
+    {% set productIdParts = productId|split('-') %}
+    
+    {# Initialize sum of digits from product ID #}
+    {% set digitSum = 0 %}
+    
+    {# Iterate through parts and characters to sum numeric digits #}
+    {% for part in productIdParts %}
+        {% for char in part|split('') %}
+            {% if char matches '/\\d/' %}
+                {% set digitSum = digitSum + (char|number_format) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    
+    {# Calculate combined number using digit sum and current hour #}
+    {% set combinedNumber = digitSum + currentHour %}
+    
+    {# Scale combined number to viewer count between 5 and 75 #}
+    {% set viewers = (combinedNumber % 71) + 5 %}
+    
+    {# Render viewer count display with fire icon #}
+    <div class="junu-product-viewers" id="buybox" style="color: #e96045; font-size: 14px; font-weight:600; display: flex; align-items: center; margin-bottom: 0.25rem;">
+        <i class="fa-solid fa-fire" style="margin-right: 5px;"></i>
+        <span>{{ viewers }} people are currently looking at this product!</span>
+    </div>
+    
+    {# Render product detail headline #}
+    <div class="row product-detail-headline mb-3 right-top">
+        {% block block_product_heading_product_name_element %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-buy-box.html.twig' %}
+
+{% block element_buy_box %}
+    {# Generate a number of people viewing based on product ID and current hour #}
+    {# Generate a number of people viewing based on product ID and current hour #}
+
+
+	{# Add ratings at the top #}
+	{% if element.data.product.ratingAverage %}
+		{% set averageRating = element.data.product.ratingAverage %}
+		{% set reviewTabHref = '#review-tab-' ~ element.data.product.id ~ '-pane' %}
+		{% set reviewTabContent = 'review-tab-' ~ element.data.product.id ~ '-pane' %}
+		{% set remoteClickOptions = {
+            selector: '#review-tab-' ~ element.data.product.id,
+            scrollToElement: true,
+            excludedViewports: ['XS']
+        } %}
+		<div class="product-rating" style="margin-bottom: 0.5rem;">
+			<div
+				class="star-rating" style="display: flex; align-items: center; font-size:0.875rem;">
+				{# Reuse Shopware's rating component with Font Awesome override #}
+				{% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: averageRating,
+                    style: 'text-primary'
+                } %}
+				<a style="color:#617477" class="product-detail-reviews-link" data-off-canvas-tabs="true" data-remote-click="true" data-remote-click-options="{{ remoteClickOptions|json_encode }}" href="{{ reviewTabHref }}" aria-controls="{{ reviewTabContent }}">
+					{{ 'JUNUModernizr.product.review.summary'|trans({'%rating%': averageRating})|sw_sanitize }}
+
+				</a>
+			</div>
+		</div>
+	{% endif %}
+
+	{# Call the parent block to include the rest of the buy box content #}
+	{{ parent() }}
+{% endblock %}

@@ -1,0 +1,59 @@
+.junu {
+
+    .left {
+        .junu-cms-quick-badge {
+            display: block;
+            position: relative;
+            height: 100%;
+        }
+
+        /* Add the badge to the wrapper */
+        .junu-cms-quick-badge::before {
+            content: "BIS ZU 35%";
+            /* Text for the badge */
+            position: absolute;
+            top: -13px;
+            /* Position it slightly above the container */
+            left: 50px;
+            /* Position it slightly indented from the left */
+            background-color: $twt-color-secondary-button;
+            /* Coral color matching the badge */
+            color: white;
+            /* White text */
+            padding: 5px 12px;
+            /* Padding for the badge */
+            border-radius: 5px;
+            /* Rounded corners for the badge */
+            font-size: 0.85rem;
+            /* Smaller font size */
+            font-weight: bold;
+            /* Bold text */
+            text-transform: uppercase;
+            /* Uppercase text */
+            z-index: 1;
+            /* Ensure it appears above other content */
+        }
+    }
+
+    .junu-start-quick {
+        position: relative;
+
+        .twt-hero-teaser-image-container {
+            position: relative;
+            transition: transform 0.5s ease;
+            /* Add transition for smooth scaling */
+
+
+        }
+
+
+        &:hover {
+            .twt-hero-teaser-image-container {
+                transform: scale(1.015);
+                /* Scale up by 5% on hover */
+
+            }
+        }
+
+    }
+}

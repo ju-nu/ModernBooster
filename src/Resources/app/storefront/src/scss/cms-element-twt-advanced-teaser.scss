@@ -1,0 +1,66 @@
+// Scope all styles to the homepage using the is-act-home class
+.is-act-home.junu {
+    .cms-element-twt-advanced-teaser {
+        position: relative; /* Ensure positioning context */
+        overflow: hidden; /* Prevent overflow issues */
+
+        .twt-advanced-teaser-image-container {
+            position: relative;
+            height: 100%; /* Ensure it takes the full height of the parent */
+            overflow: hidden; /* Keep existing behavior */
+            background-color: #fff;
+
+            &.is-cover {
+                height: 100%; /* Reinforce the height */
+            }
+
+            .cms-image {
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+                z-index: 0; /* Below the gradient */
+            }
+        }
+
+        // Ensure the content container (text/buttons) is positioned correctly
+        .twt-advanced-teaser-container {
+            position: relative;
+            z-index: 2; /* Above the gradient overlay */
+            width: 100%; /* Ensure it spans the full width for proper alignment */
+            
+        }
+
+        // Breakpoint: lg (≥992px) - Image starts at 10%
+        @include media-breakpoint-up(lg) {
+            .twt-advanced-teaser-image-container .cms-image {
+                left: 48%; /* Start at 10% of the container's width */
+                width: 52%; /* Take the remaining 90% of the container's width */
+                object-position: left center; /* Prioritize the left side, center vertically */
+            }
+        }
+
+        // Breakpoint: xl (≥1200px) - Image starts at 25%
+        @include media-breakpoint-up(xl) {
+            .twt-advanced-teaser-image-container .cms-image {
+                left: 43%; /* Start at 25% of the container's width */
+                width: 57%; /* Take the remaining 75% of the container's width */
+            }
+        }
+
+        // Breakpoint: xl (≥1200px) - Image starts at 25%
+        @media (min-width: 1740px) {
+            .twt-advanced-teaser-image-container .cms-image {
+                object-position: right center;
+                object-fit: contain;
+            }
+        }
+
+    }
+}

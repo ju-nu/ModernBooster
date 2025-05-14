@@ -1,0 +1,12 @@
+{
+    "JUNUModernizr": {
+        "product": {
+            "delivery": {
+                "orderWithin": "Bestellen Sie innerhalb von %time%",
+                "shippedToday": ", um es heute versandt zu bekommen!",
+                "orderWithinTomorrow": "Bestellen Sie innerhalb von %time%",
+                "shippedTomorrow": ", um es morgen geliefert zu bekommen!"
+            }
+        }
+    }
+}

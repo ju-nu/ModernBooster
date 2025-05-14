@@ -1,0 +1,90 @@
+{% sw_extends '@TcinnThemeWareModern/storefront/element/cms-element-twt-testimonial.html.twig' %}
+
+
+{% block element_twt_testimonial_content %}
+	<style>:root
+	{
+		--junu-cms-review-bg: {{twtTstmnlBackgroundColor}};
+    --junu-cms-review-1: url('{{'JUNUModernizr.cms.review.person1'|trans|default('')}}');
+    --junu-cms-review-2: url('{{'JUNUModernizr.cms.review.person2'|trans|default('')}}');
+    --junu-cms-review-3: url('{{'JUNUModernizr.cms.review.person3'|trans|default('')}}');
+	}
+</style>
+{{ parent() }}{% endblock %}{% block element_twt_testimonial_image_inner %}
+{# ThemeWare: Set avatar (image or initials) #}
+{% set avatarElement %}
+{% if twtTstmnlAvatar != 'none' %}
+	{% if twtTstmnlAvatar == 'image' and element.data.media %}
+		{# Image #}
+		{% block element_twt_testimonial_image_container %}
+			{{ parent() }}
+		{% endblock %}
+
+	{% elseif twtTstmnlAvatar == 'image' and element.data.media is null %}
+		{# Image > Fallback #}
+		<div class="twt-testimonial-image-container {# w-100 #} cms-image-container image-container is-fallback">
+			<img src="{{ asset('assets/images/twt-avatar-square.svg', 'theme') }}" alt="{{ twtTstmnlName }}" title="{{ twtTstmnlName }}" width="{{ twtWidgetAwardsImageSize }}px" height="75px" loading="lazy">
+		</div>
+
+	{% else %}
+		{# Initials #}
+		{% set alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'] %}
+		<div class="twt-testimonial-avatar-container cms-avatar-container is-rainbow">
+			<span class="{% if twtTstmnlName|first in alphabet %}is-{{ twtTstmnlName|first|lower }}{% else %}is-default{% endif %}">
+				{{ twtTstmnlName|first }}
+			</span>
+		</div>
+
+	{% endif %}
+{% endif %}
+{% endset %}
+
+{# ThemeWare: Set "Testimonial" element #}
+{% set customerReview %}
+{# ThemeWare: Load image #}
+{{ avatarElement }}
+
+<div
+	class="twt-testimonial-content-container cms-content-container content-container">
+	{# Content #}
+	<div
+		class="twt-testimonial-content{% if twtTstmnlReviewPosition == 'top' %} order-2{% endif %} {{ contentClasses|sort|join(' ') }}">
+		{# Name (mandatory) #}
+
+		<div class="junu-cms-review-person"></div>
+		<div class="junu-cms-review-info">
+			<div class="junu-cms-review-wrapper">
+				<{{twtTstmnlHtmlTag}} class="twt-testimonial-name name {{ twtTstmnlHtmlTagClass }} twt-font-family-{{ twtTstmnlFontFamilyName }}" style="color: {{ twtTstmnlTextColorName }};">
+					{{ twtTstmnlName }}
+				</{{twtTstmnlHtmlTag}}>
+
+				{# Rating (mandatory) #}
+				<div class="twt-testimonial-rating rating{% if twtTstmnlRatingStyle == 'number' %} is-badge{% endif %}" title="{{ twtTstmnlRating }} / 5" {% if twtTstmnlRatingStyle == 'number' %} style="color: {{ twtTstmnlColorRating }}; background-color: {{ twtTstmnlRatingBgColor }};" {% endif %}>
+					{% if twtTstmnlRatingStyle == 'stars' %}
+						{% sw_include '@Storefront/storefront/themeware/component/twt-customer-rating.html.twig' with {
+                                        points: twtTstmnlRating
+                                    } %}
+
+					{% else %}
+						{{ twtTstmnlRating }}
+						{% sw_icon 'star' style { size: 'xs', pack: 'solid' } %}
+
+					{% endif %}
+				</div>
+			</div>
+			<div class="junu-cms-review-verified">
+				<i class="fa-solid fa-badge-check"></i>
+				<span>Verifizierter Käufer</span>
+			</div>
+		</div>
+	</div>
+
+	{# Review (mandatory) #}
+	{# @TODO: <blockquote cite="http://www..."> #}
+	<blockquote class="twt-testimonial-review review{% if twtTstmnlReviewPosition == 'top' %} order-1{% endif %}{% if twtTstmnlFontFamilyReview == 'base' %} twt-font-family-{{ twtTstmnlFontFamilyReview }}{% endif %}" style="color: {{ twtTstmnlTextColorReview }};">
+		{{ twtTstmnlReview|raw }}
+	</blockquote>
+</div>
+{% endset %}
+{# ThemeWare: Load "Testimonial" element #}
+{{ customerReview }}{% endblock %}

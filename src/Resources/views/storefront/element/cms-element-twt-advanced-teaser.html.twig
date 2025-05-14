@@ -1,0 +1,140 @@
+{% sw_extends '@TcinnThemeWareModern/storefront/element/cms-element-twt-advanced-teaser.html.twig' %}
+
+{# Override the styles block to add minimal inline styles #}
+{% block element_twt_advanced_teaser_styles_inside %}
+	{{ parent() }}
+	{# Call the parent block to retain existing styles #}
+
+	/* Set the container height using CMS variable */
+		    height:
+	{{ twtAdvncdTsrMinHeight|default('600px') }};
+{% endblock %}
+
+{# Override the image container block to ensure proper setup #}
+{% block element_twt_advanced_teaser_image_container %}
+	{% if element.data.media.url %}
+		<div
+			class="twt-advanced-teaser-image-container cms-image-container image-container is-{{ twtAdvncdTsrDisplayMode }}" {% if twtAdvncdTsrMinHeight and twtAdvncdTsrDisplayMode == 'cover' %} style="min-height: {{ twtAdvncdTsrMinHeight }};" {% else %} style="min-height: 600px;" {% endif %}>
+
+			{# Add 'object-position' class if configured #}
+			{% if twtAdvncdTsrDisplayMode == 'cover' and twtAdvncdTsrObjectPosition != 'center' %}
+				{% set imageClasses = 'cms-image object-position-'~twtAdvncdTsrObjectPosition %}
+			{% else %}
+				{% set imageClasses = 'cms-image' %}
+			{% endif %}
+
+			{% block element_twt_advanced_teaser_image_media %}
+				{% set attributes = {
+                    class: imageClasses,
+                    alt: (element.data.media.translated.alt ?: ''),
+                    title: (element.data.media.translated.title ?: title),
+                    width: (element.data.media.metaData.width ?: ''),
+                    height: (element.data.media.metaData.height ?: ''),
+                    loading: lazyloading
+                } %}
+
+				{% if twtAdvncdTsrDisplayMode == 'cover' or twtAdvncdTsrDisplayMode == 'contain' %}
+					{% set attributes = attributes|merge({ 'data-object-fit': twtAdvncdTsrDisplayMode }) %}
+				{% endif %}
+
+				{% sw_thumbnails 'cms-image-thumbnails' with {
+                    media: element.data.media,
+                    attributes: attributes
+                } %}
+			{% endblock %}
+
+			{# ThemeWare: Load text element #}
+			{{ callToAction }}
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block element_twt_advanced_teaser_content_container %}
+	<div
+		class="twt-advanced-teaser-container cms-content-container content-container justify-content-{{ twtAdvncdTsrHorizontalAlignment }} align-items-{{ twtAdvncdTsrVerticalAlignment }}" style="padding: {{ twtAdvncdTsrPadding }};">
+		{# Colored overlay (if configured) #}
+		{% if twtAdvncdTsrColorOverlay %}
+			<div class="twt-advanced-teaser-overlay {{ overlayClasses|sort|join(' ') }}" style="background: {{ twtAdvncdTsrColorOverlayBgColor }};{% if twtAdvncdTsrColorOverlayBgGradient %} background: linear-gradient({{ twtAdvncdTsrColorOverlayBgGradientAngle }}deg, {{ twtAdvncdTsrColorOverlayBgColor }} 0%, {{ twtAdvncdTsrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+		{% endif %}
+
+		{# Content #}
+		<div
+			class="twt-advanced-teaser-content {{ contentClasses|sort|join(' ') }}" style="text-align: {{ twtAdvncdTsrTextAlignment }}; width: {{ twtAdvncdTsrWidth }}; max-width: {{ twtAdvncdTsrMaxWidth }};{% if twtAdvncdTsrOverlay %} background-color: {{ twtAdvncdTsrBgOverlay }};{% endif %}">
+			{# Headline #}
+			{% if twtAdvncdTsrHeadline %}
+				<{{twtAdvncdTsrHtmlTagHeadline}} class="twt-advanced-teaser-headline headline {{ twtAdvncdTsrHtmlTagClassHeadline }} twt-font-family-{{ twtAdvncdTsrFontFamilyHeadline }}{% if twtAdvncdTsrCssClassHeadline is not empty %} {{ twtAdvncdTsrCssClassHeadline }}{% endif %}" style="color: {{ twtAdvncdTsrTextColorHeadline }};">
+					{{ twtAdvncdTsrHeadline }}
+				</{{twtAdvncdTsrHtmlTagHeadline}}>
+			{% endif %}
+
+			{# Subheadline #}
+			{% if twtAdvncdTsrSubheadline %}
+				<{{twtAdvncdTsrHtmlTagSubheadline}}
+					class="twt-advanced-banner-subheadline subheadline {{ twtAdvncdTsrHtmlTagClassSubheadline }} twt-font-family-{{ twtAdvncdTsrFontFamilySubheadline }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtAdvncdTsrCssClassSubheadline is not empty %} {{ twtAdvncdTsrCssClassSubheadline }}{% endif %}" style="color: {{ twtAdvncdTsrTextColorSubheadline }};">
+					{# Note: Experimental feature, may change later (placeholder not final) #}
+					{% if twtAdvncdTsrSubheadline == "{{ category.name }}" or twtAdvncdTsrSubheadline == "{{category.name}}" or twtAdvncdTsrSubheadline == "%category.name%" or twtAdvncdTsrSubheadline == "category.name" %}
+						{{ page.header.navigation.active.name }}
+					{% else %}
+						{{ twtAdvncdTsrSubheadline }}
+					{% endif %}
+				</{{twtAdvncdTsrHtmlTagSubheadline}}>
+			{% endif %}
+
+			{# Text #}
+			{# Info: HTML möglich, Links werden im fullLinked nicht unterstützt! #}
+			<div class="twt-advanced-teaser-text text{% if twtAdvncdTsrFontFamily != 'base' %} twt-font-family-{{ twtAdvncdTsrFontFamily }}{% endif %}{% if twtAdvncdTsrCssClassText is not empty %} {{ twtAdvncdTsrCssClassText }}{% endif %}" style="color: {{ twtAdvncdTsrTextColor }};">
+				{% if element.data.text %}
+					{{ element.data.text|raw }}
+				{% else %}
+					{# Fallback #}
+					{{ twtAdvncdTsrText|raw }}
+				{% endif %}
+			</div>
+
+			{# Button #}
+			{# if twtAdvncdTsrButtonText and twtAdvncdTsrUrl #}
+			{% if twtAdvncdTsrButtonText %}
+				{% if twtAdvncdTsrFullLink %}
+					<div class="twt-advanced-teaser-btn btn btn-{% if twtAdvncdTsrButtonOutline %}outline-{% endif %}{{ twtAdvncdTsrButtonStyle }}{% if twtAdvncdTsrCssClassButton is not empty %} {{ twtAdvncdTsrCssClassButton }}{% endif %}">
+						{{ twtAdvncdTsrButtonText }}
+					</div>
+
+				{% else %}
+					{# INFO: Title tag = Button text (as the text is mandatory) #}
+					<a href="{{ twtAdvncdTsrUrl }}" class="twt-advanced-teaser-btn btn btn-1 btn-{% if twtAdvncdTsrButtonOutline %}outline-{% endif %}{{ twtAdvncdTsrButtonStyle }}{% if twtAdvncdTsrCssClassButton is not empty %} {{ twtAdvncdTsrCssClassButton }}{% endif %}" title="{{ twtAdvncdTsrButtonText }}" {% if twtAdvncdTsrNewTab %} target="_blank" rel="noopener" {% endif %}>
+						{{ twtAdvncdTsrButtonText }}
+					</a>
+
+				{% endif %}
+			{% endif %}
+
+			{# Button 2 #}
+			{% if twtAdvncdTsrButton2Text and twtAdvncdTsrUrl2 and not twtAdvncdTsrFullLink %}
+				{# INFO: Title tag = Button text (as the text is mandatory) #}
+				<a href="{{ twtAdvncdTsrUrl2 }}" class="twt-advanced-teaser-btn btn btn-2 btn-{% if twtAdvncdTsrButton2Outline %}outline-{% endif %}{{ twtAdvncdTsrButton2Style }}{% if twtAdvncdTsrCssClassButton2 is not empty %} {{ twtAdvncdTsrCssClassButton2 }}{% endif %}" title="{{ twtAdvncdTsrButton2Text }}" {% if twtAdvncdTsrNewTab2 %} target="_blank" rel="noopener" {% endif %}>
+					{{ twtAdvncdTsrButton2Text }}
+                    <span>bis -50%</span>
+				</a>
+			{% endif %}
+			{% block element_twt_advanced_teaser_trust_svgs %}
+				<div
+					class="junu-start-hero-trust d-flex flex-row gap-4 mt-4 align-items-center overflow-x-auto">
+					{# Trust 1: Free Delivery (SVG only) #}
+					<div class="trust-badge d-flex align-items-center">
+						<img src="{{ 'JUNUModernizr.start.hero.trust1'|trans|default('https://cdn.hanfosan.de/media/e3/7d/36/1730312911/rtl_logo.svg?ts=1730312911') }}" alt="Free Delivery" class="trust-icon me-2" width="24" height="24">
+					</div>
+
+					{# Trust 2: Discount (SVG only) #}
+					<div class="trust-badge d-flex align-items-center">
+						<img src="{{ 'JUNUModernizr.start.hero.trust2'|trans|default('https://cdn.hanfosan.de/media/6e/23/52/1730322738/stern_logo.svg?ts=1730322738') }}" alt="Discount" class="trust-icon me-2" width="24" height="24">
+					</div>
+
+					{# Trust 3: Money Back Guarantee (SVG only) #}
+					<div class="trust-badge d-flex align-items-center">
+						<img src="{{ 'JUNUModernizr.start.hero.trust3'|trans|default('https://cdn.hanfosan.de/media/1c/61/4d/1730322759/welt_logo.svg?ts=1730322759') }}" alt="Money Back Guarantee" class="trust-icon me-2" width="24" height="24">
+					</div>
+				</div>
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+.junu {
+    .junu-cms-faq {
+        .cms-element-cmscollapse-accordion-card.is--complete-clickable .card-header .btn {
+            padding: 12px 20px 12px 20px !important;
+        }
+
+        .cms-element-cmscollapse-accordion-card:not(:last-child) {
+            border-bottom: 1px solid #c9e6e0;
+        }
+
+        .cms-element-cmscollapse .cms-element-cmscollapse-accordion .cms-element-cmscollapse-accordion-card .card-body {
+            padding: 20px 20px 20px 20px;
+        }
+
+        .card-header .btn.btn-link {
+            &.collapsed {
+                
+            }
+            &:hover {
+                background-color: #cae6e1;
+            }
+           
+        }
+
+    }
+}

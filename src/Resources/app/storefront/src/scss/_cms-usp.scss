@@ -1,0 +1,28 @@
+.junu {
+    .twt-usp-bar.is-footer {
+        border-top: 1px solid $sw-border-color;
+        border-bottom: 1px solid $sw-border-color;
+        .twt-usp-bar-container {
+            height: 65px;
+        }
+        .twt-usp-bar-item {
+            flex-direction: row;
+            column-gap: 1rem;
+            font-size: 0.95rem;
+        }
+        i {
+            font-size: 1.3rem;
+            color: $sw-color-brand-primary;
+        }
+    } 
+    .twt-usp-bar.is-header {
+        .twt-usp-bar-item {
+            flex-direction: row;
+            column-gap: 0.65rem;
+        }
+        i {
+            font-size: 0.85rem;
+            color: $twt-usp-bar-header-color;
+        }
+    } 
+}

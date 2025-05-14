@@ -1,0 +1,70 @@
+.junu {
+    .junu-cms-description {
+        .cms-image {
+            border-radius: 20px;
+        }
+
+        .junu-description-reverse .cms-block-container-row {
+            flex-direction: row-reverse;
+        }
+
+        .junu-description-notice {
+            border-top: 1px solid $sw-border-color !important;
+
+            >* {
+                margin-bottom: 0;
+            }
+        }
+
+        .cms-block-image-text .cms-block-container-row {
+            align-items: center;
+        }
+
+        .cms-element-text {
+            padding-left: 2rem;
+            padding-right: 1rem;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: 1.75rem;
+                line-height: 2.125rem;
+            }
+
+            p.spaced {
+                letter-spacing: 0.03rem;
+            }
+
+            ul {
+                position: relative;
+                padding-left: 1.5rem;
+                list-style: none;
+
+                li::before {
+                    content: "\f00c";
+                    font-family: "Font Awesome 6 Pro";
+                    font-weight: 900;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        .cms-element-alignment {
+            >* {
+                margin-bottom: 0.75rem;
+            }
+
+            >p:has(+ ul) {
+                margin-bottom: 0.25rem;
+            }
+
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

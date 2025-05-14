@@ -1,0 +1,55 @@
+.junu {
+    .junu-cms-cta-wrapper {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0; // Aligns triangle at the top edge of the div
+            left: 50%; // Centers horizontally
+            transform: translateX(-50%); // Ensures perfect centering
+            border-left: 16px solid transparent; // Left side of triangle
+            border-right: 16px solid transparent; // Right side of triangle
+            border-top: 16px solid white; // Base of triangle, white color
+        }
+    }
+
+    .junu-cms-cta {
+        .cms-image {
+            display: none;
+        }
+
+        .twt-call-to-action-content .btn {
+            align-items: center;
+            display: inline-flex;
+            border-radius: 4px;
+            padding: 0.25rem 3.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+
+            &::before {
+                content: "\e0dc"; // Unicode for fa-cart-circle-plus
+                font-family: "Font Awesome 6 Pro";
+                font-weight: 400; // Solid icon weight
+                font-size: 1.2em; // Slightly larger icon
+                margin-right: 0.5rem;
+                margin-left: -0.75rem;
+            }
+
+            &:hover {
+                // Darken the background by 10% (works with any color)
+                filter: brightness(90%);
+                // Optional: slight scale for a tactile feel
+                transform: scale(1.05);
+                // Optional: subtle shadow for depth
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            &:active {
+                // Slightly darker on click
+                filter: brightness(80%);
+                transform: scale(0.98);
+            }
+        }
+    }
+}

@@ -1,0 +1,126 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block component_offcanvas_cart_actions_checkout %}
+	{% if page.cart.lineItems|length > 0 %}
+		<div class="d-grid">
+			<a href="{{ path('frontend.checkout.confirm.page') }}" class="btn begin-checkout-btn{% if isCartNotEmpty %} btn-primary{% else %} btn-light disabled{% endif %}" title="{{ 'checkout.proceedToCheckout'|trans|striptags }}">
+				{{ 'checkout.proceedToCheckout'|trans|sw_sanitize }}
+				<span>
+					<i class="fa-regular fa-shield-check"></i>
+					30-Tage Geld-zurück-Garantie
+				</span>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block component_offcanvas_cart_items %}
+	{{ parent() }}
+	{% if page.junuCrossSellingArticles|length > 0 %}
+		<div class="junu-offcanvas-wrapper">
+			<style>
+				.junu-offcanvas-wrapper {
+					position: relative;
+					padding-top: 0.75rem;
+					padding-bottom: 0.75rem;
+				}
+				.badge.badge-offcanvas {
+					position: absolute;
+					top: -13px;
+					left: 50%;
+					transform: translateX(-50%);
+					padding: 1px 8px;
+					border-radius: 4px;
+					font-size: 0.75rem;
+					color: #fff;
+					background-color: #f9615a;
+					letter-spacing: 0.02rem;
+					cursor: default;
+				}
+				/* Hide navigation dots */
+				.junu-offcanvas-wrapper .tns-nav {
+					display: none !important;
+				}
+			</style>
+
+			<div class="badge badge-offcanvas">
+				Nicht verpassen!
+			</div>
+
+			{% set sliderConfig = {
+				"productboxMinWidth": "250px",
+				"slider": {
+					"controls": true,
+					"nav": false,
+					"mouseDrag": true,
+					"autoplay": false,
+					"autoplayButtonOutput": false,
+					"autoplayTimeout": 5000,
+					"speed": 300,
+					"ariaLive": true,
+					"gutter": 30,
+					"loop": false,
+					"rewind": true
+				},
+				"autoplay": {"value": false},
+				"navigationArrows": {"value": "inside"},
+				"boxLayout": {"value": "minimal"},
+				"displayMode": {"value": "standard"},
+				"elMinWidth": {"value": "250px"},
+				"rotate": {"value": false},
+				"border": {"value": false}
+			} %}
+
+			{% sw_include '@Storefront/storefront/element/cms-element-product-slider.html.twig' with {
+				sliderConfig: sliderConfig,
+				element: {
+					data: {
+						products: {
+							elements: page.junuCrossSellingArticles
+						}
+					},
+					type: 'product-slider'
+				}
+			} %}
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block component_offcanvas_cart_header %}
+	{{ parent() }}
+	{% if page.cart.lineItems|length > 0 %}
+		<div class="junu-progressbar">
+			{# Fetch the threshold from the plugin configuration (in EUR) #}
+			{% set threshold = config('JunuModernBooster.config.freeShippingThreshold') * 100 %}
+			{# Convert to cents #}
+
+			{# Calculate cart total and progress (server-side) #}
+			{% set cartTotal = page.cart.price.positionPrice|round(2) * 100 %}
+			{% set progress = 0 %}
+			{% if threshold > 0 %}
+				{% set progress = cartTotal / threshold * 100 %}
+				{% if progress > 100 %}
+					{% set progress = 100 %}
+				{% endif %}
+			{% endif %}
+
+			{# Display progress bar and text above, only if threshold is valid #}
+			{% if threshold > 0 %}
+				<div class="progress-text{% if progress >= 100 %} success{% endif %}">
+					{% if progress < 100 %}
+						<i class="fa-solid fa-box-check"></i>
+						Noch
+						<span class="progress-amount">{{ ((threshold - cartTotal) / 100)|number_format(2, ',', '.') }}€</span>
+						für Gratisversand
+					{% else %}
+						<i class="fa-solid fa-circle-check"></i>
+						Gratisversand erreicht!
+					{% endif %}
+				</div>
+				<div class="progress-bar">
+					<div class="progress-bar-fill{% if progress >= 100 %} success{% endif %}" style="--progress-width: {{ progress }}%;"></div>
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,127 @@
+.junu {
+
+  // General form container styling
+  .form-group {
+
+    // Label styling
+    label {
+      font-size: 0.875rem; // 14px, Shopify-like
+      font-weight: 500;
+      color: $input-color;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    // Input fields (text, email, password, textarea, etc.)
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: $input-font-size;
+      color: $input-color;
+      background-color: $input-bg;
+      border: 1px solid $input-border-color;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba($sw-color-brand-primary, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $input-focus-border-color;
+        box-shadow: 0 1px 3px rgba($sw-color-brand-primary, 0.3);
+        background-color: $input-focus-bg;
+        color: $input-focus-color;
+      }
+
+      &::placeholder {
+        color: $input-placeholder-color;
+      }
+    }
+
+    // Select dropdown styling
+    .form-select {
+      width: 100%;
+      padding: 0.75rem;
+      padding-right: 2.5rem; // Ensure enough space for the dropdown arrow
+      font-size: $input-font-size;
+      color: $input-color;
+      background-color: $input-bg;
+      border: 1px solid $input-border-color;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba($sw-color-brand-primary, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: $input-focus-border-color;
+        box-shadow: 0 1px 3px rgba($sw-color-brand-primary, 0.3);
+        background-color: $input-focus-bg;
+        color: $input-focus-color;
+      }
+    }
+
+    // Textarea specific styling
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    // Checkbox and Radio styling
+    .form-check-input {
+      margin-right: 0.5rem;
+      background-color: $form-check-input-bg;
+      border: 1px solid $input-border-color;
+
+      &:focus {
+        box-shadow: 0 1px 3px rgba($sw-color-brand-primary, 0.3);
+      }
+
+      &:checked {
+        background-color: $form-check-input-checked-bg-color;
+        border-color: $form-check-input-checked-bg-color;
+      }
+    }
+
+    // Checkbox and radio label
+    .form-check-label {
+      font-size: 0.875rem;
+      color: $input-color;
+    }
+
+    // Validation states
+    &.is-invalid {
+
+      .form-control,
+      .form-select {
+        border-color: $form-feedback-invalid-color;
+        box-shadow: $input-focus-box-shadow; // Use Shopware's focus box-shadow
+      }
+
+      .invalid-feedback {
+        font-size: 0.75rem;
+        color: $form-feedback-invalid-color;
+        margin-top: 0.25rem;
+      }
+    }
+
+    &.is-valid {
+
+      .form-control,
+      .form-select {
+        border-color: $form-feedback-valid-color;
+        box-shadow: $input-focus-box-shadow; // Use Shopware's focus box-shadow
+      }
+
+      .valid-feedback {
+        font-size: 0.75rem;
+        color: $form-feedback-valid-color;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+}

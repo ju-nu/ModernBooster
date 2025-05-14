@@ -1,0 +1,25 @@
+.junu {
+    .junu-cms-infobox {
+        .twt-call-to-action-content>* {
+            max-width: 45%;
+        }
+
+        .twt-call-to-action-btn {
+            background-color: #2e2d2b;
+            border-color: #2e2d2b;
+            color: #fff;
+            border-radius: 5px;
+            padding: 0.25rem 1.5rem;
+            font-weight: 400;
+            font-size: 0.95rem;
+
+            &:hover {
+                background-color: #7f7f7f;
+            }
+        }
+
+        .twt-call-to-action-text {
+            font-size: 1.1rem;
+        }
+    }
+}

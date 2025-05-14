@@ -1,0 +1,95 @@
+{% sw_extends '@Storefront/storefront/themeware/footer-elements/twt-about.html.twig' %}
+
+{% block twt_layout_footer_about_headline %}
+	<div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger{% if toggle == '2' %} show{% endif %}" id="collapseFooterAboutTitle" data-bs-target="#collapseFooterAbout" aria-expanded="true" aria-controls="collapseFooterAbout" role="listitem">
+
+		{% block twt_layout_footer_about_icons %}
+			{% if toggle != '4' %}
+				<div class="footer-column-toggle">
+					<span class="footer-plus-icon">
+						{% sw_icon 'plus' style {
+										ariaLabel: 'general.expand'|trans
+									} %}
+					</span>
+					<span class="footer-minus-icon">
+						{% sw_icon 'minus' style {
+										ariaLabel: 'general.collapse'|trans
+									} %}
+					</span>
+				</div>
+			{% endif %}
+		{% endblock %}
+
+	</div>
+{% endblock %}
+
+{% block twt_layout_footer_about_content %}
+	<div id="collapseFooterAbout" class="footer-column-content{% if toggle != '4' %} js-footer-column-content collapse{% endif %}{% if toggle == '2' %} show{% endif %}" aria-labelledby="collapseFooterAboutTitle" role="listitem">
+		<div class="footer-column-content-inner">
+			{% block layout_header_logo_image %}
+				<picture class="header-logo-picture d-block m-auto">
+					{% block layout_header_logo_image_tablet %}
+						{% if theme_config('sw-logo-tablet') and theme_config('sw-logo-tablet') != theme_config('sw-logo-desktop') %}
+							<source srcset="{{ theme_config('sw-logo-tablet')|sw_encode_url }}" media="(min-width: {{ theme_config('breakpoint.md') }}px) and (max-width: {{ theme_config('breakpoint.lg') - 1 }}px)">
+						{% endif %}
+					{% endblock %}
+
+					{% block layout_header_logo_image_mobile %}
+						{% if theme_config('sw-logo-mobile') and theme_config('sw-logo-mobile') != theme_config('sw-logo-desktop') %}
+							<source srcset="{{ theme_config('sw-logo-mobile')|sw_encode_url }}" media="(max-width: {{ theme_config('breakpoint.md') - 1 }}px)">
+						{% endif %}
+					{% endblock %}
+
+					{% block layout_header_logo_image_default %}
+						{% if theme_config('sw-logo-desktop') %}
+							<img src="{{ theme_config('sw-logo-desktop')|sw_encode_url }}" loading="lazy" draggable="false" alt="{{ 'header.logoLink'|trans|striptags }}" class="img-fluid header-logo-main-img">
+						{% endif %}
+					{% endblock %}
+				</picture>
+			{% endblock %}
+
+{# 			<div class="junu-footer-about">
+				<div>
+					<span class="fw-bold">Need help?</span>
+					We can be reached every day between 7:00 and 15:00
+				</div>
+
+				<div>
+					<div class="footer-infobox">
+						<a href="#">
+							<i class="fa-solid fa-phone"></i>
+							<span>Telefon:
+								<span class="fw-bold">+49 30 62913134</span>
+							</span>
+						</a>
+					</div>
+					<div class="footer-infobox">
+						<a href="#">
+							<i class="fa-solid fa-envelope"></i>
+							<span>E-Mail:
+								<span class="fw-bold">service@xhanf.de</span>
+							</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer-brands">
+					<a href="#">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+					<a href="#">
+						<i class="fa-brands fa-square-facebook"></i>
+					</a>
+					<a href="#">
+						<i class="fa-brands fa-tiktok"></i>
+					</a>
+				</div>
+			</div> #}
+
+
+			{% sw_include '@Storefront/storefront/themeware/widgets/twt-about-include.html.twig' ignore missing with {
+							type: 'footer'
+						} %}
+		</div>
+	</div>
+{% endblock %}

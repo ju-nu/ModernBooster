@@ -1,0 +1,43 @@
+{
+	"name": "junu/modernbooster",
+	"description": "JUNU ModernBooster | Premium-Theme: Basierend auf ThemeWare® Modern Pro, hebt unser einzigartiges Theme Ihren Shop mit exklusivem Design und umsatzfördernden Features auf ein neues Level.",
+	"version": "1.0.0",
+	"type": "shopware-platform-plugin",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "JUNU Marketing Group LTD",
+			"homepage": "https://ju.nu"
+		}
+	],
+	"require": {
+		"shopware/core": "6.6.10.*",
+		"tcinn/themeware-modern": "<=3.6.5"
+	},
+	"extra": {
+		"shopware-plugin-class": "Junu\\ModernBooster\\JunuModernBooster",
+		"plugin-icon": "src/Resources/config/junu-modernbooster.png",
+		"copyright": "(c) by JUNU Marketing Group LTD",
+		"label": {
+			"en-GB": "JUNU ModernBooster | Premium-Theme",
+			"de-DE": "JUNU ModernBooster | Premium-Theme"
+		},
+		"description": {
+			"en-GB": "JUNU ModernBooster | Premium-Theme: Built on ThemeWare® Modern Pro, our unique theme elevates your shop to the next level with exclusive design and conversion-boosting features.",
+			"de-DE": "JUNU ModernBooster | Premium-Theme: Basierend auf ThemeWare® Modern Pro, hebt unser einzigartiges Theme Ihren Shop mit exklusivem Design und umsatzfördernden Features auf ein neues Level."
+		},
+		"manufacturerLink": {
+			"en-GB": "https://ju.nu",
+			"de-DE": "https://ju.nu"
+		},
+		"supportLink": {
+			"en-GB": "https://support.ju.nu",
+			"de-DE": "https://support.ju.nu"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Junu\\ModernBooster\\": "src/"
+		}
+	}
+}

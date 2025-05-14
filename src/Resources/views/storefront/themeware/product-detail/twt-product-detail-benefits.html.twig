@@ -1,0 +1,17 @@
+
+{% sw_extends '@Storefront/storefront/themeware/product-detail/twt-product-detail-benefits.html.twig' %}
+{% block twt_product_detail_benefits_content %}
+	<div class="twt-product-detail-benefits-content">
+		<div class="twt-product-detail-benefits-list">
+			<ul>
+				{% for item in list %}
+					<li>
+						<i class="fa-solid fa-check"></i>
+						{# Text #}
+						<span>{{ item|raw }}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

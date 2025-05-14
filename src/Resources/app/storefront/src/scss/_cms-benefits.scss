@@ -1,0 +1,29 @@
+.junu {
+    .junu-benefits-wrap {
+        max-width: 70%;
+        margin: 1.5rem auto;
+    }
+
+    .junu-cms-benefits {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.5rem;
+        font-size: 0.95rem;
+        text-align: center;
+        line-height: 1.25rem;
+
+        i {
+            border-radius: 50%;
+            padding: 0.625rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            border: 1px solid #b0b4bc;
+            color: #018670;
+        }
+    }
+}

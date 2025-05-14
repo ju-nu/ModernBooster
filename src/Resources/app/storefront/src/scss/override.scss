@@ -1,0 +1,263 @@
+@if $twt-usp-bar-header >1 or $twt-usp-bar-footer >1 {
+    .twt-usp-bar {
+        .twt-usp-bar-items {
+            @include media-breakpoint-up(lg) {
+                // min 992px
+                justify-content: space-around !important; // Override from center to space-around
+            }
+        }
+    }
+}
+
+.header-main {
+   
+}
+
+.nav-header {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    z-index: 11;
+    position: relative;
+   
+
+    .header-row {
+        max-width: null-pixel-unit($twt-container-max-width);
+    }
+}
+
+.junu .main-navigation-link .sale-badge {
+    position: relative;
+    margin-left: 10px;
+    padding: 3px 8px 3px 16px;
+    /* Rounded 2.8px to 3px for consistency */
+    background: var(--sale-badge-bg, #f68e7a);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+    /* Matches font-size for single-line text */
+    display: inline-block;
+    height: 19px;
+    /* Matches font-size (13px) + padding (3px + 3px) */
+    box-sizing: border-box;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* Disable ::before to prevent any unexpected lines */
+.junu .main-navigation-link .sale-badge::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Override all commented properties for ::after to maintain the arrow */
+.junu .main-navigation-link .sale-badge::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: -10px !important;
+    transform: translateY(-50%);
+    border: 10px solid #fff;
+    border-right-color: var(--sale-badge-bg, #f68e7a);
+    width: auto !important;
+    height: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    background-color: transparent !important;
+    transition: border-right-color 0.3s ease;
+}
+
+/* Hover state for the arrow */
+.junu .main-navigation-link .sale-badge:hover::after {
+    border-right-color: var(--sale-badge-bg, #f68e7a);
+}
+
+
+.junu {
+    .junu-start-usp {
+        border-top: 1px solid #e5f3f4;
+        border-bottom: 1px solid #e5f3f4;
+    }
+
+    .junu-start-usps .twt-column {
+        display: flex;
+        justify-content: center;
+        border-right-width: 0px;
+        border-left-width: 1px;
+        border-color: #d6d9da;
+        border-left-style: solid;
+    }
+
+    .junu-start-usp-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        i {
+            border-radius: 50%;
+            padding: 0.625rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .usp-headline {
+            font-weight: 400 !important;
+            font-size: 1rem !important;
+            line-height: 1.15rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        .usp-text {
+            font-size: 0.80rem;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .junu-start-usp-item-col {
+        border: 2px solid #f7f7f7;
+        flex-direction: column;
+        padding: 3rem 1rem;
+        border-radius: 10px;
+
+        .usp-headline,
+        .usp-text {
+            text-align: center;
+        }
+
+
+        i {
+            font-size: 3rem;
+        }
+    }
+
+    .junu-start-quick {
+
+        
+        .twt-hero-teaser-content .headline.none {
+            font-size: 1.15rem;
+            margin: 0;
+            line-height: 1.25rem;
+        }
+
+        .twt-hero-teaser-btn:not(.junu-squared) {
+            margin: 0;
+            border: 0;
+            padding: 0;
+          
+            font-weight: 500;
+            color: #51504f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: text-shadow .3s;
+
+            &::after {
+                content: "\279C";
+                /* Thicker right arrow */
+                margin-left: 5px;
+                font-size: 1.2em;
+                /* Slightly larger for emphasis */
+                display: inline-block;
+                vertical-align: middle;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover {
+                background: transparent;
+            }
+
+
+
+        }
+
+        .junu-squared {
+            color: #2e2d2b;
+            border-color: #2e2d2b;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 500;
+
+
+        }
+
+        &:hover .junu-squared {
+            background-color: transparent;
+            border-color: #f68e7a;
+            color: #f68e7a;
+        }
+
+
+        .cms-image-link:hover .twt-hero-teaser-btn {
+            text-shadow: 0 0 .30px #333, 0 0 .30px #333;
+
+            &::after {
+                transform: translateX(5px);
+            }
+        }
+    }
+
+
+}
+
+.junu-start-riskfree {
+    .cms-block-container-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch; // Ensures all columns have the same height
+
+        .twt-column {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto; // Allows columns to grow and shrink as needed
+
+            .junu-start-usp-item-col {
+                flex: 1; // Ensures the item takes full height of the column
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between; // Distributes space evenly between icon, title, and text
+                align-items: center; // Centers content horizontally
+                padding: 16px;
+                box-sizing: border-box;
+
+                i {
+                    margin-bottom: 12px; // Consistent spacing below icon
+                }
+
+                >div {
+                    flex: 1; // Ensures the inner div grows to fill space
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between; // Spaces title and text evenly
+                    width: 100%;
+                    text-align: center;
+
+                    .usp-headline {
+                        min-height: 48px; // Fixed height for consistent title alignment
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        margin-bottom: 8px;
+                        font-weight: 600 !important;
+                        font-size: 1.25rem !important;
+                    }
+
+                    .usp-text {
+                        min-height: 60px; // Fixed height for consistent text alignment
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

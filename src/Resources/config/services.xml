@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Junu\ModernBooster\Subscriber\OffcanvasSubscriber" class="Junu\ModernBooster\Subscriber\OffcanvasSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="product_stream_mapping.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\CrossSelling\ProductCrossSellingRoute"/>
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="Junu\ModernBooster\Twig\ProductTwigExtension" class="Junu\ModernBooster\Twig\ProductTwigExtension">
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="router"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <!-- Add ShippingTwigExtension if it's used -->
+        <service id="Junu\ModernBooster\Twig\ShippingTwigExtension" class="Junu\ModernBooster\Twig\ShippingTwigExtension">
+            <argument type="service" id="rule.repository"/>
+            <argument type="service" id="logger"/>
+            <tag name="twig.extension"/>
+        </service>
+    </services>
+</container>

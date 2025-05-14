@@ -1,0 +1,39 @@
+.junu {
+
+    @media (min-width: 768px) {
+
+        header.header-main .nav-main .main-navigation .main-navigation-menu,
+        header.header-main .nav-main {
+            overflow: visible;
+        }
+
+        .twt-main-navigation-dropdown .twt-main-navigation-dropdown-list {
+            background-color: #fff;
+        }
+
+        .main-navigation-dropdown-sub-menu {
+            background-color: darken(#fff, 5%) !important;
+        }
+        
+
+
+    }
+
+    .twt-main-navigation-dropdown-list {
+        padding: 5px 0;
+    }
+
+    .twt-main-navigation-dropdown .twt-main-navigation-dropdown-list .main-navigation-dropdown-item a,
+    .twt-main-navigation-dropdown .twt-main-navigation-dropdown-list .main-navigation-dropdown-sub-menu .main-navigation-dropdown-sub-menu-item a {
+        font-weight: 500;
+        font-size: 0.875rem;
+        min-height: 30px;
+        padding: 8px 15px;
+
+        &:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: text-shadow .3s;
+        }
+    }
+}

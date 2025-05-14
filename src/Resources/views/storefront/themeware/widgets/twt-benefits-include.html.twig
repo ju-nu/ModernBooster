@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/themeware/widgets/twt-benefits-include.html.twig' %}
+
+{% block twt_widget_benefits_content %}
+	{% if twtWidgetBenefitsContentType == 1 %}
+		<div class="twt-widget-benefits-list benefits-list">
+			<ul>
+				{% for item in list %}
+					<li>
+						{# Icon #}
+						<i class="fa-solid fa-check"></i>
+
+						{# Text #}
+						{{ item|raw }}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	{% else %}
+		<div class="usp-bar-content items-{{ twtWidgetBenefitsContentMaxItems }}">
+			{% sw_include '@Storefront/storefront/themeware/includes/twt-usp-bar-include.html.twig' ignore missing with {
+                        maxitems: twtWidgetBenefitsContentMaxItems
+                    } %}
+		</div>
+
+	{% endif %}
+{% endblock %}

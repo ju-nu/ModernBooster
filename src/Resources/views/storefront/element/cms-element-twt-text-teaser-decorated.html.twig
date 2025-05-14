@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-twt-text-teaser-decorated.html.twig' %}
+  {% block element_twt_text_teaser_decorated_image_media %}
+      {% set attributes = {
+          'class': 'cms-image',
+          'alt': (element.data.media.translated.alt ?: ''),
+          'title': (element.data.media.translated.title ?: ''),
+          'fetchpriority': 'high'
+      } %}
+
+      {% if element.translated.config.displayMode.value == 'cover' or element.translated.config.displayMode.value == 'contain' %}
+          {% set attributes = attributes|merge({ 'data-object-fit': element.translated.config.displayMode.value }) %}
+      {% endif %}
+
+      {% sw_thumbnails 'cms-image-thumbnails' with {
+          media: element.data.media
+      } %}
+  {% endblock %}

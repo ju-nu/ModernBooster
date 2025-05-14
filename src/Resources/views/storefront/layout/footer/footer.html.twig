@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_copyright %}
+	{{ parent() }}
+	<div class="junu-footer-disclaimer">
+		<p>{{ 'JUNUModernizr.footer.disclaimer'|trans|sw_sanitize }}</p>
+	</div>
+{% endblock %}

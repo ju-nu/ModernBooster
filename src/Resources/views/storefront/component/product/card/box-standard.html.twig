@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_action %}
+	<div class="junu-productbox-usp">
+		<ul>
+			{% set benefits = product.customFields.twt_modern_pro_custom_field__product__benefits|split(';') %}
+			{% for benefit in benefits %}
+				{% if benefit|trim %}
+					<li>
+						<i class="fa-regular fa-check"></i>
+						<span>{{ benefit|trim }}</span>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	{{ parent() }}
+{% endblock %}

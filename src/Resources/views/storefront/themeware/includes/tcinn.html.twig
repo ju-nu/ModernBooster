@@ -1,0 +1,5 @@
+{% if theme_config('twt-footer-bottom-shopname') == 1 %}
+	{{ 'twt.copyright'|trans({'%date%': 'now'|date('Y'), '%shopname%': config('core.basicInformation.shopName')})|sw_sanitize }}
+{% else %}
+	{{ 'twt.copyright'|trans({'%date%': 'now'|date('Y'), '%shopname%': context.salesChannel.translated.name})|sw_sanitize }}
+{% endif %}

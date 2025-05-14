@@ -1,0 +1,199 @@
+.junu {
+
+    .offcanvas .offcanvas-header {
+        background-color: darken($sw-color-brand-primary, 5%);
+        color: #fff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .cart-offcanvas {
+
+        .offcanvas-body .offcanvas-cart-header > div:last-child {
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+        }
+        .offcanvas-close {
+            background: none;
+            box-shadow: none;
+            border: 0;
+            
+            
+            &:hover {
+                .icon {
+                    color: #eee;
+                }
+            }
+            .icon {
+                color: #cccccc;
+            }
+
+        }
+        .offcanvas-cart {
+            padding-top: 0;
+        }
+
+        .offcanvas-cart-header {
+            background-color: $sw-color-brand-primary;
+            padding-top: var(--bs-offcanvas-padding-y);
+            padding-bottom: var(--bs-offcanvas-padding-y);
+            color: #fff;
+
+        }
+
+        .line-item-img {
+            background-color: #f2f9f7;
+            border-color: #f2f9f7;
+            border-radius: 10px;
+        }
+
+        .junu-description {
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0.25rem 0;
+            letter-spacing: 1px;
+        }
+
+        .offcanvas-cart-header {
+            margin-bottom: 0;
+        }
+
+        .offcanvas-cart-header-count {
+            height: 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            padding: 2px 15px;
+            font-size: 0.85rem;
+            line-height: normal;
+            align-content: center;
+            margin: 0;
+            color: #ffffff;
+            background-color: $twt-product-badges-discount-badge-background-color !important;
+            border-color: transparent;
+        }
+
+        .offcanvas-cart-items {
+            border-bottom: 1px solid $sw-border-color !important;
+        }
+
+        .offcanvas-summary-wrapper,
+        .offcanvas-cart-actions {
+            background: #f2f9f7;
+        }
+        
+        .junu-offcanvas-wrapper {
+
+        }
+
+        .offcanvas-cart-actions {
+            padding-bottom: 0.25rem;
+        }
+
+        .begin-checkout-btn {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            @extend .btn-buy;
+
+            span {
+                font-size: 0.75rem;
+                line-height: 1rem;
+            }
+        }
+
+    }
+
+    .junu-progressbar {
+        margin: 15px 0 5px;
+        width: 100% !important;
+        text-align: center;
+        padding-right: calc(var(--bs-gutter-x) * .5) !important;
+        padding-left: calc(var(--bs-gutter-x) * .5) !important;
+        cursor: default;
+
+        .progress-amount {
+            color: #28a745;
+            text-decoration: none !important;
+        }
+        .progress-text {
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+            letter-spacing: 0.02rem;
+            line-height: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .progress-text.success {
+            color: #28a745;
+        }
+
+        .progress-bar {
+            background-color: #f2f9f7;
+            height: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            background-color: #007bff;
+            background-image: linear-gradient(45deg,
+                    #34ae43 25%,
+                    #39b54a 25%,
+                    #39b54a 50%,
+                    #34ae43 50%,
+                    #34ae43 75%,
+                    #39b54a 75%,
+                    #39b54a);
+            background-size: 40px 40px;
+            height: 100%;
+            width: 0;
+            animation:
+                fillProgress 1s ease-in-out forwards,
+                moveStripes 1.5s linear infinite;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+        }
+
+        .progress-bar-fill.success {
+            background-color: #28a745;
+            background-image: linear-gradient(45deg,
+                    #34ae43 25%,
+                    #39b54a 25%,
+                    #39b54a 50%,
+                    #34ae43 50%,
+                    #34ae43 75%,
+                    #39b54a 75%,
+                    #39b54a);
+            background-size: 40px 40px;
+            animation:
+                fillProgress 1s ease-in-out forwards,
+                moveStripes 1.5s linear infinite;
+        }
+
+        @keyframes fillProgress {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: var(--progress-width);
+            }
+        }
+
+        @keyframes moveStripes {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 40px 0;
+            }
+        }
+    }
+}

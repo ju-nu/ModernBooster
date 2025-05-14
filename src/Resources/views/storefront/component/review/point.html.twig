@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/review/point.html.twig' %}
+
+{% block component_review_point %}
+    {% if loop.index <= points|round %}
+        <i class="fa-solid fa-star" style="color: #f5c518;"></i>
+    {% elseif loop.index <= points %}
+        <i class="fa-solid fa-star-half-stroke" style="color: #f5c518;"></i>
+    {% else %}
+        <i class="fa-regular fa-star" style="color: #ccc;"></i>
+    {% endif %}
+{% endblock %}
