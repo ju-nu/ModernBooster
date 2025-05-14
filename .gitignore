@@ -1,2 +1,30 @@
-.vscode
-.git
+# Shopware Plugin
+/node_modules/
+/public/bundles/
+/public/css/
+/public/js/
+*.log
+
+# Shopware Development
+.env
+.env.local
+config/secrets/
+!config/services.xml
+!config/routes.xml
+!config/config.xml
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# git-secret
+*.secret
+*.gpg
+.gpg_id
+.gitsecret/
+
+# General
+.DS_Store
+*.bak
+*.swp
+*.tmp
