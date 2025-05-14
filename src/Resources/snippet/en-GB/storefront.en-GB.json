@@ -1,0 +1,10 @@
+{
+    "junu": {
+        "product": {
+            "delivery": {
+                "orderWithin": "<i class=\"fa-solid fa-check\"></i> <span>In stock.</span> Order within the next <span class=\"bold\"><span class=\"hours\">%hours% hours and </span>%mins% minutes</span> for delivery <span class=\"bold\">today</span>.",
+                "orderWithinTomorrow": "<i class=\"fa-solid fa-check\"></i> <span>In stock.</span> Order within the next <span class=\"bold\"><span class=\"hours\">%hours% hours and </span>%mins% minutes</span> for delivery on <span class=\"bold\">%date%</span>."
+            }
+        }
+    }
+}

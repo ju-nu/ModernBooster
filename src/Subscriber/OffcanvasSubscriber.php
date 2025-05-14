@@ -126,16 +126,34 @@ class OffcanvasSubscriber implements EventSubscriberInterface
         if (!empty($toDisplayArticlesId)) {
             $criteria = (new Criteria($toDisplayArticlesId))
                 ->addFilter(new EqualsFilter("product.available", true))
-                ->addAssociation('cover');
+                ->addAssociation('cover')
+                ->addAssociation('prices') // Needed to detect advanced pricing
+                ->addAssociation('customFields');
 
             $entities = $this->productRepository->search($criteria, $context)->getElements();
 
-            foreach ($entities as &$entity) {
+            foreach ($entities as $key => &$entity) {
+                // Exclude variants and variant parents
                 if ($this->isVariantProduct($entity, $context)) {
-                    $entity->assign(['junuIsVariantArticle' => true]);
-                } else {
-                    $entity->assign(['junuIsVariantArticle' => false]);
+                    unset($entities[$key]);
+                    continue;
                 }
+
+                // Check custom field
+                $customFields = $entity->getCustomFields();
+                if (!empty($customFields['junu_products_steps_active'])) {
+                    unset($entities[$key]);
+                    continue;
+                }
+
+                // Check advanced pricing (non-empty price rules)
+                $priceRules = $entity->get('prices');
+                if ($priceRules && count($priceRules) > 0) {
+                    unset($entities[$key]);
+                    continue;
+                }
+
+                $entity->assign(['junuIsVariantArticle' => false]);
             }
 
             return $entities;
@@ -174,17 +192,13 @@ class OffcanvasSubscriber implements EventSubscriberInterface
 
     public function isVariantProduct(SalesChannelProductEntity $entity, $context)
     {
-        if (!empty($parentId = $entity->getParentId())) {
+        if (!empty($entity->getParentId())) {
             return true;
-        } else {
-            $criteria = (new Criteria())->addFilter(new EqualsFilter('parentId', $entity->getId()));
-            $result = $this->productRepository->search($criteria, $context);
-
-            if (!empty($result->getElements())) {
-                return true;
-            }
         }
 
-        return false;
+        $criteria = (new Criteria())->addFilter(new EqualsFilter('parentId', $entity->getId()));
+        $result = $this->productRepository->search($criteria, $context);
+
+        return !empty($result->getElements());
     }
 }

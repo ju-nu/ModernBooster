@@ -1,0 +1,10 @@
+{
+    "junu": {
+        "product": {
+            "delivery": {
+                "orderWithin": "<i class=\"fa-solid fa-check\"></i> <span>Auf Lager.</span> Bestellen Sie innerhalb der nächsten <span class=\"bold\"><span class=\"hours\">%hours% Stunden und </span>%mins% Minuten</span> für Lieferung <span class=\"bold\">noch heute</span>.",
+                "orderWithinTomorrow": "<i class=\"fa-solid fa-check\"></i> <span>Auf Lager.</span> Bestellen Sie innerhalb der nächsten <span class=\"bold\"><span class=\"hours\">%hours% Stunden und </span>%mins% Minuten</span> für Lieferung am <span class=\"bold\">%date%</span>."
+            }
+        }
+    }
+}

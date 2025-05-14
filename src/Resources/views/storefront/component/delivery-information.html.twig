@@ -1,108 +1,23 @@
 {% sw_extends '@Storefront/storefront/component/delivery-information.html.twig' %}
 
 {% block component_delivery_information_available %}
-	{% set cutoffTime = config('JunuModernBooster.config.cutoffTime')|default('14:00:00') %}
-	{% set supportWeekends = config('JunuModernBooster.config.supportWeekends')|default(true) %}
-	{% set ignoreDate1 = config('JunuModernBooster.config.ignoreDate1')|default(null) %}
-	{% set ignoreDate2 = config('JunuModernBooster.config.ignoreDate2')|default(null) %}
-	{% set ignoreDate3 = config('JunuModernBooster.config.ignoreDate3')|default(null) %}
-	{% set ignoredDates = [] %}
-	{% if ignoreDate1 is not null %}
-		{% set ignoredDates = ignoredDates|merge([ignoreDate1|date('Y-m-d')]) %}
-	{% endif %}
-	{% if ignoreDate2 is not null %}
-		{% set ignoredDates = ignoredDates|merge([ignoreDate2|date('Y-m-d')]) %}
-	{% endif %}
-	{% if ignoreDate3 is not null %}
-		{% set ignoredDates = ignoredDates|merge([ignoreDate3|date('Y-m-d')]) %}
-	{% endif %}
-	{% set locale = app.request.locale|default('en-GB') %}
+    {% set locale = app.request.locale|default('en-GB') %}
+    {% set snippetOrderWithin = 'junu.product.delivery.orderWithin'|trans({
+        '%hours%': '%hours%',
+        '%mins%': '%mins%',
+        '%date%': '%date%'
+    }) %}
+    {% set snippetOrderWithinTomorrow = 'junu.product.delivery.orderWithinTomorrow'|trans({
+        '%hours%': '%hours%',
+        '%mins%': '%mins%',
+        '%date%': '%date%'
+    }) %}
 
-	{# Use UTC for all server-side calculations #}
-	{% set now = 'now'|date('U', 'UTC') %}
-	{% set today = 'now'|date('Y-m-d', 'UTC') %}
-	{% set cutoffToday = today ~ 'T' ~ cutoffTime ~ 'Z' %}
-	{% set cutoffTimestamp = cutoffToday|date('U', 'UTC') %}
-
-	{% if now < cutoffTimestamp %}
-		{% set timeDiff = cutoffTimestamp - now %}
-		{% set hours = (timeDiff / 3600)|round(0, 'floor') %}
-		{% set minutes = ((timeDiff % 3600) / 60)|round(0, 'floor') %}
-		{% if hours == 0 %}
-			{% set timeString = minutes ~ ' Minuten' %}
-			{% if locale starts with 'en' %}
-				{% set timeString = minutes ~ ' minutes' %}
-			{% endif %}
-		{% else %}
-			{% set timeString = hours ~ ' Stunden und ' ~ minutes ~ ' Minuten' %}
-			{% if locale starts with 'en' %}
-				{% set timeString = hours ~ ' hours and ' ~ minutes ~ ' minutes' %}
-			{% endif %}
-		{% endif %}
-
-		{% set deliveryDate = today|date_modify('+1 day', 'UTC') %}
-		{% set deliveryDayOfWeek = deliveryDate|date('w', 'UTC') %}
-		{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-
-		{% for ignoredDate in ignoredDates %}
-			{% if deliveryDateString == ignoredDate %}
-				{% set deliveryDate = deliveryDate|date_modify('+1 day', 'UTC') %}
-				{% set deliveryDayOfWeek = deliveryDate|date('w', 'UTC') %}
-				{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-			{% endif %}
-		{% endfor %}
-
-		{% if not supportWeekends and (deliveryDayOfWeek == 0 or deliveryDayOfWeek == 6) %}
-			{% set deliveryDate = deliveryDate|date_modify(deliveryDayOfWeek == 0 ? '+1 day' : '+2 days', 'UTC') %}
-			{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-		{% endif %}
-
-		{% set formattedDate = deliveryDate|format_datetime('full', 'none', locale=locale, timezone='UTC') %}
-		{% set snippetKey = 'JunuModernBooster.product.delivery.orderWithin' %}
-	{% else %}
-		{% set tomorrow = today|date_modify('+1 day', 'UTC')|date('Y-m-d', 'UTC') %}
-		{% set cutoffTomorrow = tomorrow ~ 'T' ~ cutoffTime ~ 'Z' %}
-		{% set cutoffTomorrowTimestamp = cutoffTomorrow|date('U', 'UTC') %}
-		{% set timeDiff = cutoffTomorrowTimestamp - now %}
-		{% set hours = (timeDiff / 3600)|round(0, 'floor') %}
-		{% set minutes = ((timeDiff % 3600) / 60)|round(0, 'floor') %}
-		{% if hours == 0 %}
-			{% set timeString = minutes ~ ' Minuten' %}
-			{% if locale starts with 'en' %}
-				{% set timeString = minutes ~ ' minutes' %}
-			{% endif %}
-		{% else %}
-			{% set timeString = hours ~ ' Stunden und ' ~ minutes ~ ' Minuten' %}
-			{% if locale starts with 'en' %}
-				{% set timeString = hours ~ ' hours and ' ~ minutes ~ ' minutes' %}
-			{% endif %}
-		{% endif %}
-
-		{% set deliveryDate = tomorrow|date_modify('+1 day', 'UTC') %}
-		{% set deliveryDayOfWeek = deliveryDate|date('w', 'UTC') %}
-		{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-
-		{% for ignoredDate in ignoredDates %}
-			{% if deliveryDateString == ignoredDate %}
-				{% set deliveryDate = deliveryDate|date_modify('+1 day', 'UTC') %}
-				{% set deliveryDayOfWeek = deliveryDate|date('w', 'UTC') %}
-				{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-			{% endif %}
-		{% endfor %}
-
-		{% if not supportWeekends and (deliveryDayOfWeek == 0 or deliveryDayOfWeek == 6) %}
-			{% set deliveryDate = deliveryDate|date_modify(deliveryDayOfWeek == 0 ? '+1 day' : '+2 days', 'UTC') %}
-			{% set deliveryDateString = deliveryDate|date('Y-m-d', 'UTC') %}
-		{% endif %}
-
-		{% set formattedDate = deliveryDate|format_datetime('full', 'none', locale=locale, timezone='UTC') %}
-		{% set snippetKey = 'JunuModernBooster.product.delivery.orderWithinTomorrow' %}
-	{% endif %}
-
-	<p class="delivery-information delivery-available" id="delivery-message" data-delivery-countdown data-cutoff-time="{{ cutoffTime }}" data-today="{{ today }}" data-tomorrow="{{ tomorrow|default(today|date_modify('+1 day', 'UTC')|date('Y-m-d', 'UTC')) }}" data-locale="{{ locale }}" data-support-weekends="{{ supportWeekends ? '1' : '0' }}" data-ignored-dates="{{ ignoredDates|json_encode }}" data-snippet-key="{{ snippetKey }}">
-		{{ snippetKey|trans({
-			'%time%': '<strong class="delivery-time">' ~ timeString ~ '</strong>',
-			'%date%': '<strong class="delivery-date">' ~ formattedDate ~ '</strong>'
-		})|sw_sanitize }}
-	</p>
+    <p class="delivery-information delivery-available" id="delivery-message" 
+       data-delivery-countdown
+       data-locale="{{ locale }}"
+       data-snippet-orderwithin="{{ snippetOrderWithin|escape('html_attr') }}"
+       data-snippet-orderwithintomorrow="{{ snippetOrderWithinTomorrow|escape('html_attr') }}">
+        {{ snippetOrderWithinTomorrow|sw_sanitize }}
+    </p>
 {% endblock %}

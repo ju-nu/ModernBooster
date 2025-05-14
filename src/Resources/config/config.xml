@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
         <title>Basic Configuration</title>
         <title lang="de-DE">Grundeinstellungen</title>
@@ -13,88 +13,166 @@
         </component>
     </card>
 
-    <card>
-        <title>Delivery Settings</title>
-        <title lang="de-DE">Lieferungseinstellungen</title>
-        <input-field type="bool">
-            <name>supportWeekends</name>
-            <label>Support Weekend Shipping</label>
-            <label lang="de-DE">Wochenendversand unterstützen</label>
-            <helpText>Enable to allow shipping on Saturdays and Sundays.</helpText>
-            <helpText lang="de-DE">Aktivieren, um Versand an Samstagen und Sonntagen zu erlauben.</helpText>
-            <defaultValue>true</defaultValue>
-        </input-field>
-        <input-field type="time">
-            <name>cutoffTime</name>
-            <label>Shipping Cutoff Time</label>
-            <label lang="de-DE">Versand-Schlusszeit</label>
-            <helpText>Orders placed before this time will be shipped the same day.</helpText>
-            <helpText lang="de-DE">Bestellungen, die vor dieser Zeit aufgegeben werden, werden am selben Tag versandt.</helpText>
-            <defaultValue>14:00:00</defaultValue>
-        </input-field>
-        <input-field type="date">
-            <name>ignoreDate1</name>
-            <label>Ignore Date 1 (No Shipping)</label>
-            <label lang="de-DE">Ignorierungsdatum 1 (Kein Versand)</label>
-            <helpText>Select a date when shipping is not available.</helpText>
-            <helpText lang="de-DE">Wählen Sie ein Datum aus, an dem kein Versand möglich ist.</helpText>
-        </input-field>
-        <input-field type="date">
-            <name>ignoreDate2</name>
-            <label>Ignore Date 2 (No Shipping)</label>
-            <label lang="de-DE">Ignorierungsdatum 2 (Kein Versand)</label>
-            <helpText>Select a date when shipping is not available.</helpText>
-            <helpText lang="de-DE">Wählen Sie ein Datum aus, an dem kein Versand möglich ist.</helpText>
-        </input-field>
-        <input-field type="date">
-            <name>ignoreDate3</name>
-            <label>Ignore Date 3 (No Shipping)</label>
-            <label lang="de-DE">Ignorierungsdatum 3 (Kein Versand)</label>
-            <helpText>Select a date when shipping is not available.</helpText>
-            <helpText lang="de-DE">Wählen Sie ein Datum aus, an dem kein Versand möglich ist.</helpText>
-        </input-field>
-        <input-field type="float">
-            <name>freeShippingThreshold</name>
-            <label>Free Shipping Threshold (EUR)</label>
-            <label lang="de-DE">Schwelle für kostenlosen Versand (EUR)</label>
-            <helpText>Enter the minimum order amount in EUR to qualify for free shipping.</helpText>
-            <helpText lang="de-DE">Geben Sie den Mindestbestellwert in EUR ein, um für kostenlosen Versand zu qualifizieren.</helpText>
-            <defaultValue>50</defaultValue>
-            <min>1</min>
-            <max>999999</max>
-        </input-field>
-    </card>
+<card>
+    <title>Delivery Countdown</title>
+    <title lang="de-DE">Liefer-Countdown</title>
+
+    <input-field type="bool">
+        <name>supportWeekends</name>
+        <label>Enable weekend shipping</label>
+        <label lang="de-DE">Wochenendversand aktivieren</label>
+        <helpText>Allow countdown to include Saturday and Sunday as possible shipping days.</helpText>
+        <helpText lang="de-DE">Erlaubt dem Countdown, Samstag und Sonntag als mögliche Versandtage einzubeziehen.</helpText>
+        <defaultValue>true</defaultValue>
+    </input-field>
+
+    <input-field type="time">
+        <name>cutoffTime</name>
+        <label>Shipping cutoff time</label>
+        <label lang="de-DE">Versandschlusszeit</label>
+        <helpText>Orders placed before this time are considered for same-day shipping.</helpText>
+        <helpText lang="de-DE">Bestellungen vor dieser Uhrzeit gelten als taggleich versandbereit.</helpText>
+        <defaultValue>14:00:00</defaultValue>
+    </input-field>
+
+    <input-field type="text">
+        <name>countryStateCode</name>
+        <label>Country and State Code</label>
+        <label lang="de-DE">Land und Bundesland Code</label>
+        <helpText>Enter country and state code (e.g., DE-HE for Hessen, Germany).</helpText>
+        <helpText lang="de-DE">Geben Sie den Länder- und Bundeslandcode ein (z.B. DE-HE für Hessen, Deutschland).</helpText>
+        <defaultValue>DE-HE</defaultValue>
+        <placeHolder>DE-HE</placeHolder>
+    </input-field>
+
+    <input-field type="bool">
+        <name>useNagerHolidays</name>
+        <label>Use public holidays from Nager.Date</label>
+        <label lang="de-DE">Feiertage von Nager.Date verwenden</label>
+        <helpText>Fetch public holidays automatically for the specified country/state.</helpText>
+        <helpText lang="de-DE">Feiertage automatisch für das angegebene Land/Bundesland abrufen.</helpText>
+        <defaultValue>true</defaultValue>
+    </input-field>
+
+    <input-field type="date">
+        <name>ignoreDate1</name>
+        <label>Excluded shipping date 1 (Optional)</label>
+        <label lang="de-DE">Ausgeschlossener Versandtag 1 (Optional)</label>
+        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+    </input-field>
+
+    <input-field type="date">
+        <name>ignoreDate2</name>
+        <label>Excluded shipping date 2 (Optional)</label>
+        <label lang="de-DE">Ausgeschlossener Versandtag 2 (Optional)</label>
+        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+    </input-field>
+
+    <input-field type="date">
+        <name>ignoreDate3</name>
+        <label>Excluded shipping date 3 (Optional)</label>
+        <label lang="de-DE">Ausgeschlossener Versandtag 3 (Optional)</label>
+        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+    </input-field>
+
+    <input-field type="float">
+        <name>freeShippingThreshold</name>
+        <label>Free shipping threshold (EUR)</label>
+        <label lang="de-DE">Kostenloser Versand ab (EUR)</label>
+        <helpText>If the order total reaches this amount, the delivery countdown may display a free shipping message.</helpText>
+        <helpText lang="de-DE">Wird dieser Bestellwert erreicht, kann der Countdown eine kostenlose Versandmeldung anzeigen.</helpText>
+        <defaultValue>50</defaultValue>
+        <min>1</min>
+        <max>999999</max>
+    </input-field>
+</card>
+
 
     <card>
-        <title lang="de-DE">Einzelprodukte</title>
-        <title>Separated products</title>
+        <title>Offcanvas Upselling Products</title>
+        <title lang="de-DE">Produkte für Offcanvas-Upselling</title>
+
         <component name="sw-entity-multi-id-select">
             <name>junuCrossSellingMultiSelect</name>
             <entity>product</entity>
             <label>Choose products to display in the offcanvas carousel</label>
-            <label lang="de-DE">Wählen Sie Produkte aus, die im Offcanvas-Karussell angezeigt werden sollen</label>
+            <label lang="de-DE">Wählen Sie Produkte aus, die im Offcanvas-Karussell angezeigt werden
+                sollen</label>
+            <placeholder>Select one or more individual products</placeholder>
+            <placeholder lang="de-DE">Wählen Sie ein oder mehrere Einzelprodukte</placeholder>
+            <helpText>
+                Select specific products that should appear as upselling recommendations in the
+                offcanvas cart.
+                Only regular products without variants, advanced pricing, or linked pricing steps
+                are supported.
+            </helpText>
+            <helpText lang="de-DE">
+                Wählen Sie einzelne Produkte aus, die als Upselling-Empfehlungen im
+                Offcanvas-Warenkorb erscheinen sollen.
+                Nur reguläre Produkte ohne Varianten, erweiterte Preise oder verknüpfte Preistufen
+                werden unterstützt.
+            </helpText>
         </component>
+
         <component name="sw-entity-single-select">
             <name>junuGroup</name>
             <entity>product_stream</entity>
             <label>Choose a product group to display in the offcanvas carousel</label>
-            <label lang="de-DE">Wählen Sie eine Produktgruppe aus, die im Offcanvas-Karussell angezeigt werden soll</label>
+            <label lang="de-DE">Wählen Sie eine Produktgruppe aus, die im Offcanvas-Karussell
+                angezeigt werden soll</label>
+            <placeholder>Select a dynamic product group</placeholder>
+            <placeholder lang="de-DE">Wählen Sie eine dynamische Produktgruppe</placeholder>
+            <helpText>
+                Display all products from a dynamic product group as upselling recommendations in
+                the offcanvas cart.
+                Only regular products without variants, advanced pricing, or linked pricing steps
+                are supported.
+            </helpText>
+            <helpText lang="de-DE">
+                Zeigt alle Produkte aus einer dynamischen Produktgruppe als Upselling-Empfehlungen
+                im Offcanvas-Warenkorb an.
+                Nur reguläre Produkte ohne Varianten, erweiterte Preise oder verknüpfte Preistufen
+                werden unterstützt.
+            </helpText>
         </component>
+
         <input-field type="bool">
             <name>junuShowCrosssellingProducts</name>
             <label>Show cross-selling products in shopping cart</label>
             <label lang="de-DE">Cross-Selling-Produkte im Warenkorb anzeigen</label>
+            <helpText>
+                Enables upselling based on the last added product in the cart. Only compatible with
+                regular products.
+            </helpText>
+            <helpText lang="de-DE">
+                Aktiviert Upselling basierend auf dem zuletzt in den Warenkorb gelegten Produkt. Nur
+                für reguläre Produkte geeignet.
+            </helpText>
         </input-field>
     </card>
+
 
     <card>
         <title>Confetti Effect</title>
         <title lang="de-DE">Konfetti-Effekt</title>
+
         <input-field type="bool">
             <name>confettiEnabled</name>
-            <label>Enable confetti effect on checkout confirmation</label>
-            <label lang="de-DE">Konfetti-Effekt auf der Bestellbestätigungsseite aktivieren</label>
-            <defaultValue>false</defaultValue>
+            <label>Enable confetti on the final checkout page</label>
+            <label lang="de-DE">Konfetti auf der finalen Checkout-Seite aktivieren</label>
+            <helpText>
+                Displays a cheerful confetti animation on the checkout confirmation page after a
+                successful purchase.
+            </helpText>
+            <helpText lang="de-DE">
+                Zeigt eine fröhliche Konfetti-Animation auf der finalen Checkout-Seite nach einem
+                erfolgreichen Kauf.
+            </helpText>
+            <defaultValue>true</defaultValue>
         </input-field>
     </card>
+
 </config>
