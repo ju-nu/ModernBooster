@@ -13,82 +13,87 @@
         </component>
     </card>
 
-<card>
-    <title>Delivery Countdown</title>
-    <title lang="de-DE">Liefer-Countdown</title>
+    <card>
+        <title>Delivery Countdown</title>
+        <title lang="de-DE">Liefer-Countdown</title>
 
-    <input-field type="bool">
-        <name>supportWeekends</name>
-        <label>Enable weekend shipping</label>
-        <label lang="de-DE">Wochenendversand aktivieren</label>
-        <helpText>Allow countdown to include Saturday and Sunday as possible shipping days.</helpText>
-        <helpText lang="de-DE">Erlaubt dem Countdown, Samstag und Sonntag als mögliche Versandtage einzubeziehen.</helpText>
-        <defaultValue>true</defaultValue>
-    </input-field>
+        <input-field type="bool">
+            <name>supportWeekends</name>
+            <label>Enable weekend shipping</label>
+            <label lang="de-DE">Wochenendversand aktivieren</label>
+            <helpText>Allow countdown to include Saturday and Sunday as possible shipping days.</helpText>
+            <helpText lang="de-DE">Erlaubt dem Countdown, Samstag und Sonntag als mögliche
+                Versandtage einzubeziehen.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
 
-    <input-field type="time">
-        <name>cutoffTime</name>
-        <label>Shipping cutoff time</label>
-        <label lang="de-DE">Versandschlusszeit</label>
-        <helpText>Orders placed before this time are considered for same-day shipping.</helpText>
-        <helpText lang="de-DE">Bestellungen vor dieser Uhrzeit gelten als taggleich versandbereit.</helpText>
-        <defaultValue>14:00:00</defaultValue>
-    </input-field>
+        <input-field type="time">
+            <name>cutoffTime</name>
+            <label>Shipping cutoff time</label>
+            <label lang="de-DE">Versandschlusszeit</label>
+            <helpText>Orders placed before this time are considered for same-day shipping.</helpText>
+            <helpText lang="de-DE">Bestellungen vor dieser Uhrzeit gelten als taggleich
+                versandbereit.</helpText>
+            <defaultValue>14:00:00</defaultValue>
+        </input-field>
 
-    <input-field type="text">
-        <name>countryStateCode</name>
-        <label>Country and State Code</label>
-        <label lang="de-DE">Land und Bundesland Code</label>
-        <helpText>Enter country and state code (e.g., DE-HE for Hessen, Germany).</helpText>
-        <helpText lang="de-DE">Geben Sie den Länder- und Bundeslandcode ein (z.B. DE-HE für Hessen, Deutschland).</helpText>
-        <defaultValue>DE-HE</defaultValue>
-        <placeHolder>DE-HE</placeHolder>
-    </input-field>
+        <input-field type="text">
+            <name>countryStateCode</name>
+            <label>Country and State Code</label>
+            <label lang="de-DE">Land und Bundesland Code</label>
+            <helpText>Enter country and state code (e.g., DE-HE for Hessen, Germany).</helpText>
+            <helpText lang="de-DE">Geben Sie den Länder- und Bundeslandcode ein (z.B. DE-HE für
+                Hessen, Deutschland).</helpText>
+            <defaultValue>DE-HE</defaultValue>
+            <placeHolder>DE-HE</placeHolder>
+        </input-field>
 
-    <input-field type="bool">
-        <name>useNagerHolidays</name>
-        <label>Use public holidays from Nager.Date</label>
-        <label lang="de-DE">Feiertage von Nager.Date verwenden</label>
-        <helpText>Fetch public holidays automatically for the specified country/state.</helpText>
-        <helpText lang="de-DE">Feiertage automatisch für das angegebene Land/Bundesland abrufen.</helpText>
-        <defaultValue>true</defaultValue>
-    </input-field>
+        <input-field type="bool">
+            <name>useNagerHolidays</name>
+            <label>Use public holidays from Nager.Date</label>
+            <label lang="de-DE">Feiertage von Nager.Date verwenden</label>
+            <helpText>Fetch public holidays automatically for the specified country/state.</helpText>
+            <helpText lang="de-DE">Feiertage automatisch für das angegebene Land/Bundesland abrufen.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
 
-    <input-field type="date">
-        <name>ignoreDate1</name>
-        <label>Excluded shipping date 1 (Optional)</label>
-        <label lang="de-DE">Ausgeschlossener Versandtag 1 (Optional)</label>
-        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
-        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
-    </input-field>
+        <input-field type="date">
+            <name>ignoreDate1</name>
+            <label>Excluded shipping date 1 (Optional)</label>
+            <label lang="de-DE">Ausgeschlossener Versandtag 1 (Optional)</label>
+            <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+            <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+        </input-field>
 
-    <input-field type="date">
-        <name>ignoreDate2</name>
-        <label>Excluded shipping date 2 (Optional)</label>
-        <label lang="de-DE">Ausgeschlossener Versandtag 2 (Optional)</label>
-        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
-        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
-    </input-field>
+        <input-field type="date">
+            <name>ignoreDate2</name>
+            <label>Excluded shipping date 2 (Optional)</label>
+            <label lang="de-DE">Ausgeschlossener Versandtag 2 (Optional)</label>
+            <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+            <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+        </input-field>
 
-    <input-field type="date">
-        <name>ignoreDate3</name>
-        <label>Excluded shipping date 3 (Optional)</label>
-        <label lang="de-DE">Ausgeschlossener Versandtag 3 (Optional)</label>
-        <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
-        <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
-    </input-field>
+        <input-field type="date">
+            <name>ignoreDate3</name>
+            <label>Excluded shipping date 3 (Optional)</label>
+            <label lang="de-DE">Ausgeschlossener Versandtag 3 (Optional)</label>
+            <helpText>On this date, no shipping occurs (e.g., company holiday).</helpText>
+            <helpText lang="de-DE">An diesem Tag findet kein Versand statt (z.B. Betriebsferien).</helpText>
+        </input-field>
 
-    <input-field type="float">
-        <name>freeShippingThreshold</name>
-        <label>Free shipping threshold (EUR)</label>
-        <label lang="de-DE">Kostenloser Versand ab (EUR)</label>
-        <helpText>If the order total reaches this amount, the delivery countdown may display a free shipping message.</helpText>
-        <helpText lang="de-DE">Wird dieser Bestellwert erreicht, kann der Countdown eine kostenlose Versandmeldung anzeigen.</helpText>
-        <defaultValue>50</defaultValue>
-        <min>1</min>
-        <max>999999</max>
-    </input-field>
-</card>
+        <input-field type="float">
+            <name>freeShippingThreshold</name>
+            <label>Free shipping threshold (EUR)</label>
+            <label lang="de-DE">Kostenloser Versand ab (EUR)</label>
+            <helpText>If the order total reaches this amount, the delivery countdown may display a
+                free shipping message.</helpText>
+            <helpText lang="de-DE">Wird dieser Bestellwert erreicht, kann der Countdown eine
+                kostenlose Versandmeldung anzeigen.</helpText>
+            <defaultValue>50</defaultValue>
+            <min>1</min>
+            <max>999999</max>
+        </input-field>
+    </card>
 
 
     <card>
@@ -174,5 +179,42 @@
             <defaultValue>true</defaultValue>
         </input-field>
     </card>
+    <card>
+        <title>Navigation Badge</title>
+        <title lang="de-DE">Navigations-Badge</title>
+
+        <!-- Category selector for where the badge should appear -->
+        <component name="sw-entity-single-select">
+            <name>junuBadgeCategory</name>
+            <entity>category</entity>
+            <label>Choose category to show badge</label>
+            <label lang="de-DE">Kategorie für Badge-Anzeige auswählen</label>
+            <placeholder>Select a category...</placeholder>
+            <placeholder lang="de-DE">Kategorie auswählen...</placeholder>
+            <helpText>
+                Select the category where the badge should be shown in the main navigation. If no
+                category is selected, the badge will not be displayed.
+            </helpText>
+            <helpText lang="de-DE">
+                Wählen Sie die Kategorie aus, in der der Badge in der Hauptnavigation angezeigt
+                werden soll. Wenn keine Kategorie ausgewählt ist, wird kein Badge angezeigt.
+            </helpText>
+        </component>
+
+        <!-- Snippet reference for badge text -->
+        <component name="sw-snippet-field">
+            <name>junuBadgeSnippet</name>
+            <snippet>junu.navigation.badge</snippet>
+            <label>Badge text</label>
+            <label lang="de-DE">Badge-Text</label>
+            <helpText>
+                This snippet defines the text shown on the navigation badge. You can define different texts per language using the globe icon.
+            </helpText>
+            <helpText lang="de-DE">
+                Dieser Textbaustein definiert den Text des Navigations-Badges. Über das Globus-Symbol können Sie sprachspezifische Texte hinterlegen.
+            </helpText>
+        </component>
+    </card>
+
 
 </config>

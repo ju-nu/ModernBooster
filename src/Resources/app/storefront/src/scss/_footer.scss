@@ -119,6 +119,11 @@
             padding: unset;
             text-align: unset;
         }
+        
+    }
+
+    a.footer-link {
+            text-underline-offset: 4px;
     }
 
     // Footer Column Headline (Media Query)
@@ -261,10 +266,14 @@
             justify-content: flex-start;
 
             .twt-awards-container {
-                display: flex; /* Ensure flexbox layout */
-                flex-direction: row; /* Force horizontal layout */
-                flex-wrap: nowrap; /* Prevent wrapping */
-                align-items: center; /* Vertically center the images */
+                display: flex;
+                /* Ensure flexbox layout */
+                flex-direction: row;
+                /* Force horizontal layout */
+                flex-wrap: nowrap;
+                /* Prevent wrapping */
+                align-items: center;
+                /* Vertically center the images */
             }
 
             .twt-awards-custom-image-container {

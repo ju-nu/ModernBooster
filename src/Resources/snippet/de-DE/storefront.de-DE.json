@@ -12,6 +12,9 @@
                 "emptyMessage": "In deinem Warenkorb ist noch Platz",
                 "backToShop": "Jetzt ersten Artikel hinzufügen"
             }
+        },
+        "navigation": {
+            "badge": "Sale"
         }
     }
 }

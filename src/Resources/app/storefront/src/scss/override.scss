@@ -1,17 +1,4 @@
-@if $twt-usp-bar-header >1 or $twt-usp-bar-footer >1 {
-    .twt-usp-bar {
-        .twt-usp-bar-items {
-            @include media-breakpoint-up(lg) {
-                // min 992px
-                justify-content: space-around !important; // Override from center to space-around
-            }
-        }
-    }
-}
 
-.header-main {
-   
-}
 
 .nav-header {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
@@ -24,7 +11,7 @@
     }
 }
 
-.junu .main-navigation-link .sale-badge {
+.junu .main-navigation-menu .sale-badge {
     position: relative;
     margin-left: 10px;
     padding: 3px 8px 3px 16px;
@@ -45,13 +32,13 @@
 }
 
 /* Disable ::before to prevent any unexpected lines */
-.junu .main-navigation-link .sale-badge::before {
+.junu .main-navigation-menu .sale-badge::before {
     content: none !important;
     display: none !important;
 }
 
 /* Override all commented properties for ::after to maintain the arrow */
-.junu .main-navigation-link .sale-badge::after {
+.junu .main-navigation-menu .sale-badge::after {
     content: '';
     position: absolute;
     display: block;
@@ -69,7 +56,7 @@
 }
 
 /* Hover state for the arrow */
-.junu .main-navigation-link .sale-badge:hover::after {
+.junu .main-navigation-menu .sale-badge:hover::after {
     border-right-color: var(--sale-badge-bg, #f68e7a);
 }
 

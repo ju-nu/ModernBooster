@@ -1,1 +1,10 @@
 {% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation_menu_item %}
+    {{ parent() }}
+
+    {% set badgeCategoryId = config('JunuModernBooster.config.junuBadgeCategory') %}
+    {% if badgeCategoryId and category.id == badgeCategoryId %}
+        <div class="nav-link main-navigation-link nav-badge-wrapper"><span class="sale-badge">{{ "junu.navigation.badge"|trans }}</span></div>
+    {% endif %}
+{% endblock %}
