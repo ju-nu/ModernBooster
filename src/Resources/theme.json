@@ -1,0 +1,93 @@
+{
+    "name": "JunuModernBooster",
+    "author": "JUNU Marketing Group LTD",
+    "description": {
+        "en-GB": "JUNU ModernBooster | Premium-Theme: Built on ThemeWare® Modern Pro, our unique theme elevates your shop to the next level with exclusive design and conversion-boosting features.",
+        "de-DE": "JUNU ModernBooster | Premium-Theme: Basierend auf ThemeWare® Modern Pro, hebt unser einzigartiges Theme Ihren Shop mit exklusivem Design und umsatzfördernden Features auf ein neues Level."
+    },
+    "previewMedia": "app/modern-preview.jpg",
+    "views": [
+        "@Storefront",
+        "@TcinnThemeWareModern",
+        "@JunuModernBooster"
+    ],
+    "style": [
+        "@Storefront",
+        "@TcinnThemeWareModern",
+        "app/storefront/src/scss/base.scss"
+    ],
+    "script": [
+        "@Storefront",
+        "@TcinnThemeWareModern",
+        "app/storefront/dist/storefront/js/junu-modern-booster/junu-modern-booster.js"
+    ],
+    "asset": [
+        "@Storefront",
+        "@TcinnThemeWareModern",
+        "app/storefront/src/assets"
+    ],
+    "config": {
+        "tabs": {
+            "tabJunu": {
+                "label": {
+                    "en-GB": "ModernBooster",
+                    "de-DE": "ModernBooster"
+                }
+            }
+        },
+        "blocks": {
+            "blockJunuGeneral": {
+                "label": {
+                    "en-GB": "General Settings",
+                    "de-DE": "Allgemeine Einstellungen"
+                }
+            }
+        },
+        "sections": {
+            "sectionJunuFeatures": {
+                "label": {
+                    "en-GB": "Junu Features",
+                    "de-DE": "Junu Funktionen"
+                }
+            }
+        },
+        "fields": {
+            "junu-enable-custom-feature": {
+                "label": {
+                    "en-GB": "Enable Custom Feature",
+                    "de-DE": "Benutzerdefinierte Funktion aktivieren"
+                },
+                "helpText": {
+                    "en-GB": "Enable or disable the custom feature provided by Junu ModernBooster.",
+                    "de-DE": "Aktivieren oder deaktivieren Sie die benutzerdefinierte Funktion von Junu ModernBooster."
+                },
+                "type": "text",
+                "value": "1",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": {
+                                "en-GB": "No",
+                                "de-DE": "Nein"
+                            }
+                        },
+                        {
+                            "value": "2",
+                            "label": {
+                                "en-GB": "Yes",
+                                "de-DE": "Ja"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "tab": "tabJunu",
+                "block": "blockJunuGeneral",
+                "section": "sectionJunuFeatures",
+                "scss": false
+            }
+        }
+    }
+}

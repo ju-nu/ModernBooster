@@ -6,6 +6,12 @@
                 "orderWithinTomorrow": "<i class=\"fa-solid fa-check\"></i> <span class=\"in-stock fw-bold\">Auf Lager.</span> Bestellen Sie innerhalb der nächsten <span class=\"fw-bold\"><span class=\"hours\">%hours% Stunden und </span>%mins% Minuten</span> für Lieferung am <span class=\"fw-bold\">%date%.</span>"
             },
             "currentViewers": "%viewers% Personen schauen sich dieses Produkt gerade an!"
+        },
+        "offcanvas": {
+            "cart": {
+                "emptyMessage": "In deinem Warenkorb ist noch Platz",
+                "backToShop": "Jetzt ersten Artikel hinzufügen"
+            }
         }
     }
 }

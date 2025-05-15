@@ -1,18 +1,51 @@
 {% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
 
 {% block component_offcanvas_cart_actions_checkout %}
-	{% if page.cart.lineItems|length > 0 %}
-		<div class="d-grid">
-			<a href="{{ path('frontend.checkout.confirm.page') }}" class="btn begin-checkout-btn{% if isCartNotEmpty %} btn-primary{% else %} btn-light disabled{% endif %}" title="{{ 'checkout.proceedToCheckout'|trans|striptags }}">
-				{{ 'checkout.proceedToCheckout'|trans|sw_sanitize }}
-				<span>
-					<i class="fa-regular fa-shield-check"></i>
-					30-Tage Geld-zurück-Garantie
-				</span>
-			</a>
-		</div>
-	{% endif %}
+	<div class="d-grid">
+		<a href="{{ path('frontend.checkout.confirm.page') }}" class="btn begin-checkout-btn{% if isCartNotEmpty %} btn-primary{% else %} btn-light disabled{% endif %}" title="{{ 'checkout.proceedToCheckout'|trans|striptags }}">
+			{{ 'checkout.proceedToCheckout'|trans|sw_sanitize }}
+			<span>
+				<i class="fa-regular fa-shield-check"></i>
+				30-Tage Geld-zurück-Garantie
+			</span>
+		</a>
+	</div>
 {% endblock %}
+{% block component_offcanvas_cart_actions %}
+	{% if page.cart.lineItems|length > 0 %}
+		{{parent()}}
+	{% endif %}
+
+
+{% endblock %}
+
+{% block component_offcanvas_cart_empty %}
+    <div style="text-align: center; padding: 2rem; color: #617477;">
+        <i class="fa-regular fa-cart-minus" style="font-size: 4rem; display: block; margin-bottom: 1rem;"></i>
+
+        <div style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem;">
+            {{ 'junu.offcanvas.cart.emptyMessage'|trans|sw_sanitize }}
+        </div>
+
+<a href="#"
+class="js-offcanvas-close"
+           style="
+               display: inline-block;
+               padding: 0.75rem 1.5rem;
+               background-color: #007256;
+               color: white;
+               font-weight: 600;
+               font-size: 1rem;
+               border-radius: 0.375rem;
+               text-decoration: none;
+           ">
+            <i class="fa-solid fa-bag-shopping" style="margin-right: 0.5rem;"></i>
+            {{ 'junu.offcanvas.cart.backToShop'|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}
+
+
 
 {% block component_offcanvas_cart_items %}
 	{{ parent() }}
@@ -89,7 +122,8 @@
 {% block component_offcanvas_cart_header %}
 	{{ parent() }}
 	{% if page.cart.lineItems|length > 0 %}
-		<div class="junu-progressbar">
+		<div
+			class="junu-progressbar">
 			{# Fetch the threshold from the plugin configuration (in EUR) #}
 			{% set threshold = config('JunuModernBooster.config.freeShippingThreshold') * 100 %}
 			{# Convert to cents #}
@@ -97,17 +131,16 @@
 			{# Calculate cart total and progress (server-side) #}
 			{% set cartTotal = page.cart.price.positionPrice|round(2) * 100 %}
 			{% set progress = 0 %}
-			{% if threshold > 0 %}
+				{% if threshold > 0 %}
 				{% set progress = cartTotal / threshold * 100 %}
-				{% if progress > 100 %}
-					{% set progress = 100 %}
-				{% endif %}
+					{% if progress > 100 %}
+				{% set progress = 100 %}
+			{% endif %}
 			{% endif %}
 
 			{# Display progress bar and text above, only if threshold is valid #}
-			{% if threshold > 0 %}
-				<div class="progress-text{% if progress >= 100 %} success{% endif %}">
-					{% if progress < 100 %}
+				{% if threshold > 0 %}
+					<div class="progress-text{% if progress >= 100 %} success{% endif %}"> {% if progress < 100 %}
 						<i class="fa-solid fa-box-check"></i>
 						Noch
 						<span class="progress-amount">{{ ((threshold - cartTotal) / 100)|number_format(2, ',', '.') }}€</span>
