@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/component/product/description.html.twig' %}
+
+{% block component_product_description_content_text %}
+	<div class="product-detail-description-text" itemprop="description">
+		{% if product.customFields.junu_products_description_seo is not null %}
+			{{ product.customFields.junu_products_description_seo|sw_sanitize }}
+		{% endif %}
+
+	</div>
+{% endblock %}

@@ -9,3 +9,7 @@ PluginManager.register(
     DeliveryCountdownPlugin,
     'body.junu.is-ctl-product [data-delivery-countdown]'
 );
+
+if (module.hot) {
+    module.hot.accept();
+}

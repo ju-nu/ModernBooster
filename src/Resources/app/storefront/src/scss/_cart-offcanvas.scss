@@ -6,28 +6,32 @@
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
     }
+
     .cart-offcanvas {
 
-        .offcanvas-body .offcanvas-cart-header > div:last-child {
+        .offcanvas-body .offcanvas-cart-header>div:last-child {
             padding-right: calc(var(--bs-gutter-x) * .5);
             padding-left: calc(var(--bs-gutter-x) * .5);
         }
+
         .offcanvas-close {
             background: none;
             box-shadow: none;
             border: 0;
-            
-            
+
+
             &:hover {
                 .icon {
                     color: #eee;
                 }
             }
+
             .icon {
                 color: #cccccc;
             }
 
         }
+
         .offcanvas-cart {
             padding-top: 0;
         }
@@ -80,10 +84,8 @@
         .offcanvas-cart-actions {
             background: #f2f9f7;
         }
-        
-        .junu-offcanvas-wrapper {
 
-        }
+        .junu-offcanvas-wrapper {}
 
         .offcanvas-cart-actions {
             padding-bottom: 0.25rem;
@@ -120,6 +122,7 @@
             color: #28a745;
             text-decoration: none !important;
         }
+
         .progress-text {
             font-size: 0.85rem;
             color: #333;
@@ -156,8 +159,8 @@
             animation:
                 fillProgress 1s ease-in-out forwards,
                 moveStripes 1.5s linear infinite;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
+            border-top-right-radius: 7px;
+            border-bottom-right-radius: 7px;
         }
 
         .progress-bar-fill.success {

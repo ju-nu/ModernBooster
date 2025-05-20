@@ -37,6 +37,11 @@
             border-radius: 16px;
         }
 
+        .cms-element-text .cms-element-alignment {
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
         &.reverse.cms-block {
             .cms-block-container .cms-block-container-row {
                 flex-direction: row-reverse;
