@@ -1,132 +1,127 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
 
-{% block buy_widget_reviews %}{% endblock %}
-
-{% block buy_widget_buy_container %}
-	<div class="ju-buybox-wrapper"></div>
-	{{ parent() }}
+{% block buy_widget_reviews %}
 {% endblock %}
 
+        {% block buy_widget_buy_container %}<div class="ju-buybox-wrapper"></div>{{ parent() }}{% endblock %}
+
 {% block component_buy_widget_container %}
-	{# Original content from parent template #}
-	{{ parent() }}
+    {# Original content from parent template #}
+    {{ parent() }}
 
-	{# Pricing Steps Section #}
-	{% if page.product.calculatedPrices|length > 0 %}
-		<div class="pricing-steps-container">
-			<h3 class="pricing-steps-title">Buy more and Save</h3>
-			<div class="pricing-steps-grid">
-				{% for tierPrice in page.product.calculatedPrices %}
-					{% set isSelected = loop.index == 1 %}
-					{# Assuming the first tier is selected by default #}
-					<div
-						class="pricing-step {{ isSelected ? 'selected' : '' }}">
-						{# Badges #}
-						{% if loop.index == 2 %}
-							<span class="badge recommended">Recommended</span>
-						{% elseif loop.index == 3 %}
-							<span class="badge best-value">Best Value</span>
-						{% endif %}
-						{# Quantity and Price #}
-						<div class="quantity">{{ loop.index }}x</div>
-						<div class="unit-price">{{ tierPrice.unitPrice|currency }}
-							/ Piece</div>
-					</div>
-				{% endfor %}
-			</div>
+    {# Pricing Steps Section #}
+    {% if page.product.calculatedPrices|length > 0 %}
+        <div class="pricing-steps-container">
+            <h3 class="pricing-steps-title">Buy more and Save</h3>
+            <div class="pricing-steps-grid">
+                {% for tierPrice in page.product.calculatedPrices %}
+                    {% set isSelected = loop.index == 1 %} {# Assuming the first tier is selected by default #}
+                    <div class="pricing-step {{ isSelected ? 'selected' : '' }}">
+                        {# Badges #}
+                        {% if loop.index == 2 %}
+                            <span class="badge recommended">Recommended</span>
+                        {% elseif loop.index == 3 %}
+                            <span class="badge best-value">Best Value</span>
+                        {% endif %}
+                        {# Quantity and Price #}
+                        <div class="quantity">{{ loop.index }}x</div>
+                        <div class="unit-price">{{ tierPrice.unitPrice|currency }} / Piece</div>
+                    </div>
+                {% endfor %}
+            </div>
 
-			{# Current Selected Price #}
-			<div class="current-price-container">
-				<span class="current-price">{{ page.product.calculatedPrice.unitPrice|currency }}€</span>
-				{% if page.product.calculatedPrice.listPrice %}
-					{% set discount = ((page.product.calculatedPrice.listPrice.price - page.product.calculatedPrice.unitPrice) / page.product.calculatedPrice.listPrice.price * 100)|round %}
-					<span class="discount-badge">{{ discount }}% OFF</span>
-				{% endif %}
-			</div>
+            {# Current Selected Price #}
+            <div class="current-price-container">
+                <span class="current-price">{{ page.product.calculatedPrice.unitPrice|currency }}€</span>
+                {% if page.product.calculatedPrice.listPrice %}
+                    {% set discount = ((page.product.calculatedPrice.listPrice.price - page.product.calculatedPrice.unitPrice) / page.product.calculatedPrice.listPrice.price * 100)|round %}
+                    <span class="discount-badge">{{ discount }}% OFF</span>
+                {% endif %}
+            </div>
 
-			{# VAT and Shipping Note #}
-			<div class="price-note">
-				Prices include VAT plus shipping costs
-			</div>
-		</div>
-	{% endif %}
+            {# VAT and Shipping Note #}
+            <div class="price-note">
+                Prices include VAT plus shipping costs
+            </div>
+        </div>
+    {% endif %}
 
-	{# Inline Styles for the Pricing Steps #}
-	<style>
-		.pricing-steps-container {
-			margin-top: 20px;
-			font-family: Arial, sans-serif;
-		}
-		.pricing-steps-title {
-			font-size: 1.2em;
-			font-weight: bold;
-			margin-bottom: 10px;
-		}
-		.pricing-steps-grid {
-			display: flex;
-			gap: 10px;
-			margin-bottom: 10px;
-		}
-		.pricing-step {
-			flex: 1;
-			border: 1px solid #ddd;
-			padding: 10px;
-			text-align: center;
-			background-color: #fff;
-			border-radius: 5px;
-			position: relative;
-		}
-		.pricing-step.selected {
-			background-color: #ffe6e6;
-			border-color: #ff6666;
-		}
-		.badge {
-			position: absolute;
-			top: -10px;
-			left: 50%;
-			transform: translateX(-50%);
-			padding: 5px 10px;
-			border-radius: 12px;
-			font-size: 0.8em;
-			color: #fff;
-		}
-		.badge.recommended {
-			background-color: #28a745;
-		}
-		.badge.best-value {
-			background-color: #ff4444;
-		}
-		.quantity {
-			font-size: 1.1em;
-			font-weight: bold;
-			margin-bottom: 5px;
-		}
-		.unit-price {
-			font-size: 0.9em;
-			color: #333;
-		}
-		.current-price-container {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			margin-top: 10px;
-		}
-		.current-price {
-			font-size: 1.5em;
-			font-weight: bold;
-			color: #333;
-		}
-		.discount-badge {
-			background-color: #ff6666;
-			color: #fff;
-			padding: 5px 10px;
-			border-radius: 12px;
-			font-size: 0.9em;
-		}
-		.price-note {
-			font-size: 0.8em;
-			color: #666;
-			margin-top: 5px;
-		}
-	</style>
+    {# Inline Styles for the Pricing Steps #}
+    <style>
+        .pricing-steps-container {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .pricing-steps-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .pricing-steps-grid {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .pricing-step {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 5px;
+            position: relative;
+        }
+        .pricing-step.selected {
+            background-color: #ffe6e6;
+            border-color: #ff6666;
+        }
+        .badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            color: #fff;
+        }
+        .badge.recommended {
+            background-color: #28a745;
+        }
+        .badge.best-value {
+            background-color: #ff4444;
+        }
+        .quantity {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .unit-price {
+            font-size: 0.9em;
+            color: #333;
+        }
+        .current-price-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .current-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        .discount-badge {
+            background-color: #ff6666;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+        .price-note {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
 {% endblock %}
