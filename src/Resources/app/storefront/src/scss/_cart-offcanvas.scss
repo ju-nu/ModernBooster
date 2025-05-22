@@ -85,7 +85,12 @@
             background: #f2f9f7;
         }
 
-        .junu-offcanvas-wrapper {}
+        .junu-offcanvas-wrapper {
+
+            .product-image-wrapper {
+                max-width: 104px;
+            }
+        }
 
         .offcanvas-cart-actions {
             padding-bottom: 0.25rem;
