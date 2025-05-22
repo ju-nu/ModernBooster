@@ -6,7 +6,7 @@
 	{# Call the parent block to retain existing styles #}
 
 	/* Set the container height using CMS variable */
-		    height:
+			    height:
 	{{ twtAdvncdTsrMinHeight|default('600px') }};
 {% endblock %}
 
@@ -113,13 +113,13 @@
 				{# INFO: Title tag = Button text (as the text is mandatory) #}
 				<a href="{{ twtAdvncdTsrUrl2 }}" class="twt-advanced-teaser-btn btn btn-2 btn-{% if twtAdvncdTsrButton2Outline %}outline-{% endif %}{{ twtAdvncdTsrButton2Style }}{% if twtAdvncdTsrCssClassButton2 is not empty %} {{ twtAdvncdTsrCssClassButton2 }}{% endif %}" title="{{ twtAdvncdTsrButton2Text }}" {% if twtAdvncdTsrNewTab2 %} target="_blank" rel="noopener" {% endif %}>
 					{{ twtAdvncdTsrButton2Text }}
-                    <span>bis -50%</span>
+					<span>bis -50%</span>
 				</a>
 			{% endif %}
 			{% block element_twt_advanced_teaser_trust_svgs %}
+				<div class="ju-trust-title">Bekannt aus</div>
 				<div
 					class="junu-start-hero-trust d-flex flex-row gap-4 mt-4 align-items-center overflow-x-auto">
-					<div class="ju-trust-title">Bekannt aus</div>
 					{# Trust 1: Free Delivery (SVG only) #}
 					<div class="trust-badge d-flex align-items-center">
 						<img src="{{ 'JUNUModernizr.start.hero.trust1'|trans|default('https://cdn.hanfosan.de/media/e3/7d/36/1730312911/rtl_logo.svg?ts=1730312911') }}" alt="Free Delivery" class="trust-icon me-2" width="24" height="24">
