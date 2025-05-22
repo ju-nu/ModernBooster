@@ -3,6 +3,8 @@
 {% block buy_widget_reviews %}
 {% endblock %}
 
+        {% block buy_widget_buy_container %}<div class="ju-buybox-wrapper"></div>{{ parent() }}{% endblock %}
+
 {% block component_buy_widget_container %}
     {# Original content from parent template #}
     {{ parent() }}
