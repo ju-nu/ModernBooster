@@ -1,5 +1,5 @@
 {
-    "name": "JunuModernBooster",
+    "name": "JUNU MModernBooster",
     "author": "JUNU Marketing Group LTD",
     "description": {
         "en-GB": "JUNU ModernBooster | Premium-Theme: Built on ThemeWare® Modern Pro, our unique theme elevates your shop to the next level with exclusive design and conversion-boosting features.",
@@ -9,7 +9,8 @@
     "views": [
         "@Storefront",
         "@TcinnThemeWareModern",
-        "@JunuModernBooster"
+        "@JunuModernBooster",
+        "@Plugins"
     ],
     "style": [
         "@Storefront",
@@ -25,6 +26,9 @@
         "@Storefront",
         "@TcinnThemeWareModern",
         "app/storefront/src/assets"
+    ],
+    "configInheritance": [
+        "@TcinnThemeWareModern"
     ],
     "config": {
         "tabs": {

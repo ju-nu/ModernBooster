@@ -12,7 +12,7 @@
 	],
 	"require": {
 		"shopware/core": "6.6.10.*",
-		"tcinn/themeware-modern": "<=3.6.5"
+		"tcinn/themeware-modern": ">=3.6.5"
 	},
 	"extra": {
 		"shopware-plugin-class": "Junu\\ModernBooster\\JunuModernBooster",

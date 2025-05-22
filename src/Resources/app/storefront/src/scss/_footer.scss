@@ -17,7 +17,7 @@
         background-position: 50% 125%;
         background-repeat: no-repeat;
         background-attachment: scroll;
-        background-image: var(--junu-footer-newsletter-background);
+        background-image: url('#{$twt-footer-upper-section-background-image}');
 
         @include media-breakpoint-up(sm) {
             background-size: auto 85%;
