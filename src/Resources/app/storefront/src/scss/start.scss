@@ -9,6 +9,7 @@
             text-transform: uppercase;
             font-weight: 500;
             padding: 1rem 1.25rem;
+            border-radius: 3px;
             font-size: 0.9rem;
             line-height: 0.9rem;
 
@@ -27,7 +28,6 @@
                 padding: 1rem 2rem;
                 font-size: 0.9rem;
                 line-height: 0.9rem;
-                border-radius: 3px;
                 font-weight: 600;
 
                 &::after {
