@@ -1,11 +1,11 @@
 {
-    "name": "JUNU MModernBooster",
+    "name": "JUNU ModernBooster",
     "author": "JUNU Marketing Group LTD",
     "description": {
         "en-GB": "JUNU ModernBooster | Premium-Theme: Built on ThemeWare® Modern Pro, our unique theme elevates your shop to the next level with exclusive design and conversion-boosting features.",
         "de-DE": "JUNU ModernBooster | Premium-Theme: Basierend auf ThemeWare® Modern Pro, hebt unser einzigartiges Theme Ihren Shop mit exklusivem Design und umsatzfördernden Features auf ein neues Level."
     },
-    "previewMedia": "app/modern-preview.jpg",
+    "previewMedia": "app/modernbooster-preview.jpg",
     "views": [
         "@Storefront",
         "@TcinnThemeWareModern",
