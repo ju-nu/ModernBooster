@@ -2,13 +2,17 @@
     .junu-cat-hero .content {
         max-width: 1300px !important;
         width: 100%;
-        margin: -60px auto 0
-    }
+        margin: -60px auto 0;
 
-    .junu-cat-hero .content .twt-text-teaser-text {
-        text-align: left !important;
-        font-size: 3rem;
-        font-weight: 700
+        .headline {
+            font-size: 3rem;
+            line-height: 3.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .text {
+            font-size: 1.25rem;
+        }
     }
 
     .junu-cat-sidebar-banner {
