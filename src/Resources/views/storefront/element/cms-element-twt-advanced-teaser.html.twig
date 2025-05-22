@@ -6,7 +6,7 @@
 	{# Call the parent block to retain existing styles #}
 
 	/* Set the container height using CMS variable */
-			    height:
+					    height:
 	{{ twtAdvncdTsrMinHeight|default('600px') }};
 {% endblock %}
 
@@ -117,22 +117,18 @@
 				</a>
 			{% endif %}
 			{% block element_twt_advanced_teaser_trust_svgs %}
-				<div class="ju-trust-title mt-4 mb-1">Bekannt aus</div>
-				<div
-					class="junu-start-hero-trust d-flex flex-row gap-4 align-items-center overflow-x-auto">
-					{# Trust 1: Free Delivery (SVG only) #}
+				<div class="ju-trust-title mt-4 mb-1">{{ 'junu.start.hero.trust.title'|trans }}</div>
+				<div class="junu-start-hero-trust d-flex flex-row gap-4 align-items-center overflow-x-auto">
 					<div class="trust-badge d-flex align-items-center">
-						<img src="{{ 'JUNUModernizr.start.hero.trust1'|trans|default('https://cdn.hanfosan.de/media/e3/7d/36/1730312911/rtl_logo.svg?ts=1730312911') }}" alt="Free Delivery" class="trust-icon me-2" width="24" height="24">
+						<img src="{{ 'junu.start.hero.trust1.img'|trans }}" draggable="false" fetchpriority="high" alt="{{ 'junu.start.hero.trust1.alt'|trans }}" class="trust-icon me-2" width="24" height="24">
 					</div>
 
-					{# Trust 2: Discount (SVG only) #}
 					<div class="trust-badge d-flex align-items-center">
-						<img src="{{ 'JUNUModernizr.start.hero.trust2'|trans|default('https://cdn.hanfosan.de/media/6e/23/52/1730322738/stern_logo.svg?ts=1730322738') }}" alt="Discount" class="trust-icon me-2" width="24" height="24">
+						<img src="{{ 'junu.start.hero.trust2.img'|trans }}" draggable="false" fetchpriority="high" alt="{{ 'junu.start.hero.trust2.alt'|trans }}" class="trust-icon me-2" width="24" height="24">
 					</div>
 
-					{# Trust 3: Money Back Guarantee (SVG only) #}
 					<div class="trust-badge d-flex align-items-center">
-						<img src="{{ 'JUNUModernizr.start.hero.trust3'|trans|default('https://cdn.hanfosan.de/media/1c/61/4d/1730322759/welt_logo.svg?ts=1730322759') }}" alt="Money Back Guarantee" class="trust-icon me-2" width="24" height="24">
+						<img src="{{ 'junu.start.hero.trust3.img'|trans }}" draggable="false" fetchpriority="high" alt="{{ 'junu.start.hero.trust3.alt'|trans }}" class="trust-icon me-2" width="24" height="24">
 					</div>
 				</div>
 			{% endblock %}
