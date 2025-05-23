@@ -1,131 +1,128 @@
 .junu {
-    .cms-element-twt-testimonial {
-        border-radius: 20px;
-        overflow: hidden;
+  .cms-element-twt-testimonial {
+    border-radius: 20px;
+    overflow: hidden;
 
-        &.junu-cms-review-1 .junu-cms-review-person {
-            background-image: var(--junu-cms-review-1);
-        }
-
-        &.junu-cms-review-2 .junu-cms-review-person {
-            background-image: var(--junu-cms-review-2);
-        }
-
-        &.junu-cms-review-3 .junu-cms-review-person {
-            background-image: var(--junu-cms-review-3);
-        }
-
-        &.junu-cms-review-noimage {
-            overflow: visible;
-
-            .twt-testimonial-content-container {
-                padding: 10px 30px 20px 30px;
-                &::after {
-                    top: -16px; // Position the triangle above the review container
-                    left: 50px; // Adjust horizontal position as needed
-                    border-left: 16px solid transparent; // Left side of the triangle
-                    border-right: 16px solid transparent; // Right side of the triangle
-                    border-bottom: 16px solid;
-                    border-bottom-color: #f2f9f7;
-                }
-            }
-
-        }
-
-
-        .junu-cms-review-person {
-            display: flex;
-            width: 56px;
-            height: 56px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-        }
-
-        .twt-testimonial-content {
-
-            display: flex;
-            align-items: center;
-            column-gap: 0.75rem;
-            font-size: 0.75rem;
-
-            .rating {
-                margin-top: 0;
-            }
-        }
-
-        .junu-cms-review-verified {
-            display: flex;
-            align-items: center;
-            column-gap: 0.25rem;
-            text-transform: uppercase;
-
-            i {
-                font-size: 0.95rem;
-                color: $sw-color-success;
-            }
-
-            span {
-                font-size: 0.75rem;
-                font-weight: 500;
-                color: $sw-text-color;
-            }
-        }
-
-        .junu-cms-review-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .junu-cms-review-wrapper {
-            display: flex;
-            column-gap: 0.5rem;
-            align-items: center;
-        }
-
-
-        .twt-testimonial-review {
-            margin-top: 10px;
-        }
-
-        .twt-testimonial-content-container {
-            padding: 10px 20px 20px 20px;
-            position: relative;
-            margin-top: unset;
-
-            blockquote {
-                font-size: 0.875rem;
-                font-style: italic;
-                padding: 0 0.25rem;
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: -10px; // Position the triangle above the review container
-                left: 50px; // Adjust horizontal position as needed
-                width: 0;
-                height: 0;
-                border-left: 10px solid transparent; // Left side of the triangle
-                border-right: 10px solid transparent; // Right side of the triangle
-                border-bottom: 10px solid;
-                border-bottom-color: var(--junu-cms-review-bg);
-            }
-        }
-
-        .twt-testimonial-image-container {
-            width: 100%;
-            height: auto;
-
-            margin-bottom: 0;
-
-            img {
-                border-radius: unset;
-
-            }
-        }
+    &.junu-cms-review-1 .junu-cms-review-person {
+      background-image: var(--junu-cms-review-1);
     }
+
+    &.junu-cms-review-2 .junu-cms-review-person {
+      background-image: var(--junu-cms-review-2);
+    }
+
+    &.junu-cms-review-3 .junu-cms-review-person {
+      background-image: var(--junu-cms-review-3);
+    }
+    &.junu-cms-review-product .junu-cms-review-person {
+      background-image: var(--junu-product-review-image);
+    }
+    &.junu-cms-review-noimage {
+      overflow: visible;
+
+      .twt-testimonial-content-container {
+        padding: 10px 30px 20px 30px;
+        &::after {
+          top: -16px; // Position the triangle above the review container
+          left: 50px; // Adjust horizontal position as needed
+          border-left: 16px solid transparent; // Left side of the triangle
+          border-right: 16px solid transparent; // Right side of the triangle
+          border-bottom: 16px solid;
+          border-bottom-color: #f2f9f7;
+        }
+      }
+    }
+
+    .junu-cms-review-person {
+      display: flex;
+      width: 56px;
+      height: 56px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+
+    .twt-testimonial-content {
+      display: flex;
+      align-items: center;
+      column-gap: 0.75rem;
+      font-size: 0.75rem;
+
+      .rating {
+        margin-top: 0;
+      }
+    }
+
+    .junu-cms-review-verified {
+      display: flex;
+      align-items: center;
+      column-gap: 0.25rem;
+      text-transform: uppercase;
+
+      i {
+        font-size: 0.95rem;
+        color: $sw-color-success;
+      }
+
+      span {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: $sw-text-color;
+      }
+    }
+
+    .junu-cms-review-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .junu-cms-review-wrapper {
+      display: flex;
+      column-gap: 0.5rem;
+      align-items: center;
+    }
+
+    .twt-testimonial-review {
+      margin-top: 10px;
+    }
+
+    .twt-testimonial-content-container {
+      padding: 10px 20px 20px 20px;
+      position: relative;
+      margin-top: unset;
+
+      blockquote {
+        font-size: 0.875rem;
+        font-style: italic;
+        padding: 0 0.25rem;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -10px; // Position the triangle above the review container
+        left: 50px; // Adjust horizontal position as needed
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent; // Left side of the triangle
+        border-right: 10px solid transparent; // Right side of the triangle
+        border-bottom: 10px solid;
+        border-bottom-color: var(--junu-cms-review-bg);
+      }
+    }
+
+    .twt-testimonial-image-container {
+      width: 100%;
+      height: auto;
+
+      margin-bottom: 0;
+
+      img {
+        border-radius: unset;
+      }
+    }
+  }
 }
