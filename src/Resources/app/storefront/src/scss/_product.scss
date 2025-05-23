@@ -443,8 +443,6 @@ img.junu-product-payment-logos {
     width: auto;
     max-height: 25px;
 
-    border: 1px solid #c5ece1;
-
     @include media-breakpoint-up(md) {
         border-radius: 7px;
         height: 30px;
@@ -452,7 +450,7 @@ img.junu-product-payment-logos {
     }
 
     @include media-breakpoint-up(lg) {
-        border-radius: 10px;
+        border-radius: 5px;
         height: 35px;
         max-height: 35px;
     }
