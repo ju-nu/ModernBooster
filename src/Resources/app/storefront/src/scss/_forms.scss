@@ -1,5 +1,10 @@
 .junu {
 
+  &:not(.bst-easy-checkout) {
+    .form-group label {
+      margin-bottom: 0.5rem;
+    }
+  }
   // General form container styling
   .form-group {
 
@@ -8,7 +13,7 @@
       font-size: 0.875rem; // 14px, Shopify-like
       font-weight: 500;
       color: $input-color;
-      margin-bottom: 0.5rem;
+      
       display: block;
     }
 
