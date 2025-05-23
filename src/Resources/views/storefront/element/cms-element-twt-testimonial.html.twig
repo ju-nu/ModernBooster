@@ -3,24 +3,23 @@
 
 {% block element_twt_testimonial_content %}
 {{dump(page.product)}}
-{% set reviewImageId = page.product.translated.customFields.junu_products_review_image %}
+{# Access the custom field media ID #}
+    {% set reviewImageId = page.product.translated.customFields.junu_products_review_image %}
     
     {# Fetch the media object #}
     {% if reviewImageId %}
         {% set mediaCollection = searchMedia([reviewImageId], context.context) %}
         {% set reviewImage = mediaCollection.get(reviewImageId) %}
         
-        {# Render thumbnails if media exists #}
-        {% if reviewImage %}
-            <div class="product-review-image">
-                {% sw_thumbnails 'my-thumbnails' with {
-                    media: reviewImage,
-                    attributes: {
-                        'class': 'img-fluid',
-                        'alt': 'Product Review Image'
-                    }
-                } %}
-            </div>
+        {# Get the smallest thumbnail URL #}
+        {% if reviewImage and reviewImage.thumbnails %}
+            {% set smallestThumbnail = reviewImage.thumbnails|sort((a, b) => a.width <=> b.width)|first %}
+            {% if smallestThumbnail %}
+                {% set thumbnailUrl = smallestThumbnail.url %}
+                <div class="product-review-image">
+                    <img src="{{ thumbnailUrl }}" alt="Product Review Image" class="img-fluid">
+                </div>
+            {% endif %}
         {% endif %}
     {% endif %}
 	<style>:root
@@ -29,6 +28,7 @@
     --junu-cms-review-1: url('{{'JUNUModernizr.cms.review.person1'|trans|default('')}}');
     --junu-cms-review-2: url('{{'JUNUModernizr.cms.review.person2'|trans|default('')}}');
     --junu-cms-review-3: url('{{'JUNUModernizr.cms.review.person3'|trans|default('')}}');
+	--junu-cms-review-3: url('{{'JUNUModernizr.cms.review.person3'|trans|default('')}}');
 	}
 </style>
 {{ parent() }}{% endblock %}{% block element_twt_testimonial_image_inner %}
