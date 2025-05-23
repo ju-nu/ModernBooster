@@ -22,6 +22,10 @@
             border-radius: 10px;
         }
 
+        .payment-method-description + p {
+            display: none;
+        }
+
         // Button styling
         #confirmFormSubmit,
         .register-submit .btn {
