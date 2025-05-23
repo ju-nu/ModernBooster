@@ -38,7 +38,7 @@
     }
 
     .junu-cat-content {
-        .cms-block-image-text .cms-block-container-row {
+        &.cms-block-image-text .cms-block-container-row {
             align-items: center;
         }
         img {
