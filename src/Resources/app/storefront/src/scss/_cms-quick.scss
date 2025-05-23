@@ -38,6 +38,11 @@
     .junu-start-quick {
         position: relative;
         
+        .twt-hero-teaser-headline,
+        .twt-hero-teaser-text {
+            max-width: 50%;
+        }
+
 
         .twt-hero-teaser-image-container {
             position: relative;
