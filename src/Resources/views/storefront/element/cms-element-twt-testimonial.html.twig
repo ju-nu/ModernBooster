@@ -3,6 +3,26 @@
 
 {% block element_twt_testimonial_content %}
 {{dump(page.product)}}
+{% set reviewImageId = page.product.translated.customFields.junu_products_review_image %}
+    
+    {# Fetch the media object #}
+    {% if reviewImageId %}
+        {% set mediaCollection = searchMedia([reviewImageId], context.context) %}
+        {% set reviewImage = mediaCollection.get(reviewImageId) %}
+        
+        {# Render thumbnails if media exists #}
+        {% if reviewImage %}
+            <div class="product-review-image">
+                {% sw_thumbnails 'my-thumbnails' with {
+                    media: reviewImage,
+                    attributes: {
+                        'class': 'img-fluid',
+                        'alt': 'Product Review Image'
+                    }
+                } %}
+            </div>
+        {% endif %}
+    {% endif %}
 	<style>:root
 	{
 		--junu-cms-review-bg: {{twtTstmnlBackgroundColor}};
