@@ -1,7 +1,7 @@
 {
 	"name": "junu/modernbooster",
 	"description": "JUNU ModernBooster | Premium-Theme: Basierend auf ThemeWare® Modern Pro, hebt unser einzigartiges Theme Ihren Shop mit exklusivem Design und umsatzfördernden Features auf ein neues Level.",
-	"version": "0.8.4",
+	"version": "0.8.5",
 	"type": "shopware-platform-plugin",
 	"license": "proprietary",
 	"authors": [
