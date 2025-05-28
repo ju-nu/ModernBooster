@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Junu\ModernBooster\Subscriber;
 
+use Shopware\Core\Framework\Adapter\Cache\CacheInvalidator;
 use Shopware\Core\System\SystemConfig\Event\SystemConfigChangedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Psr\Cache\CacheItemPoolInterface;
+use Psr\Log\LoggerInterface;
 
 class ConfigSubscriber implements EventSubscriberInterface
 {
-    private CacheItemPoolInterface $cache;
+    private CacheInvalidator $cacheInvalidator;
+    private LoggerInterface $logger;
 
-    public function __construct(CacheItemPoolInterface $cache)
+    public function __construct(CacheInvalidator $cacheInvalidator, LoggerInterface $logger)
     {
-        $this->cache = $cache;
+        $this->cacheInvalidator = $cacheInvalidator;
+        $this->logger = $logger;
     }
 
     public static function getSubscribedEvents(): array
@@ -26,28 +29,23 @@ class ConfigSubscriber implements EventSubscriberInterface
 
     public function onConfigChanged(SystemConfigChangedEvent $event): void
     {
-        if (strpos($event->getKey(), 'JunuModernBooster.config.') === 0) {
-            // Clear countdown caches
-            $keys = $this->cache->getKeys();
-            if ($keys instanceof \Traversable) {
-                $keys = iterator_to_array($keys);
-            }
-            $this->cache->deleteItems(
-                array_filter(
-                    $keys,
-                    fn($key) => strpos($key, 'delivery_countdown_') === 0
-                )
-            );
+        if (strpos($event->getKey(), 'JunuModernBooster.config.') !== 0) {
+            return;
+        }
 
-            // Clear holiday caches if countryStateCode changes
+        try {
+            // Invalidate cache tags for countdown
+            $this->cacheInvalidator->invalidate(['junu-modern-booster-countdown'], true);
+
+            // Invalidate holiday cache if countryStateCode changes
             if ($event->getKey() === 'JunuModernBooster.config.countryStateCode') {
-                $this->cache->deleteItems(
-                    array_filter(
-                        $keys,
-                        fn($key) => strpos($key, 'public_holidays_') === 0
-                    )
-                );
+                $this->cacheInvalidator->invalidate(['junu-modern-booster-holidays'], true);
             }
+        } catch (\Exception $e) {
+            $this->logger->error('Failed to invalidate cache in ConfigSubscriber: ' . $e->getMessage(), [
+                'exception' => $e,
+                'key' => $event->getKey(),
+            ]);
         }
     }
 }
