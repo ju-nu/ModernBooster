@@ -11,11 +11,15 @@ use Psr\Log\LoggerInterface;
 
 class ConfigSubscriber implements EventSubscriberInterface
 {
-    private CacheInvalidator $cacheInvalidator;
+    private $cacheInvalidator; // Remove strict type hint
     private LoggerInterface $logger;
 
-    public function __construct(CacheInvalidator $cacheInvalidator, LoggerInterface $logger)
+    public function __construct($cacheInvalidator, LoggerInterface $logger)
     {
+        // Assert that $cacheInvalidator provides the expected methods
+        if (!method_exists($cacheInvalidator, 'invalidate')) {
+            throw new \InvalidArgumentException('Invalid cache invalidator provided');
+        }
         $this->cacheInvalidator = $cacheInvalidator;
         $this->logger = $logger;
     }
@@ -34,10 +38,7 @@ class ConfigSubscriber implements EventSubscriberInterface
         }
 
         try {
-            // Invalidate cache tags for countdown
             $this->cacheInvalidator->invalidate(['junu-modern-booster-countdown'], true);
-
-            // Invalidate holiday cache if countryStateCode changes
             if ($event->getKey() === 'JunuModernBooster.config.countryStateCode') {
                 $this->cacheInvalidator->invalidate(['junu-modern-booster-holidays'], true);
             }
