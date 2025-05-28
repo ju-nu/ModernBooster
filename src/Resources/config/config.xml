@@ -3,17 +3,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
-        <title>Basic Configuration</title>
-        <title lang="de-DE">Grundeinstellungen</title>
-        <component name="sw-entity-multi-id-select">
-            <name>exampleMultiProductIds</name>
-            <entity>product</entity>
-            <label>Choose multiple products IDs for the plugin configuration</label>
-            <label lang="de-DE">Wählen Sie mehrere Produkt-IDs für die Plugin-Konfiguration aus</label>
-        </component>
-    </card>
-
-    <card>
         <title>Delivery Countdown</title>
         <title lang="de-DE">Liefer-Countdown</title>
 
