@@ -35,11 +35,10 @@
     flex-direction: column;
     gap: 0.5rem; /* Tighter spacing between question and answer */
     padding-bottom: 1rem;
-    border-bottom: 1px solid; /* Separator line for FAQ-like feel */
+    border-bottom: 1px solid $sw-border-color; /* Separator line for FAQ-like feel */
   }
 
   .shop-studio-blog-blog-post-detail-content-faq-text:last-child {
-    border-bottom: none; /* Remove border for the last FAQ item */
   }
 
   .shop-studio-blog-blog-post-detail-content-faq-text__question {
