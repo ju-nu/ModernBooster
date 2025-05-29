@@ -1,4 +1,9 @@
 .junu {
+    .is-ctl-blogpost {
+        .breadcrumb {
+            display: none;
+        }
+    }
   .shop-studio-blog-blog-post-box {
     position: relative;
     &::after {
