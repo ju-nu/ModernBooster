@@ -39,7 +39,8 @@
     border-bottom: 1px solid $sw-border-color; /* Separator line for FAQ-like feel */
   }
 
-  .shop-studio-blog-blog-post-detail-content-faq-text:last-of-type {
+  .shop-studio-blog-blog-post-detail-content__content--faq_text:last-of-type
+    .shop-studio-blog-blog-post-detail-content-faq-text {
     border-bottom: 0;
   }
 
