@@ -1,34 +1,12 @@
 {% sw_extends '@Storefront/storefront/page/checkout/finish/index.html.twig' %}
 
 {% block page_checkout_finish %}
-	{{ parent() }}
-	{% if config('JunuModernBooster.config.confettiEnabled') %}
-		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				const duration = 3 * 1000; // 3 seconds
-				const animationEnd = Date.now() + duration;
-				const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
-
-				function randomInRange(min, max) {
-					return Math.random() * (max - min) + min;
-				}
-
-				const interval = setInterval(function() {
-					const timeLeft = animationEnd - Date.now();
-					if (timeLeft <= 0) {
-						return clearInterval(interval);
-					}
-					const particleCount = 75 * (	timeLeft / duration); // Slightly denser burst
-					confetti(Object.assign({}, defaults, {
-						particleCount,
-						origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 },
-						colors: ['#ff5555', '#ffaa00', '#55ff55', '#5555ff', '#ff55ff', '#ffff55', '#00ffff', '#ff99cc', '#66ff66', '#ffcc00']
-					}));
-				}, 200); // Slightly faster bursts
-			});
-		</script>
-	{% endif %}
+    {% if config('JunuModernBooster.config.confettiEnabled') %}
+        {% set bodyAttributes = bodyAttributes|merge({'data-confetti-enabled': 'true'}) %}
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
+    {% endif %}
+    {{ parent() }}
 {% endblock %}
 
 {% block page_checkout_additional_finish %}{% endblock %}
