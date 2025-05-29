@@ -41,7 +41,7 @@
             }
         }
 
-        .product-image {
+        .product-image:not(.shop-studio-blog-blog-post-box__content__image__link__image) {
             filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.35));
         }
 
