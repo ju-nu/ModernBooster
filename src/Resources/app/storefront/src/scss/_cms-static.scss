@@ -1,92 +1,90 @@
-.junu-cms-static  {
+.junu-cms-static {
   .cms-element-text {
-    line-height: 1.6;
-    max-width: 65ch;
-    margin: 0 auto;
-    padding: 1rem;
+    // Inherit text color
+    color: inherit;
 
-    /* Headings */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    // General typography rules
+    line-height: 1.75;
+    font-size: 1rem;
+
+    p {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
-      margin-top: 1.5em;
+      line-height: 1.25;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      color: inherit;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.875rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.125rem; }
+    h6 { font-size: 1rem; }
+
+    ul, ol {
+      padding-left: 1.5em;
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+
+    li {
+      margin-top: 0.5em;
       margin-bottom: 0.5em;
     }
 
-    h1 {
-      font-size: 2.25rem;
-      line-height: 1.2;
-    }
-    h2 {
-      font-size: 1.875rem;
-      line-height: 1.3;
-    }
-    h3 {
-      font-size: 1.5rem;
-      line-height: 1.4;
-    }
-    h4 {
-      font-size: 1.25rem;
-      line-height: 1.5;
-    }
-    h5 {
-      font-size: 1.125rem;
-      line-height: 1.5;
-    }
-    h6 {
-      font-size: 1rem;
-      line-height: 1.5;
+    blockquote {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding-left: 1em;
+      border-left: 0.25em solid currentColor;
+      font-style: italic;
+      color: inherit;
     }
 
-    /* Paragraphs */
-    p {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    /* Links */
     a {
       text-decoration: underline;
+      color: inherit;
     }
 
-    /* Lists */
-    ul,
-    ol {
-      margin: 1rem 0;
-      padding-left: 2rem;
-    }
-    ul li,
-    ol li {
-      margin-bottom: 0.5rem;
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
-    /* Blockquotes */
-    blockquote {
-      border-left: 4px solid currentColor;
-      border-opacity: 0.1;
-      padding-left: 1rem;
-      margin: 1.5rem 0;
+    pre, code {
+      font-family: monospace;
+      background-color: transparent;
+      color: inherit;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    em {
       font-style: italic;
     }
 
-    /* Code */
-    code {
-      background-color: currentColor;
-      background-opacity: 0.05;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.25rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      font-size: 0.875rem;
-    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
 
-    /* Strong */
-    strong {
-      font-weight: 700;
+      th, td {
+        border: 1px solid currentColor;
+        padding: 0.5em;
+      }
+
+      th {
+        text-align: left;
+      }
     }
   }
 }
