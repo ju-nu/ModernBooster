@@ -79,5 +79,8 @@
         .checkout-additional-finish {
             display: none !important;
         }
+        .finish-order-subtitle:not(:empty) {
+            background-color: $BstEc_accentBgColorLight;
+        }
     }
 }
