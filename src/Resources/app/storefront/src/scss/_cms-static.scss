@@ -1,4 +1,4 @@
-.cms-element-text {
+.junu-cms-static .cms-element-text {
   // Base typography setup with vertical rhythm
   --base-font-size: 1rem; // 16px
   --line-height: 1.65;
@@ -7,9 +7,8 @@
   font-size: var(--base-font-size);
   line-height: var(--line-height);
   margin: 0 auto;
-  max-width: 65ch; // Optimal for legal content readability
+  max-width: 65ch;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 
   // Responsive base font size
   @include media-breakpoint-up(md) {
@@ -17,51 +16,50 @@
     font-size: var(--base-font-size);
   }
 
-  // Headings with modular scale (1.25 ratio)
+  // Headings with a smaller modular scale (1.2 ratio)
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
-    margin-top: calc(var(--spacing-unit) * 1.5);
-    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    margin: calc(var(--spacing-unit) * 1.5) 0 calc(var(--spacing-unit) * 0.5);
     font-weight: 700;
-    position: relative;
   }
 
   h1 {
-    font-size: calc(var(--base-font-size) * 2.441); // ~39px or 44px
+    font-size: calc(var(--base-font-size) * 2); // ~32px or 36px (down from 2.441x)
+    position: relative;
     padding-bottom: 0.25rem;
     &::after {
       content: '';
       position: absolute;
-      width: 60px;
+      width: 50px;
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: currentColor;
+      background: currentColor;
       opacity: 0.3;
     }
   }
 
   h2 {
-    font-size: calc(var(--base-font-size) * 1.953); // ~31px or 35px
+    font-size: calc(var(--base-font-size) * 1.67); // ~27px or 30px (down from 1.953x)
   }
 
   h3 {
-    font-size: calc(var(--base-font-size) * 1.563); // ~25px or 28px
+    font-size: calc(var(--base-font-size) * 1.39); // ~22px or 25px (down from 1.563x)
     font-weight: 600;
   }
 
   h4 {
-    font-size: calc(var(--base-font-size) * 1.25); // ~20px or 22px
+    font-size: calc(var(--base-font-size) * 1.16); // ~19px or 21px (down from 1.25x)
     font-weight: 600;
   }
 
   h5 {
-    font-size: calc(var(--base-font-size) * 1); // ~16px or 18px
+    font-size: var(--base-font-size); // ~16px or 18px
     font-weight: 600;
   }
 
   h6 {
-    font-size: calc(var(--base-font-size) * 0.8); // ~13px or 14px
+    font-size: calc(var(--base-font-size) * 0.83); // ~13px or 15px (up slightly for readability)
     font-weight: 600;
     opacity: 0.85;
   }
@@ -71,7 +69,7 @@
     margin-bottom: calc(var(--spacing-unit) * 0.75);
   }
 
-  // Links (non-clickable styling since links were removed)
+  // Links
   a {
     text-decoration: underline;
     opacity: 0.9;
@@ -81,10 +79,11 @@
     }
   }
 
-  // Lists (unordered and ordered)
+  // Lists
   ul, ol {
     margin: calc(var(--spacing-unit) * 0.75) 0;
     padding-left: calc(var(--spacing-unit) * 1.5);
+    list-style-position: outside;
   }
 
   ul {
@@ -97,7 +96,6 @@
 
   li {
     margin-bottom: calc(var(--spacing-unit) * 0.25);
-    // Nested lists
     ul, ol {
       margin-top: calc(var(--spacing-unit) * 0.25);
       margin-bottom: 0;
@@ -111,15 +109,14 @@
     padding: 0.5rem 1rem;
     border-left: 2px solid currentColor;
     opacity: 0.9;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease;
 
     &:hover {
       opacity: 1;
-      transform: translateX(2px);
     }
 
     @include media-breakpoint-up(md) {
-      padding: 0.75rem 1.25rem;
+      padding: 0.75rem 1rem;
     }
   }
 
@@ -130,11 +127,10 @@
     border-left: 3px solid currentColor;
     font-style: italic;
     opacity: 0.85;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease;
 
     &:hover {
       opacity: 1;
-      transform: translateX(3px);
     }
 
     p {
@@ -142,7 +138,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1rem;
     }
   }
 
@@ -151,7 +147,7 @@
     width: 100%;
     margin: calc(var(--spacing-unit) * 1) 0;
     border-collapse: collapse;
-    font-size: calc(var(--base-font-size) * 0.9375); // ~15px
+    font-size: calc(var(--base-font-size) * 0.9375);
 
     th, td {
       padding: calc(var(--spacing-unit) * 0.5);
@@ -161,7 +157,7 @@
 
     th {
       font-weight: 600;
-      background-color: rgba(0, 0, 0, 0.03);
+      background: rgba(0, 0, 0, 0.03);
     }
 
     @include media-breakpoint-up(md) {
@@ -171,7 +167,6 @@
     }
   }
 
-  // Responsive table overflow
   @include media-breakpoint-down(md) {
     table {
       display: block;
@@ -187,22 +182,21 @@
     margin: calc(var(--spacing-unit) * 1) 0;
     display: block;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   // Code and preformatted text
   code {
     font-size: calc(var(--base-font-size) * 0.875);
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.15em 0.3em;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
   }
 
   pre {
     margin: calc(var(--spacing-unit) * 1) 0;
-    padding: 1rem;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.75rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
     overflow-x: auto;
     font-size: calc(var(--base-font-size) * 0.875);
 
@@ -244,10 +238,10 @@
     bottom: -0.25em;
   }
 
-  // Small text (for legal disclaimers)
+  // Small text
   small {
     display: block;
-    font-size: calc(var(--base-font-size) * 0.875); // ~14px or 15px
+    font-size: calc(var(--base-font-size) * 0.875);
     line-height: 1.5;
     margin-top: calc(var(--spacing-unit) * 1);
     opacity: 0.85;
