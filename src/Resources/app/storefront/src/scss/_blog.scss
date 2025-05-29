@@ -22,4 +22,27 @@
       display: none;
     }
   }
+  .shop-studio-blog-blog-post-detail-content__content--faq_text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .shop-studio-blog-blog-post-detail-content-faq-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .shop-studio-blog-blog-post-detail-content-faq-text__question {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+
+  .shop-studio-blog-blog-post-detail-content-faq-text__answer {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
