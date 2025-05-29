@@ -81,6 +81,9 @@
         }
         .finish-order-subtitle:not(:empty) {
             background-color: $BstEc_accentBgColorLight;
+            padding: 1rem;
+            border-radius: 10px;
+            color: var(--bs-heading-color);
         }
     }
 }
