@@ -1,20 +1,15 @@
-// Assuming Shopware's breakpoint mixins are available (e.g., from Bootstrap or Shopware's frontend setup)
-// Breakpoints typically include: xs (default), sm (576px), md (768px), lg (992px), xl (1200px), xxl (1400px)
-
 .junu-cms-static {
   .cms-element-text {
-    // Base typography styles for the container
+    // Base typography styles
     line-height: 1.6;
     font-size: 1rem; // 16px base
     margin: 0 auto;
-    max-width: 75ch; // Optimal line length for readability
+    max-width: 75ch; // Optimal line length
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
-    // Responsive font size scaling
+    // Responsive font size
     @include media-breakpoint-up(md) {
-      font-size: 1.125rem; // 18px for larger screens
+      font-size: 1.125rem; // 18px
     }
 
     // Headings
@@ -33,48 +28,35 @@
     h1 {
       font-size: 2.25rem; // 36px
       @include media-breakpoint-up(md) {
-        font-size: 3rem; // 48px
+        font-size: 2.5rem; // 40px
       }
     }
 
     h2 {
       font-size: 1.875rem; // 30px
       @include media-breakpoint-up(md) {
-        font-size: 2.25rem; // 36px
+        font-size: 2rem; // 32px
       }
     }
 
     h3 {
       font-size: 1.5rem; // 24px
-      @include media-breakpoint-up(md) {
-        font-size: 1.875rem; // 30px
-      }
     }
 
     h4 {
       font-size: 1.25rem; // 20px
-      @include media-breakpoint-up(md) {
-        font-size: 1.5rem; // 24px
-      }
     }
 
     h5 {
       font-size: 1.125rem; // 18px
-      @include media-breakpoint-up(md) {
-        font-size: 1.25rem; // 20px
-      }
     }
 
     h6 {
       font-size: 1rem; // 16px
-      @include media-breakpoint-up(md) {
-        font-size: 1.125rem; // 18px
-      }
     }
 
     // Paragraphs
     p {
-      margin-top: 0;
       margin-bottom: 1rem;
     }
 
@@ -82,7 +64,6 @@
     a {
       text-decoration: underline;
       transition: opacity 0.2s ease;
-
       &:hover {
         opacity: 0.8;
       }
@@ -91,7 +72,6 @@
     // Lists
     ul,
     ol {
-      margin-top: 0;
       margin-bottom: 1rem;
       padding-left: 1.5rem;
     }
@@ -106,118 +86,22 @@
 
     li {
       margin-bottom: 0.5rem;
-
-      ul,
-      ol {
-        margin-top: 0.5rem;
-        margin-bottom: 0;
-      }
     }
 
     // Blockquotes
     blockquote {
-      margin: 1.5rem 0;
-      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      padding-left: 1rem;
       border-left: 4px solid currentColor;
-      opacity: 0.8;
       font-style: italic;
-
-      p {
-        margin-bottom: 0;
-      }
-
-      @include media-breakpoint-up(md) {
-        padding: 1.5rem 2rem;
-      }
-    }
-
-    // Code and preformatted text
-    code {
-      font-size: 0.875em;
-      padding: 0.2em 0.4em;
-      border-radius: 4px;
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    pre {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      border-radius: 6px;
-      background-color: rgba(0, 0, 0, 0.05);
-      overflow-x: auto;
-      font-size: 0.875rem;
-
-      code {
-        padding: 0;
-        background: none;
-      }
-    }
-
-    // Tables
-    table {
-      width: 100%;
-      margin: 1.5rem 0;
-      border-collapse: collapse;
-      font-size: 0.9375rem; // 15px
-
-      th,
-      td {
-        padding: 0.75rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        text-align: left;
-      }
-
-      th {
-        font-weight: 600;
-      }
-
-      @include media-breakpoint-up(md) {
-        font-size: 1rem;
-        th,
-        td {
-          padding: 1rem;
-        }
-      }
-    }
-
-    // Table responsiveness
-    @include media-breakpoint-down(md) {
-      table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
     }
 
     // Images
     img {
       max-width: 100%;
       height: auto;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       display: block;
-    }
-
-    // Figures and captions
-    figure {
-      margin: 1.5rem 0;
-
-      img {
-        margin: 0;
-      }
-
-      figcaption {
-        margin-top: 0.5rem;
-        font-size: 0.875rem;
-        opacity: 0.7;
-        text-align: center;
-      }
-    }
-
-    // Horizontal rules
-    hr {
-      margin: 2rem 0;
-      border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     // Strong and emphasized text
@@ -227,37 +111,6 @@
 
     em {
       font-style: italic;
-    }
-
-    // Inline formatting
-    sup,
-    sub {
-      font-size: 0.75em;
-      line-height: 0;
-      position: relative;
-      vertical-align: baseline;
-    }
-
-    sup {
-      top: -0.5em;
-    }
-
-    sub {
-      bottom: -0.25em;
-    }
-
-    // Details and summary
-    details {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-
-      summary {
-        cursor: pointer;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
     }
   }
 }
