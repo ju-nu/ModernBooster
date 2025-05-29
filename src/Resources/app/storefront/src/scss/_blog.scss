@@ -1,6 +1,13 @@
 .junu {
-  .shop-studio-blog-blog-post-box::after {
-    margin-top: 0;
-    border: none;
+  .shop-studio-blog-blog-post-box {
+    position: relative;
+    &::after {
+      margin-top: 0 !important;
+      border: none;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+    }
   }
 }
