@@ -85,5 +85,8 @@
             border-radius: 10px;
             color: var(--bs-heading-color);
         }
+        .footer-bottom {
+            border-top: 1px solid $sw-border-color;
+        }
     }
 }
