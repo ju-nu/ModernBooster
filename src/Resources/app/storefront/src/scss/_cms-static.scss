@@ -1,209 +1,255 @@
-.junu-cms-static {
-  .cms-element-text {
-    // Base typography setup with vertical rhythm
-    --base-font-size: 1rem; // 16px
-    --line-height: 1.65; // Slightly looser for readability
-    --spacing-unit: 1rem; // Base unit for consistent spacing
+.cms-element-text {
+  // Base typography setup with vertical rhythm
+  --base-font-size: 1rem; // 16px
+  --line-height: 1.65;
+  --spacing-unit: 1rem;
 
+  font-size: var(--base-font-size);
+  line-height: var(--line-height);
+  margin: 0 auto;
+  max-width: 65ch; // Optimal for legal content readability
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  // Responsive base font size
+  @include media-breakpoint-up(md) {
+    --base-font-size: 1.125rem; // 18px
     font-size: var(--base-font-size);
-    line-height: var(--line-height);
-    margin: 0 auto;
-    max-width: 70ch; // Slightly tighter than before for better readability
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+  }
 
-    // Responsive base font size
+  // Headings with modular scale (1.25 ratio)
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    font-weight: 700;
+    position: relative;
+  }
+
+  h1 {
+    font-size: calc(var(--base-font-size) * 2.441); // ~39px or 44px
+    padding-bottom: 0.25rem;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: currentColor;
+      opacity: 0.3;
+    }
+  }
+
+  h2 {
+    font-size: calc(var(--base-font-size) * 1.953); // ~31px or 35px
+  }
+
+  h3 {
+    font-size: calc(var(--base-font-size) * 1.563); // ~25px or 28px
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: calc(var(--base-font-size) * 1.25); // ~20px or 22px
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: calc(var(--base-font-size) * 1); // ~16px or 18px
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: calc(var(--base-font-size) * 0.8); // ~13px or 14px
+    font-weight: 600;
+    opacity: 0.85;
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+  }
+
+  // Links (non-clickable styling since links were removed)
+  a {
+    text-decoration: underline;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // Lists (unordered and ordered)
+  ul, ol {
+    margin: calc(var(--spacing-unit) * 0.75) 0;
+    padding-left: calc(var(--spacing-unit) * 1.5);
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin-bottom: calc(var(--spacing-unit) * 0.25);
+    // Nested lists
+    ul, ol {
+      margin-top: calc(var(--spacing-unit) * 0.25);
+      margin-bottom: 0;
+    }
+  }
+
+  // Address
+  address {
+    font-style: normal;
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    padding: 0.5rem 1rem;
+    border-left: 2px solid currentColor;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
     @include media-breakpoint-up(md) {
-      --base-font-size: 1.125rem; // 18px
-      font-size: var(--base-font-size);
+      padding: 0.75rem 1.25rem;
+    }
+  }
+
+  // Blockquotes
+  blockquote {
+    margin: calc(var(--spacing-unit) * 1) 0;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid currentColor;
+    font-style: italic;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateX(3px);
     }
 
-    // Headings with a modular scale (1.25 ratio)
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      line-height: 1.2;
-      margin-top: calc(var(--spacing-unit) * 2);
-      margin-bottom: calc(var(--spacing-unit) * 0.5);
-      font-weight: 700;
-      transition: transform 0.2s ease; // Subtle animation on hover
-      position: relative;
-
-      &:hover {
-        transform: translateX(2px); // Slight nudge on hover for interactivity
-      }
-    }
-
-    h1 {
-      font-size: calc(var(--base-font-size) * 2.441); // ~39px (16px * 2.441)
-      @include media-breakpoint-up(md) {
-        font-size: calc(var(--base-font-size) * 2.441); // ~44px (18px * 2.441)
-      }
-    }
-
-    h2 {
-      font-size: calc(var(--base-font-size) * 1.953); // ~31px
-      @include media-breakpoint-up(md) {
-        font-size: calc(var(--base-font-size) * 1.953); // ~35px
-      }
-    }
-
-    h3 {
-      font-size: calc(var(--base-font-size) * 1.563); // ~25px
-    }
-
-    h4 {
-      font-size: calc(var(--base-font-size) * 1.25); // ~20px
-    }
-
-    h5 {
-      font-size: var(--base-font-size); // ~16px or 18px
-    }
-
-    h6 {
-      font-size: calc(var(--base-font-size) * 0.8); // ~13px or 14px
-      font-weight: 600;
-    }
-
-    // Paragraphs with consistent spacing
     p {
-      margin-bottom: var(--spacing-unit);
+      margin-bottom: 0;
     }
 
-    // Links with a creative hover effect
-    a {
-      text-decoration: none;
-      position: relative;
-      transition: color 0.2s ease;
+    @include media-breakpoint-up(md) {
+      padding: 0.75rem 1.5rem;
+    }
+  }
 
-      // Underline effect with pseudo-element
-      &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: -2px;
-        left: 0;
-        background-color: currentColor;
-        opacity: 0.5;
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
+  // Tables
+  table {
+    width: 100%;
+    margin: calc(var(--spacing-unit) * 1) 0;
+    border-collapse: collapse;
+    font-size: calc(var(--base-font-size) * 0.9375); // ~15px
 
-      &:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-        opacity: 1;
-      }
+    th, td {
+      padding: calc(var(--spacing-unit) * 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      text-align: left;
     }
 
-    // Lists with nested support
-    ul,
-    ol {
-      margin-bottom: var(--spacing-unit);
-      padding-left: calc(var(--spacing-unit) * 1.5);
+    th {
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.03);
     }
 
-    ul {
-      list-style-type: disc;
-    }
-
-    ol {
-      list-style-type: decimal;
-    }
-
-    li {
-      margin-bottom: calc(var(--spacing-unit) * 0.5);
-
-      // Nested lists
-      ul,
-      ol {
-        margin-top: calc(var(--spacing-unit) * 0.5);
-        margin-bottom: 0;
+    @include media-breakpoint-up(md) {
+      th, td {
+        padding: calc(var(--spacing-unit) * 0.75);
       }
     }
+  }
 
-    // Blockquotes with a creative touch
-    blockquote {
-      margin: var(--spacing-unit) 0;
-      padding: 0.5rem 1rem;
-      border-left: 3px solid currentColor;
-      font-style: italic;
-      opacity: 0.85;
-      position: relative;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-
-      &:hover {
-        opacity: 1;
-        transform: translateX(3px); // Subtle shift on hover
-      }
-
-      p {
-        margin-bottom: 0;
-      }
-
-      @include media-breakpoint-up(md) {
-        padding: 0.75rem 1.5rem;
-      }
-    }
-
-    // Tables for legal or structured content
+  // Responsive table overflow
+  @include media-breakpoint-down(md) {
     table {
-      width: 100%;
-      margin: var(--spacing-unit) 0;
-      border-collapse: collapse;
-      font-size: calc(var(--base-font-size) * 0.9375); // ~15px
-
-      th,
-      td {
-        padding: calc(var(--spacing-unit) * 0.5);
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        text-align: left;
-      }
-
-      th {
-        font-weight: 600;
-        background-color: rgba(0, 0, 0, 0.03);
-      }
-
-      @include media-breakpoint-up(md) {
-        th,
-        td {
-          padding: calc(var(--spacing-unit) * 0.75);
-        }
-      }
-    }
-
-    // Responsive table overflow
-    @include media-breakpoint-down(md) {
-      table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-    }
-
-    // Images with a subtle border
-    img {
-      max-width: 100%;
-      height: auto;
-      margin: var(--spacing-unit) 0;
       display: block;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      white-space: nowrap;
     }
+  }
 
-    // Strong and emphasized text
-    strong {
-      font-weight: 700;
-    }
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: calc(var(--spacing-unit) * 1) 0;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
 
-    em {
-      font-style: italic;
+  // Code and preformatted text
+  code {
+    font-size: calc(var(--base-font-size) * 0.875);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  pre {
+    margin: calc(var(--spacing-unit) * 1) 0;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    font-size: calc(var(--base-font-size) * 0.875);
+
+    code {
+      padding: 0;
+      background: none;
     }
+  }
+
+  // Horizontal rules
+  hr {
+    margin: calc(var(--spacing-unit) * 1.5) 0;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  // Strong and emphasized text
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  // Superscript and subscript
+  sup, sub {
+    font-size: calc(var(--base-font-size) * 0.75);
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  // Small text (for legal disclaimers)
+  small {
+    display: block;
+    font-size: calc(var(--base-font-size) * 0.875); // ~14px or 15px
+    line-height: 1.5;
+    margin-top: calc(var(--spacing-unit) * 1);
+    opacity: 0.85;
   }
 }
