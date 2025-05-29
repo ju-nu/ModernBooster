@@ -1,72 +1,75 @@
 .junu {
-    .junu-cms-blog {
-
-        .shop-studio-blog-blog-post-box__content__info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-box, .shop-studio-blog-blog-post-box {
-            background-color: #fff;
-            border-color: #fff;
-          }
-
-        .product-name, .shop-studio-blog-blog-post-box__content__info__title {
-            order: 1;
-            color: #2e2d2b;
-
-        }
-
-        .shop-studio-blog-blog-post-box__content__additional_info, .shop-studio-blog-blog-post-box__content__additional_info_bottom {
-            order: 3;
-        }
-
-        .product-description, .shop-studio-blog-blog-post-box__content__info__description {
-            order: 2;
-            color: #617477;
-            font-size: 0.9rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .shop-studio-blog-blog-post-box__content__additional_info__estimated-reading-time {
-            font-size: 0.8rem;
-            line-height: 0.8rem;
-            color: #2e2d2b;
-            font-weight: 600;
-            .icon {
-                color: #2e2d2b;
-                margin-right: 0.1rem;
-            }
-        }
-
-        .shop-studio-blog-blog-post-box__content__image__link__image {
-            border-radius: 20px;
-            filter: none;
-        }
-
-        .product-box:hover,
-        .shop-studio-blog-blog-post-box:hover {
-            border-color: #fff;
-        }
-
-        .product-box .card-body,
-        .shop-studio-blog-blog-post-box .card-body {
-            padding: 0;
-
-        }
-
+  .junu-cms-blog {
+    .shop-studio-blog-blog-post-box__content__info {
+      display: flex;
+      flex-direction: column;
     }
+
+    .product-box,
+    .shop-studio-blog-blog-post-box {
+      background-color: #fff;
+      border-color: #fff;
+    }
+
+    .product-name,
+    .shop-studio-blog-blog-post-box__content__info__title {
+      order: 1;
+      color: #2e2d2b;
+    }
+
+    .shop-studio-blog-blog-post-box__content__additional_info,
+    .shop-studio-blog-blog-post-box__content__additional_info_bottom {
+      order: 3;
+    }
+
+    .product-description,
+    .shop-studio-blog-blog-post-box__content__info__description {
+      order: 2;
+      color: #617477;
+      font-size: 0.9rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .shop-studio-blog-blog-post-box__content__additional_info__estimated-reading-time {
+      font-size: 0.8rem;
+      line-height: 0.8rem;
+      color: #2e2d2b;
+      font-weight: 600;
+      .icon {
+        color: #2e2d2b;
+        margin-right: 0.1rem;
+      }
+    }
+    .shop-studio-blog-blog-post-box__content__image__link {
+      filter: none;
+    }
+    .shop-studio-blog-blog-post-box__content__image__link__image {
+      border-radius: 20px;
+      filter: none;
+    }
+
+    .product-box:hover,
+    .shop-studio-blog-blog-post-box:hover {
+      border-color: #fff;
+    }
+
+    .product-box .card-body,
+    .shop-studio-blog-blog-post-box .card-body {
+      padding: 0;
+    }
+  }
 }
 
 @include media-breakpoint-up(sm) {
-    .junu {
-        .junu-cms-blog {
-            .product-box .product-action,
-            .shop-studio-blog-blog-post-box .product-action,
-            .product-box .shop-studio-blog-blog-post-box__content__info__actions,
-            .shop-studio-blog-blog-post-box .shop-studio-blog-blog-post-box__content__info__actions {
-                display: none !important;
-            }
-        }
+  .junu {
+    .junu-cms-blog {
+      .product-box .product-action,
+      .shop-studio-blog-blog-post-box .product-action,
+      .product-box .shop-studio-blog-blog-post-box__content__info__actions,
+      .shop-studio-blog-blog-post-box
+        .shop-studio-blog-blog-post-box__content__info__actions {
+        display: none !important;
+      }
     }
+  }
 }
