@@ -2,9 +2,9 @@
 
 {% block page_checkout_finish %}
     {% if config('JunuModernBooster.config.confettiEnabled') %}
-        {% set bodyAttributes = bodyAttributes|merge({'data-confetti-enabled': 'true'}) %}
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" as="script" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
+        <div data-confetti-enabled="true" data-confetti-plugin></div>
     {% endif %}
     {{ parent() }}
 {% endblock %}

@@ -2,9 +2,8 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class ConfettiPlugin extends Plugin {
     init() {
-        // Check if confetti is enabled in plugin configuration
+        // Check if confetti is enabled via data attribute
         const confettiEnabled = this.el.dataset.confettiEnabled === 'true';
-
         if (!confettiEnabled) {
             return;
         }

@@ -14,7 +14,7 @@ PluginManager.register(
 PluginManager.register(
     'Confetti',
     ConfettiPlugin,
-    'body.is-ctl-checkout.is-act-finishpage'
+    '[data-confetti-plugin]'
 );
 
 if (module.hot) {
