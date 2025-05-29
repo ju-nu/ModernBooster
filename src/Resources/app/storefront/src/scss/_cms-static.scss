@@ -1,90 +1,33 @@
 .junu-cms-static {
   .cms-element-text {
-    // Inherit text color
-    color: inherit;
-
-    // General typography rules
-    line-height: 1.75;
+    font-family: 'Roboto', sans-serif; // Ensure Roboto is applied
     font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 80ch; // Wider than 65ch, ~640–800px in Roboto
+    margin: 0 auto;
+    padding: 1rem;
 
-    p {
-      margin-top: 1.25em;
-      margin-bottom: 1.25em;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.25;
-      margin-top: 2em;
-      margin-bottom: 1em;
-      color: inherit;
-    }
-
+    /* Rest of the styles unchanged */
+    p { margin-bottom: 1.25rem; }
+    h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.3; margin-top: 2rem; margin-bottom: 1rem; }
     h1 { font-size: 2.25rem; }
     h2 { font-size: 1.875rem; }
     h3 { font-size: 1.5rem; }
     h4 { font-size: 1.25rem; }
     h5 { font-size: 1.125rem; }
     h6 { font-size: 1rem; }
-
-    ul, ol {
-      padding-left: 1.5em;
-      margin-top: 1.25em;
-      margin-bottom: 1.25em;
-    }
-
-    li {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-
-    blockquote {
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
-      padding-left: 1em;
-      border-left: 0.25em solid currentColor;
-      font-style: italic;
-      color: inherit;
-    }
-
-    a {
-      text-decoration: underline;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    pre, code {
-      font-family: monospace;
-      background-color: transparent;
-      color: inherit;
-    }
-
-    strong {
-      font-weight: 700;
-    }
-
-    em {
-      font-style: italic;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
-
-      th, td {
-        border: 1px solid currentColor;
-        padding: 0.5em;
-      }
-
-      th {
-        text-align: left;
-      }
-    }
+    ul, ol { margin: 1.25rem 0; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    blockquote { border-left: 4px solid currentColor; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; opacity: 0.9; }
+    a { text-decoration: underline; transition: opacity 0.2s ease; &:hover { opacity: 0.8; } }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+    code { font-family: monospace; background: rgba(0, 0, 0, 0.05); padding: 0.2rem 0.4rem; border-radius: 4px; }
+    img { max-width: 100%; height: auto; margin: 1.5rem 0; display: block; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    th, td { padding: 0.75rem; border: 1px solid currentColor; opacity: 0.9; }
+    th { font-weight: 600; text-align: left; }
+    hr { border: 0; border-top: 1px solid currentColor; margin: 2rem 0; opacity: 0.9; }
   }
 }
