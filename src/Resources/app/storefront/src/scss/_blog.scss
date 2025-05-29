@@ -1,9 +1,13 @@
 .junu {
-    &.is-ctl-blogpost {
-        nav[aria-label="breadcrumb"] {
-            display: none;
-        }
+  &.is-ctl-blogpost {
+    nav[aria-label="breadcrumb"] {
+      display: none;
     }
+    img.shop-studio-blog-blog-post-detail-main-image__image {
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  }
   .shop-studio-blog-blog-post-box {
     position: relative;
     &::after {
@@ -15,7 +19,7 @@
       align-items: center;
     }
     .shop-studio-blog-blog-post-box__content__info__actions {
-        display: none;
+      display: none;
     }
   }
 }
