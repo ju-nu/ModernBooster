@@ -1,516 +1,505 @@
 .gallery-slider {
-    border-radius: 20px;
-    overflow: hidden;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .gallery-slider-controls-prev {
-    left: 10px;
+  left: 10px;
 }
 
 .gallery-slider-controls-next {
-    right: 10px;
+  right: 10px;
 }
 
 .gallery-slider-thumbnails-container.is-underneath .tns-outer {
-    margin: 0;
+  margin: 0;
 }
 
 .twt-social-proofing-infotext {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.75rem !important;
-    margin: 0 !important;
-    font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem !important;
+  margin: 0 !important;
+  font-size: 1rem;
 }
-
-
-
 
 .gallery-slider-item:not(.modal-body *),
 .gallery-slider-single-image:not(.modal-body *) {
-    background-color: #f2f9f7;
+  background-color: #f2f9f7;
 }
 
 .gallery-slider-item.is-cover .gallery-slider-image,
 .gallery-slider-single-image.is-cover .gallery-slider-image {
-    object-fit: contain;
-    padding: 3.25rem 0;
+  object-fit: contain;
+  padding: 3.25rem 0;
 }
 
 .gallery-slider-thumbnails-item-inner {
-    background-color: #f2f9f7;
-    border-radius: 10px;
+  background-color: #f2f9f7;
+  border-radius: 10px;
 }
 
-.cms-element-buy-box .twt-product-detail-benefits+div {
-    background-color: #f2f9f7;
-    border-radius: 10px;
-    padding: 1rem 1.75rem 0;
-    overflow: hidden;
+.cms-element-buy-box .twt-product-detail-benefits + div {
+  background-color: #f2f9f7;
+  border-radius: 10px;
+  padding: 1rem 1.75rem 0;
+  overflow: hidden;
 }
 
 .product-detail-form-container {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+:not(.offcanvas) {
+  .product-detail-buy.right .junu-product-steps {
+    min-height: 5rem;
+  }
 }
 
 .product-detail-buy.right {
-    .product-detail-name {
-        margin-bottom: 0;
-    }
+  .product-detail-name {
+    margin-bottom: 0;
+  }
 
-    .twt-product-detail-short-description {
-        font-weight: 500;
-        margin-bottom: 1rem;
-        line-height: 1.25rem;
-        color: #424240;
-    }
+  .twt-product-detail-short-description {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.25rem;
+    color: #424240;
+  }
 
-    ul {
-        margin-left: 0;
-    }
+  ul {
+    margin-left: 0;
+  }
 
-    li {
-        display: flex;
-        align-items: center;
-    }
+  li {
+    display: flex;
+    align-items: center;
+  }
 
-    .twt-product-detail-benefits {
-        margin-bottom: 1rem;
+  .twt-product-detail-benefits {
+    margin-bottom: 1rem;
 
-        i {
-            color: #f9615a;
-            margin-right: 0.5rem;
-        }
+    i {
+      color: #f9615a;
+      margin-right: 0.5rem;
     }
+  }
 }
 
 &.is-ctl-navigation {
-    .junu-product-steps .current-price-container {
-        align-items: center;
-    }
+  .junu-product-steps .current-price-container {
+    align-items: center;
+  }
 }
 
 .junu-product-steps {
-    font-family: Arial, sans-serif;
-    min-height: 5rem;
-    align-content: center;
+  font-family: Arial, sans-serif;
 
-    a {
-        text-decoration: none;
+  align-content: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  .pricing-steps-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .pricing-steps-quantity {
+    text-align: left;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .pricing-steps-grid {
+    display: flex;
+    gap: 0;
+    /* Remove the gap between selectors */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .pricing-step {
+    flex: 1;
+    border: 2px solid #d4d4d4;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    border-radius: 0;
+    /* Reset default border-radius */
+    /* Remove right border for all steps except the last one to avoid double borders */
+    border-right: none;
+
+    /* Apply rounded corners to the leftmost and rightmost steps */
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
 
-    .pricing-steps-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 10px;
+    &:last-child {
+      border-right: 2px solid #d4d4d4;
+      /* Restore right border for the last step */
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
 
-    .pricing-steps-quantity {
-        text-align: left;
+    &.selected {
+      background-color: #ffe6e6;
+      /* Apply red border on all sides */
+      border: 2px solid #ff6666;
+      /* Ensure the selected button is above its siblings */
+      position: relative;
+      z-index: 2;
+      /* Increase z-index to ensure borders are visible */
+      /* Ensure the right border is visible even for non-last steps */
+      border-right: 2px solid #ff6666;
+
+      /* Prevent double borders by adjusting the next sibling's left border */
+      & + .pricing-step {
+        border-left: none;
+      }
+
+      /* Fix left border visibility for non-first selected steps */
+      &:not(:first-child) {
+        border-left: 2px solid #ff6666;
+      }
+
+      transition-property: color, background-color, text-decoration-color, fill,
+        stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+
+    &.clicked {
+      animation: pop 0.3s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.03);
+      }
+
+      /* Reduced scale for subtler effect */
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #fff;
+
+      &.recommended {
+        background-color: #01856f;
+      }
+
+      &.best-value {
+        background-color: #f9615a;
+      }
+    }
+
+    .quantity {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.33rem;
+    }
+
+    .unit-price {
+      font-size: 0.95rem;
+      line-height: 0.95rem;
+      color: #333;
+      justify-content: center;
+      align-items: center;
+      column-gap: 0.15rem;
+
+      .price {
+        font-weight: 600;
+        color: #e96045;
+      }
+
+      .old-price {
         font-size: 0.75rem;
-        margin: 0;
+        font-weight: 500;
+        color: grey;
+      }
+    }
+  }
+
+  .current-price-container {
+    display: flex;
+    margin-top: 16px;
+    flex-direction: column;
+
+    .list-price-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      margin-bottom: -6px;
+      color: #666;
+
+      .list-price-label {
+        margin-right: 8px;
+        font-weight: normal;
+      }
+
+      .list-price-price {
+        font-weight: normal;
+      }
     }
 
-    .pricing-steps-grid {
-        display: flex;
-        gap: 0;
-        /* Remove the gap between selectors */
-        margin-bottom: 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    .current-price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #2e2d2b;
+
+      &.reduced {
+        color: #e96045;
+      }
     }
+  }
 
-    .pricing-step {
-        flex: 1;
-        border: 2px solid #d4d4d4;
-        padding: 10px;
-        text-align: center;
-        background-color: #fff;
-        position: relative;
-        border-radius: 0;
-        /* Reset default border-radius */
-        /* Remove right border for all steps except the last one to avoid double borders */
-        border-right: none;
+  .price-and-discount {
+    display: flex;
+    align-items: center;
+  }
 
-        /* Apply rounded corners to the leftmost and rightmost steps */
-        &:first-child {
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-
-        &:last-child {
-            border-right: 2px solid #d4d4d4;
-            /* Restore right border for the last step */
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-
-
-
-        &.selected {
-            background-color: #ffe6e6;
-            /* Apply red border on all sides */
-            border: 2px solid #ff6666;
-            /* Ensure the selected button is above its siblings */
-            position: relative;
-            z-index: 2;
-            /* Increase z-index to ensure borders are visible */
-            /* Ensure the right border is visible even for non-last steps */
-            border-right: 2px solid #ff6666;
-
-            /* Prevent double borders by adjusting the next sibling's left border */
-            &+.pricing-step {
-                border-left: none;
-            }
-
-            /* Fix left border visibility for non-first selected steps */
-            &:not(:first-child) {
-                border-left: 2px solid #ff6666;
-            }
-
-            transition-property: color,
-            background-color,
-            text-decoration-color,
-            fill,
-            stroke,
-            opacity,
-            box-shadow,
-            transform,
-            filter,
-            backdrop-filter;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
-
-        }
-
-        &.clicked {
-            animation: pop 0.3s ease-in-out;
-        }
-
-        @keyframes pop {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.03);
-            }
-
-            /* Reduced scale for subtler effect */
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .badge {
-            position: absolute;
-            top: -13px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 1px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: #fff;
-
-            &.recommended {
-                background-color: #01856f;
-            }
-
-            &.best-value {
-                background-color: #f9615a;
-            }
-        }
-
-        .quantity {
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.33rem;
-        }
-
-        .unit-price {
-            font-size: 0.95rem;
-            line-height: 0.95rem;
-            color: #333;
-            justify-content: center;
-            align-items: center;
-            column-gap: 0.15rem;
-
-            .price {
-                font-weight: 600;
-                color: #e96045;
-            }
-
-            .old-price {
-                font-size: 0.75rem;
-                font-weight: 500;
-                color: grey;
-            }
-        }
-    }
-
-    .current-price-container {
-        display: flex;
-        margin-top: 16px;
-        flex-direction: column;
-
-        .list-price-wrapper {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.875rem;
-            margin-bottom: -6px;
-            color: #666;
-
-            .list-price-label {
-                margin-right: 8px;
-                font-weight: normal;
-            }
-
-            .list-price-price {
-                font-weight: normal;
-            }
-        }
-
-        .current-price {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #2e2d2b;
-
-            &.reduced {
-                color: #e96045;
-            }
-        }
-    }
-
-
-    .price-and-discount {
-        display: flex;
-        align-items: center;
-    }
-
-    .price-note {
-        font-size: 0.8em;
-        color: #666;
-        margin-top: 5px;
-    }
+  .price-note {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+  }
 }
 
 .product-detail-buy .btn-buy {
-    column-gap: 0.5rem;
-    line-height: 64px;
-    border-radius: 6px;
-    font-size: 1.15rem;
-    line-height: 3rem;
+  column-gap: 0.5rem;
+  line-height: 64px;
+  border-radius: 6px;
+  font-size: 1.15rem;
+  line-height: 3rem;
 
-    &::after {
-        content: "\2192";
-        /* Right arrow */
-    }
+  &::after {
+    content: "\2192";
+    /* Right arrow */
+  }
 }
 
 .delivery-information.delivery-available {
-    margin-bottom: 1rem;
-    font-size: 0.875rem;
-    color: #2e2d2b;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #2e2d2b;
 
-    i {
-        color: #f9615a;
-        margin-right: 0.25rem;
-    }
+  i {
+    color: #f9615a;
+    margin-right: 0.25rem;
+  }
 
-    .in-stock {
-        color: #f9615a;
-    }
+  .in-stock {
+    color: #f9615a;
+  }
 
-    .delivery-status-indicator.bg-success {
-        display: none !important;
-    }
+  .delivery-status-indicator.bg-success {
+    display: none !important;
+  }
 }
 
 .junu-product-usp {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
-    font-size: 0.85rem;
-    row-gap: 0.35rem;
-    white-space: nowrap;
-    /* Prevents text wrapping */
-    margin: 1rem 0;
-    color: #2e2d2b;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  font-size: 0.85rem;
+  row-gap: 0.35rem;
+  white-space: nowrap;
+  /* Prevents text wrapping */
+  margin: 1rem 0;
+  color: #2e2d2b;
 
+  i {
+    margin-right: 0.5rem;
+    width: 0.875rem;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  div:first-child {
     i {
-        margin-right: 0.5rem;
-        width: 0.875rem;
+      color: #f9615a;
     }
 
-    div {
-        display: flex;
-        align-items: center;
+    strong {
+      color: #f9615a;
     }
-
-    div:first-child {
-        i {
-            color: #f9615a;
-        }
-
-        strong {
-            color: #f9615a;
-        }
-    }
-
-
+  }
 }
 
 .discount-badge {
-    position: relative;
-    margin-left: 10px;
-    padding: 3px 8px 3px 16px !important;
-    /* Rounded 2.8px to 3px for consistency */
-    background: var(--sale-badge-bg, #f68e7a);
-    color: #fff !important;
-    font-size: 13px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 1;
-    /* Matches font-size for single-line text */
-    display: inline-block;
-    height: 19px;
-    /* Matches font-size (13px) + padding (3px + 3px) */
-    box-sizing: border-box;
-    border-top-right-radius: 3px !important;
-    border-bottom-right-radius: 3px !important;
-    letter-spacing: -0.2px;
+  position: relative;
+  margin-left: 10px;
+  padding: 3px 8px 3px 16px !important;
+  /* Rounded 2.8px to 3px for consistency */
+  background: var(--sale-badge-bg, #f68e7a);
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1;
+  /* Matches font-size for single-line text */
+  display: inline-block;
+  height: 19px;
+  /* Matches font-size (13px) + padding (3px + 3px) */
+  box-sizing: border-box;
+  border-top-right-radius: 3px !important;
+  border-bottom-right-radius: 3px !important;
+  letter-spacing: -0.2px;
 }
 
 .base-price {
-    font-size: 0.75rem;
-    margin-left: auto;
+  font-size: 0.75rem;
+  margin-left: auto;
 }
 
 /* Disable ::before to prevent any unexpected lines */
 .discount-badge::before {
-    content: none !important;
-    display: none !important;
+  content: none !important;
+  display: none !important;
 }
 
 /* Override all commented properties for ::after to maintain the arrow */
 .discount-badge::after {
-    content: '';
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: -10px !important;
-    transform: translateY(-50%);
-    border: 10px solid #f2f9f7;
-    border-right-color: var(--sale-badge-bg, #f68e7a) !important;
-    width: auto !important;
-    height: auto !important;
-    bottom: auto !important;
-    right: auto !important;
-    background-color: transparent !important;
-    transition: border-right-color 0.3s ease;
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: -10px !important;
+  transform: translateY(-50%);
+  border: 10px solid #f2f9f7;
+  border-right-color: var(--sale-badge-bg, #f68e7a) !important;
+  width: auto !important;
+  height: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  background-color: transparent !important;
+  transition: border-right-color 0.3s ease;
 }
 
 /* Hover state for the arrow */
 .discount-badge:hover::after {
-    border-right-color: var(--sale-badge-bg, #f68e7a);
+  border-right-color: var(--sale-badge-bg, #f68e7a);
 }
 
 .product-review-rating {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .product-detail-tax-container {
-    line-height: 0.85rem;
+  line-height: 0.85rem;
 }
 
 .product-detail-tax-link {
-    color: #617477;
+  color: #617477;
 }
 
 .gallery-slider-thumbnails-item-inner {
-    border-width: 2px;
-    border-color: transparent;
+  border-width: 2px;
+  border-color: transparent;
 }
 
 .twt-product-detail-benefits .twt-product-detail-benefits-list li {
-    margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 img.junu-product-payment-logos {
+  border-radius: 5px;
+  height: 25px;
+  width: auto;
+  max-height: 25px;
+
+  @include media-breakpoint-up(md) {
+    border-radius: 7px;
+    height: 30px;
+    max-height: 30px;
+  }
+
+  @include media-breakpoint-up(lg) {
     border-radius: 5px;
-    height: 25px;
-    width: auto;
-    max-height: 25px;
-
-    @include media-breakpoint-up(md) {
-        border-radius: 7px;
-        height: 30px;
-        max-height: 30px;
-    }
-
-    @include media-breakpoint-up(lg) {
-        border-radius: 5px;
-        height: 35px;
-        max-height: 35px;
-    }
+    height: 35px;
+    max-height: 35px;
+  }
 }
 
 .junu-product-guarantee-banner {
+  display: flex;
+  align-items: center;
+  /* Vertically center the content */
+  background-color: #e5f3f0;
+  margin: 1rem -1.5rem 0;
+  padding: 1rem 3rem;
+  width: calc(100% + 3rem);
+  max-width: none;
+  column-gap: 1rem;
+
+  .junu-product-image-container {
     display: flex;
-    align-items: center;
-    /* Vertically center the content */
-    background-color: #e5f3f0;
-    margin: 1rem -1.5rem 0;
-    padding: 1rem 3rem;
-    width: calc(100% + 3rem);
-    max-width: none;
-    column-gap: 1rem;
+    flex-shrink: 0;
+    /* Prevent the image container from shrinking */
+    width: 80px;
+    /* Explicit width for the image container */
+    height: 80px;
+    /* Explicit height for the image container */
 
-    .junu-product-image-container {
-        display: flex;
-        flex-shrink: 0;
-        /* Prevent the image container from shrinking */
-        width: 80px;
-        /* Explicit width for the image container */
-        height: 80px;
-        /* Explicit height for the image container */
+    img {
+      width: 100%;
+      /* Scale image to fit the container */
+      height: 100%;
+      object-fit: contain;
+      /* Ensure the image scales without distortion */
+    }
+  }
 
-        img {
-            width: 100%;
-            /* Scale image to fit the container */
-            height: 100%;
-            object-fit: contain;
-            /* Ensure the image scales without distortion */
-        }
+  .junu-product-text-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Allow the text container to take remaining space */
+    font-size: 0.875rem;
+    color: #2e2d2b;
+    padding: 0.5rem 0;
+
+    .junu-product-title {
+      font-weight: bold;
+      line-height: 1.5rem;
+      margin: 0;
+      /* Remove default margins for consistency */
     }
 
-    .junu-product-text-container {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        /* Allow the text container to take remaining space */
-        font-size: 0.875rem;
-        color: #2e2d2b;
-        padding: 0.5rem 0;
-
-        .junu-product-title {
-            font-weight: bold;
-            line-height: 1.5rem;
-            margin: 0;
-            /* Remove default margins for consistency */
-        }
-
-        .junu-product-description {
-            line-height: 1rem;
-            margin: 0;
-            /* Remove default margins for consistency */
-        }
+    .junu-product-description {
+      line-height: 1rem;
+      margin: 0;
+      /* Remove default margins for consistency */
     }
+  }
 }
 
 .is-ctl-product {
-    .cms-breadcrumb.container {
-        display: none;
-    }
+  .cms-breadcrumb.container {
+    display: none;
+  }
 }
