@@ -1,5 +1,5 @@
 .junu {
-    .is-ctl-blogpost {
+    &.is-ctl-blogpost {
         nav[aria-label="breadcrumb"] {
             display: none;
         }
