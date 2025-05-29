@@ -276,7 +276,8 @@
                 /* Vertically center the images */
             }
 
-            .twt-awards-custom-image-container {
+            .twt-awards-custom-image-container,
+            .twt-awards-custom-image-link {
                 margin: 0 10px 0 0 !important;
 
                 &:last-child {
