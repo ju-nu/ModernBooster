@@ -21,7 +21,7 @@ PluginManager.register(
 PluginManager.register(
     'WhitespaceCleaner',
     WhitespaceCleanerPlugin,
-    'body.is-act-finishpage .finish-order-subtitle' // Selector for plugin
+    'body.junu.is-act-finishpage .finish-order-subtitle' // Selector for plugin
 );
 
 if (module.hot) {
