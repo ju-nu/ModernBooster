@@ -46,6 +46,12 @@
     }
 
     @include media-breakpoint-down(lg) {
+      .col-12 {
+        height: auto;
+      }
+      .twt-advanced-teaser-image-container {
+        min-height: unset;
+      }
       .twt-advanced-teaser-content {
         display: block;
         padding-top: 320px;
