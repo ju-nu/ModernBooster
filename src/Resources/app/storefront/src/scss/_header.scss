@@ -3,6 +3,9 @@
     .header-actions-col {
       padding-top: 10px;
     }
+    .header-logo-col {
+      display: none;
+    }
   }
   @media (max-width: 1199px) {
     header.header-main .twt-sticky-header-menu-button {
