@@ -199,6 +199,9 @@
         display: flex;
         flex-wrap: wrap;
         align-items: stretch; // Ensures all columns have the same height
+        @include media-breakpoint-down(lg) {
+            gap: 1rem;
+        }
 
         .twt-column {
             display: flex;
