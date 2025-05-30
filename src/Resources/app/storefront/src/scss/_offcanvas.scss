@@ -3,6 +3,11 @@
     .offcanvas-close {
       background-color: #fff;
       border: 0;
+      &:focus,
+      &:active,
+      &:focus-within {
+        background-color: #fff;
+      }
     }
     .navigation-offcanvas-link {
       font-size: 1.05rem;
