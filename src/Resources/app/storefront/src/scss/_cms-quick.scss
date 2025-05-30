@@ -43,9 +43,14 @@
         max-width: 50%;
       }
     }
+    @include media-breakpoint-down(lg) {
+      &.quick-box .twt-hero-teaser-image-container {
+        min-height: 210px !important;
+      }
+    }
 
     .twt-hero-teaser-text {
-       @include media-breakpoint-down(lg) {
+      @include media-breakpoint-down(lg) {
         display: none;
       }
     }
@@ -53,10 +58,6 @@
     .twt-hero-teaser-image-container {
       position: relative;
       transition: transform 0.5s ease;
-      /* Add transition for smooth scaling */
-      @include media-breakpoint-down(lg) {
-        min-height: 210px;
-      }
     }
 
     &:hover {
