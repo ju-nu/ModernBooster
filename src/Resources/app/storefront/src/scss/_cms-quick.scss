@@ -48,6 +48,9 @@
       position: relative;
       transition: transform 0.5s ease;
       /* Add transition for smooth scaling */
+      @include media-breakpoint-down(lg) {
+        max-height: 210px;
+      }
     }
 
     &:hover {
