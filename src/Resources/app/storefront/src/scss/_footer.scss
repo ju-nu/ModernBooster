@@ -224,6 +224,9 @@
         margin: 0;
         row-gap: 0.5rem;
         justify-content: center;
+        @include media-breakpoint-up(md) {
+            flex-wrap: nowrap;
+        }
 
         img.footer-logo-image {
             border-radius: 5px;
@@ -234,7 +237,7 @@
                 border-radius: 7px;
                 height: 40px;
                 max-height: 40px;
-                flex-wrap: nowrap;
+              
             }
 
             @include media-breakpoint-up(lg) {
