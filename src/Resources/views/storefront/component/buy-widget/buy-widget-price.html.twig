@@ -1,7 +1,6 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-price.html.twig' %}
 
-{% block buy_widget_price_inner %}
-    {# Custom Steps Section #}
+{# {% block buy_widget_price_inner %}
     {% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
     {% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
     {% if isCustomStepsActive and hasCustomProducts %}
@@ -49,7 +48,6 @@
                             {% set unitName = referencedProduct.unit ? referencedProduct.unit.shortCode : null %}
                             {% set basePriceText = referencePrice and referenceUnit and unitName ? "(#{referencePrice} / #{referenceUnit} #{unitName})" : null %}
 
-                            {# Store step data for JavaScript as strings #}
                             {% set stepData = stepData|merge([{
                                 unitPrice: unitPrice,
                                 listPrice: listPrice,
@@ -59,7 +57,6 @@
                                 productUrl: productUrl
                             }]) %}
 
-                            {# Conditional div or a tag based on isSelected #}
                             {% if isSelected %}
                                 <div class="pricing-step{{ isSelected ? ' selected' : '' }}"
                                      data-product-id="{{ referencedProduct.id }}"
@@ -142,7 +139,6 @@
                 {% endfor %}
             </div>
 
-            {# Current Price Container (unchanged) #}
             <div class="current-price-container">
                 {% if product.calculatedPrice.listPrice %}
                     <div class="list-price-wrapper">
@@ -176,7 +172,6 @@
                 </div>
             </div>
 
-            {# Updated JavaScript with Accessibility and Analytics #}
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const pricingSteps = document.querySelectorAll('.pricing-step');
@@ -278,7 +273,6 @@
             </script>
         </section>
     {% else %}
-        {# Fallback Tiered Pricing (unchanged) #}
         {% if product.calculatedPrices|length > 0 %}
             <div class="junu-product-steps">
                 <h3 class="pricing-steps-title">Buy more and Save</h3>
@@ -295,7 +289,6 @@
                         {% set unitName = product.unit ? product.unit.shortCode : null %}
                         {% set basePriceText = referencePrice and referenceUnit and unitName ? "(#{referencePrice} / #{referenceUnit} #{unitName})" : null %}
 
-                        {# Store tier data for JavaScript as strings #}
                         {% set tierData = tierData|merge([{
                             unitPrice: unitPrice,
                             listPrice: listPrice,
@@ -305,13 +298,11 @@
 
                         <div
                             class="pricing-step {{ isSelected ? 'selected' : '' }}" data-quantity="{{ loop.index }}" data-step-index="{{ loop.index0 }}" style="cursor: pointer;">
-                            {# Badges #}
                             {% if loop.index == 2 %}
                                 <span class="badge recommended">Recommended</span>
                             {% elseif loop.index == 3 %}
                                 <span class="badge best-value">Best Value</span>
                             {% endif %}
-                            {# Quantity and Price #}
                             <div class="quantity">
                                 {{ loop.index }}x
                             </div>
@@ -367,7 +358,6 @@
                 </div>
             </div>
 
-            {# Inline JavaScript for Handling Clicks #}
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const pricingSteps = document.querySelectorAll('.pricing-step');
@@ -436,7 +426,6 @@
                 });
             </script>
         {% else %}
-            {# Fallback for Single Price #}
             {% set price = product.calculatedPrice %}
             {% if product.calculatedPrices|length == 1 %}
                 {% set price = product.calculatedPrices.first %}
@@ -495,3 +484,4 @@
         {% endif %}
     {% endif %}
 {% endblock %}
+ #}
