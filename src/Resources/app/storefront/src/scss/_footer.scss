@@ -234,6 +234,7 @@
                 border-radius: 7px;
                 height: 40px;
                 max-height: 40px;
+                flex-wrap: nowrap;
             }
 
             @include media-breakpoint-up(lg) {
