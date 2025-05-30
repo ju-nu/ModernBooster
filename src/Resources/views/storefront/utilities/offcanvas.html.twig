@@ -17,7 +17,7 @@
 
 		{% block layout_header_logo_image_default %}
 			{% if theme_config('sw-logo-desktop') %}
-				<img src="{{ theme_config('sw-logo-desktop')|sw_encode_url }}" alt="{{ context.salesChannel.name }}" class="img-fluid header-logo-main-img">
+				<img src="{{ theme_config('sw-logo-desktop')|sw_encode_url }}" alt="{{ context.salesChannel.name }}" class="img-fluid header-logo-main-img" loading="lazy">
 			{% endif %}
 		{% endblock %}
 	</picture>
