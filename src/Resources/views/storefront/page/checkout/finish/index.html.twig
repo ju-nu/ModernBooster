@@ -1,11 +1,23 @@
 {% sw_extends '@Storefront/storefront/page/checkout/finish/index.html.twig' %}
 
 {% block page_checkout_finish %}
-    {% if config('JunuModernBooster.config.confettiEnabled') %}
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-        <div data-confetti-enabled="true" data-confetti-plugin></div>
-    {% endif %}
-    {{ parent() }}
+	{% if config('JunuModernBooster.config.confettiEnabled') %}
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+		<div data-confetti-enabled="true" data-confetti-plugin></div>
+	{% endif %}
+
+
+	{% set order = page.order %}
+	{% set orderId = order.orderNumber %}
+	{% set amount = order.amountNet|number_format(2, '.', '') %}
+	{% set currency = order.currency.isoCode ?? 'EUR' %}
+	{% set customerId = order.orderCustomer.customerNumber %}
+	{% set products = order.lineItems|map(l => l.payload.productNumber)|join('|') %}
+	{% set coupon = order.lineItems|filter(l => l.type == 'promotion')|map(l => l.label)|join('|') %}
+
+	<script src="https://nextleveldefend.com/conversion.js?cid=110&eid=218&orderid={{ orderId|url_encode }}&amount={{ amount|url_encode }}&clickid=&customerid={{ customerId|default('')|url_encode }}&products={{ products|url_encode }}&coupon={{ coupon|default('')|url_encode }}&currency={{ currency|url_encode }}"></script>
+
+	{{ parent() }}
 {% endblock %}
 
 {% block page_checkout_additional_finish %}{% endblock %}

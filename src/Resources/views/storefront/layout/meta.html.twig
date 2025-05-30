@@ -1,3 +1,8 @@
 {% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
 
 {% block layout_head_meta_tags_general_author %}Sebastian Gräbner, JUNU Marketing Group LTD, sebastian@ju.nu{% endblock %}
+
+{% block layout_head_javascript_tracking %}
+    {{ parent() }}
+    <script src="https://nextleveldefend.com/defend.js?cid=110"></script>
+{% endblock %}
