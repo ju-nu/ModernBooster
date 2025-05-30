@@ -46,9 +46,6 @@
     }
 
     @include media-breakpoint-down(lg) {
-      .col-12 {
-        height: auto;
-      }
       .twt-advanced-teaser-image-container {
         min-height: unset;
       }
@@ -93,6 +90,11 @@
         object-position: right center;
         object-fit: contain;
       }
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    .cms-block-twt-advanced-teaser .col-12 {
+      height: auto;
     }
   }
 }
