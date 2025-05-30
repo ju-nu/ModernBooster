@@ -1,0 +1,38 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/navigation.html.twig' %}
+
+
+{% block utilities_offcanvas_content %}
+	{{ parent() }}
+	<div class="cms-section bg-color cms-section-default ju-cms-contact" style="background-color: #018670;">
+		<section class="cms-section-default boxed">
+			<div class="cms-block bg-color twt-cms-block-reset pos-0 cms-block-twt-grid-two-column position-relative" style="background-color: #018670;">
+				<div class="cms-block-container">
+					<div class="cms-block-container-row row cms-row">
+						<div class="column-1 col-6 twt-column left first" data-cms-element-id="some-unique-id">
+							<div class="cms-element-html">
+								<div class="ju-contact-box">
+									<i class="fa-solid fa-phone" style="color: #fff;"></i>
+									<div>
+										<div class="usp-headline h3" style="color: #fff;">Rufen Sie uns gern an</div>
+										<a href="tel:+493057713100" class="usp-text" style="color: #fff;">+49 30 57713100</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="column-2 col-6 twt-column right last" data-cms-element-id="01965f19e54074d99df2c6cfd14e2d22">
+							<div class="cms-element-html">
+								<div class="ju-contact-box">
+									<i class="fa-solid fa-comments-question-check" style="color: #fff;"></i>
+									<div>
+										<div class="usp-headline h3" style="color: #fff;">Chatten Sie mit uns</div>
+										<a href="#brevoConversationsExpanded" class="usp-text" style="color: #fff;">Chat öffnen</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}
