@@ -1,110 +1,109 @@
 .junu {
-    .juno-start-hero {
-        .twt-advanced-teaser-content>* {
-            max-width: 530px;
-        }
-
-        .twt-advanced-teaser-btn {
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: 500;
-            padding: 1rem 1.25rem;
-            border-radius: 3px;
-            font-size: 0.9rem;
-            line-height: 0.9rem;
-
-            span {
-                background: #db6149;
-                padding: 0.25rem 0.4rem;
-                font-size: 0.75rem;
-                line-height: 0.9rem;
-                border-radius: 3px;
-                margin-left: 3px;
-
-
-            }
-
-            &:first-of-type {
-                padding: 1rem 2rem;
-                font-size: 0.9rem;
-                line-height: 0.9rem;
-                font-weight: 600;
-
-                &::after {
-                    content: " →";
-                    margin-left: 5px;
-                }
-            }
-        }
-
-        .cms-image {
-            z-index: -1;
-        }
-
-        h1 {
-            font-size: 3rem;
-            line-height: 3.25rem;
-            letter-spacing: 1px;
-        }
-
-        .ju-trust-title {
-            font-size: 0.875rem;
-            line-height: 0.95rem;
-            font-weight: 400;
-            font-style: italic;
-        }
-
-        .junu-start-hero-trust {
-            display: flex;
-            justify-content: space-between;
-            max-width: 350px;
-            width: 100%;
-
-            img {
-                width: 100%;
-                height: 100%;
-                max-height: 80px;
-            }
-        }
-
-
+  .juno-start-hero {
+    .twt-advanced-teaser-content > * {
+      max-width: 530px;
     }
 
-    .overflow-visible {
-        overflow: visible !important;
+    .twt-advanced-teaser-btn {
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 1rem 1.25rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      line-height: 0.9rem;
+
+      span {
+        background: #db6149;
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+        line-height: 0.9rem;
+        border-radius: 3px;
+        margin-left: 3px;
+      }
+
+      &:first-of-type {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+        line-height: 0.9rem;
+        font-weight: 600;
+
+        &::after {
+          content: " →";
+          margin-left: 5px;
+        }
+      }
     }
 
-    .junu-start-categories {
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        padding: 5px;
-        transition-property: box-shadow;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 150ms;
-
-        &:hover {
-            box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)
-        }
-
-        .twt-round-teaser-image-container {
-
-            border-radius: 5px;
-
-            img {
-                border-radius: 0;
-            }
-        }
-
-        .twt-round-teaser-container {
-            position: relative;
-        }
-
-        .twt-round-teaser-text {
-            color: #2e2d2b;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 0.25rem;
-        }
+    .cms-image {
+      z-index: -1;
     }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 3.25rem;
+      letter-spacing: 1px;
+    }
+
+    .ju-trust-title {
+      font-size: 0.875rem;
+      line-height: 0.95rem;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .junu-start-hero-trust {
+      display: flex;
+      justify-content: space-between;
+      max-width: 350px;
+      width: 100%;
+
+      img {
+        width: 80px;
+        height: 80px;
+        max-width: 100%;
+        max-height: 80px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .overflow-visible {
+    overflow: visible !important;
+  }
+
+  .junu-start-categories {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 5px;
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    &:hover {
+      box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.1),
+        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .twt-round-teaser-image-container {
+      border-radius: 5px;
+
+      img {
+        border-radius: 0;
+      }
+    }
+
+    .twt-round-teaser-container {
+      position: relative;
+    }
+
+    .twt-round-teaser-text {
+      color: #2e2d2b;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.25rem;
+    }
+  }
 }
