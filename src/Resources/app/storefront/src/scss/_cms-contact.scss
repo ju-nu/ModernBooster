@@ -5,12 +5,9 @@
       @include media-breakpoint-up(lg) {
         padding: 50px 20px 50px 20px;
         .column-2 {
-            display: none;
+          display: none;
         }
       }
-    }
-    .cms-block-container-row {
-      gap: 1rem;
     }
   }
   .ju-contact-box {
@@ -43,6 +40,23 @@
         text-underline-offset: 4px;
         &:hover {
           text-decoration-style: solid;
+        }
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      .ju-cms-contact {
+        .twt-column {
+          width: 50%;
+        }
+        .column-2 {
+            display: none;
+        }
+      }
+    }
+    @include media-breakpoint-up(sm) {
+      .ju-cms-contact {
+        .cms-block-container-row {
+          gap: 1rem;
         }
       }
     }
