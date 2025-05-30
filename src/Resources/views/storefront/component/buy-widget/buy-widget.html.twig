@@ -1,36 +1,33 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
 
-{% block buy_widget_reviews %}
+{% block buy_widget_reviews %}{% endblock %}
+
+{% block buy_widget_buy_container %}
+	<div class="ju-buybox-wrapper"></div>
+	{{ parent() }}
 {% endblock %}
 
-        {% block buy_widget_buy_container %}<div class="ju-buybox-wrapper"></div>{{ parent() }}{% endblock %}
-
-{% block component_buy_widget_container %}
-    {# Original content from parent template #}
+{# {% block component_buy_widget_container %}
     {{ parent() }}
 
-    {# Pricing Steps Section #}
     {% if page.product.calculatedPrices|length > 0 %}
         <div class="pricing-steps-container">
             <h3 class="pricing-steps-title">Buy more and Save</h3>
             <div class="pricing-steps-grid">
                 {% for tierPrice in page.product.calculatedPrices %}
-                    {% set isSelected = loop.index == 1 %} {# Assuming the first tier is selected by default #}
+                    {% set isSelected = loop.index == 1 %}
                     <div class="pricing-step {{ isSelected ? 'selected' : '' }}">
-                        {# Badges #}
                         {% if loop.index == 2 %}
                             <span class="badge recommended">Recommended</span>
                         {% elseif loop.index == 3 %}
                             <span class="badge best-value">Best Value</span>
                         {% endif %}
-                        {# Quantity and Price #}
                         <div class="quantity">{{ loop.index }}x</div>
                         <div class="unit-price">{{ tierPrice.unitPrice|currency }} / Piece</div>
                     </div>
                 {% endfor %}
             </div>
 
-            {# Current Selected Price #}
             <div class="current-price-container">
                 <span class="current-price">{{ page.product.calculatedPrice.unitPrice|currency }}€</span>
                 {% if page.product.calculatedPrice.listPrice %}
@@ -39,14 +36,12 @@
                 {% endif %}
             </div>
 
-            {# VAT and Shipping Note #}
             <div class="price-note">
                 Prices include VAT plus shipping costs
             </div>
         </div>
     {% endif %}
 
-    {# Inline Styles for the Pricing Steps #}
     <style>
         .pricing-steps-container {
             margin-top: 20px;
@@ -124,4 +119,4 @@
             margin-top: 5px;
         }
     </style>
-{% endblock %}
+{% endblock %} #}
