@@ -45,6 +45,13 @@
       }
     }
 
+    .advanced-teaser-content {
+      @include media-breakpoint-down(lg) {
+        display: block;
+        padding-top: 50%;
+      }
+    }
+
     // Breakpoint: lg (≥992px) - Image starts at 10%
     @include media-breakpoint-up(lg) {
       .twt-advanced-teaser-image-container .cms-image {
