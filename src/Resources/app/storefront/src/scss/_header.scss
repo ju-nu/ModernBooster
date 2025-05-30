@@ -1,5 +1,5 @@
 .junu {
-  @media (max-width: 575.98px) {
+  @include media-breakpoint-down(sm) {
     .header-actions-col {
       padding-top: 12px;
     }
@@ -32,5 +32,10 @@
   }
   .header-logo-main-img {
     max-height: 2.75rem;
+  }
+  @include media-breakpoint-up(sm) {
+    .header-actions-col .header-logo-main {
+      display: none;
+    }
   }
 }
