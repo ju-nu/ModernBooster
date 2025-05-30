@@ -502,4 +502,9 @@ img.junu-product-payment-logos {
   .cms-breadcrumb.container {
     display: none;
   }
+  @include media-breakpoint-down(md) {
+    .left-bottom {
+      display: none;
+    }
+  }
 }
