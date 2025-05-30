@@ -507,10 +507,18 @@ img.junu-product-payment-logos {
       display: none;
     }
     .cms-block-twt-gallery-buybox-name-two .cms-block-container {
-        padding-top: 0;
+      padding-top: 0;
     }
     .cms-block-twt-gallery-buybox-name-two .product-detail-media {
-        margin-bottom: 0;
+      margin-bottom: 0;
+    }
+    .product-detail-buy {
+      padding-top: 1rem;
+      margin-top: -2rem;
+      z-index: 1;
+      background: #fff;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
     }
   }
 }
