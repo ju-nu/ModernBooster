@@ -1,6 +1,6 @@
 {% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
 
-{% block component_product_box_price_info %}
+{# {% block component_product_box_price_info %}
     {% set cheapest = product.calculatedCheapestPrice %}
     {% set real = product.calculatedPrice %}
     {% if product.calculatedPrices.count > 0 %}
@@ -19,7 +19,6 @@
     <div class="product-price-info">
         {% block component_product_box_price_unit %}
             <p class="product-price-unit">
-                {# Custom Steps Section #}
                 {% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
                 {% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
                 {% if isCustomStepsActive and hasCustomProducts %}
@@ -115,7 +114,6 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {# JavaScript for Step Selection #}
                         <script>
                             document.addEventListener('DOMContentLoaded', () => {
                                 const pricingSteps = document.querySelectorAll('.pricing-step');
@@ -237,7 +235,6 @@
                         </script>
                     </section>
                 {% else %}
-                    {# Fallback Tiered Pricing #}
                     {% if product.calculatedPrices|length > 0 %}
                         <section class="junu-product-steps">
                             <div class="pricing-steps-quantity">Menge:</div>
@@ -286,7 +283,6 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                            {# JavaScript for Tiered Pricing #}
                             <script>
                                 document.addEventListener('DOMContentLoaded', () => {
                                     const pricingSteps = document.querySelectorAll('.pricing-step');
@@ -362,7 +358,6 @@
                             </script>
                         </section>
                     {% else %}
-                        {# Single Product Price #}
                         <section class="junu-product-steps">
                             <div class="current-price-container">
                                 {% if real.listPrice %}
@@ -392,4 +387,4 @@
             </p>
         {% endblock %}
     </div>
-{% endblock %}
+{% endblock %} #}
