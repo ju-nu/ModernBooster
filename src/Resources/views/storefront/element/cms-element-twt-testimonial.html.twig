@@ -4,28 +4,35 @@
 {% block element_twt_testimonial_content %}
 	<style>:root
 	{
-		--junu-cms-review-bg: {{twtTstmnlBackgroundColor}};
-    --junu-cms-review-1: url('{{'JUNUModernizr.review.person1'|trans|default('')}}');
-    --junu-cms-review-2: url('{{'JUNUModernizr.review.person2'|trans|default('')}}');
-    --junu-cms-review-3: url('{{'JUNUModernizr.review.person3'|trans|default('')}}');
-	    {% set reviewImageId = page.product.translated.customFields.junu_products_review_image %}
-    
-    {# Fetch the media object #}
-    {% if reviewImageId %}
-        {% set mediaCollection = searchMedia([reviewImageId], context.context) %}
-        {% set reviewImage = mediaCollection.get(reviewImageId) %}
-        
-        {# Get the smallest thumbnail URL #}
-        {% if reviewImage and reviewImage.thumbnails %}
-            {% set smallestThumbnail = reviewImage.thumbnails|sort((a, b) => a.width <=> b.width)|first %}
-            {% if smallestThumbnail %}
-                {% set thumbnailUrl = smallestThumbnail.url %}
-               --junu-product-review-image: url('{{thumbnailUrl}}');
-			{% else %}
-			 --junu-product-review-image: url('{{'JUNUModernizr.review.person1'|trans|default('')}}');
-            {% endif %}
-        {% endif %}
-    {% endif %}
+		--junu-cms-review-bg: {{twtTstmnlBackgroundColor}}
+		;
+		--junu-cms-review-1: url('{{'JUNUModernizr.review.person1'|trans|default('')}}');
+		--junu-cms-review-2: url('{{'JUNUModernizr.review.person2'|trans|default('')}}');
+		--junu-cms-review-3: url('{{'JUNUModernizr.review.person3'|trans|default('')}}');
+		{% set reviewImageId = page.product.translated.customFields.junu_products_review_image %}
+
+		{
+			# Fetch the media object #
+		}
+		{% if reviewImageId %}
+			{% set mediaCollection = searchMedia([reviewImageId], context.context) %}
+			{% set reviewImage = mediaCollection.get(reviewImageId) %}
+
+			{
+				# Get the smallest thumbnail URL #
+			}
+			{% if reviewImage and reviewImage.thumbnails %}
+				{% set smallestThumbnail = reviewImage.thumbnails|sort((a, b) => a.width <=> b.width)|first %}
+				{% if smallestThumbnail %}
+					{% set thumbnailUrl = smallestThumbnail.url %}
+					--junu-product-review-image: url('{{thumbnailUrl}}');
+				{% else %}
+					--junu-product-review-image: url('{{'JUNUModernizr.review.person1'|trans|default('')}}');
+				{% endif %}
+			{% endif %}
+		{% else %}
+			--junu-product-review-image: url('{{'JUNUModernizr.review.person1'|trans|default('')}}');
+		{% endif %}
 	}
 </style>
 {{ parent() }}{% endblock %}{% block element_twt_testimonial_image_inner %}
