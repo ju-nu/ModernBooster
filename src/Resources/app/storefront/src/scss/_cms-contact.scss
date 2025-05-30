@@ -41,21 +41,5 @@
       }
     }
   }
-  @include media-breakpoint-down(sm) {
-    .ju-cms-contact {
-      .twt-column {
-        width: 50%;
-      }
-      .column-2 {
-        display: none;
-      }
-    }
-  }
-  @include media-breakpoint-up(sm) {
-    .ju-cms-contact {
-      .cms-block-container-row {
-        gap: 1rem;
-      }
-    }
-  }
+
 }
