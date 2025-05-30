@@ -12,6 +12,15 @@
     .header-logo-col {
       display: none;
     }
+  }
+  @media (max-width: 1199px) {
+    header.header-main .twt-sticky-header-menu-button {
+      /* display:block !important; */
+      display: flex !important;
+      align-items: center;
+      flex: unset;
+    }
+
     .header-logo-main {
       display: flex;
       width: auto;
@@ -20,18 +29,10 @@
       margin-bottom: -0.375rem;
     }
     .header-logo-main-link {
-      width: auto;
+        width: auto;
     }
     .header-logo-main-img {
       max-height: 2.75rem;
-    }
-  }
-  @media (max-width: 1199px) {
-    header.header-main .twt-sticky-header-menu-button {
-      /* display:block !important; */
-      display: flex !important;
-      align-items: center;
-      flex: unset;
     }
   }
 }
