@@ -45,10 +45,14 @@
       }
     }
 
-    .twt-advanced-teaser-content {
-      @include media-breakpoint-down(lg) {
+    @include media-breakpoint-down(lg) {
+      .twt-advanced-teaser-content {
         display: block;
         padding-top: 320px;
+      }
+      .twt-advanced-teaser-headline {
+        font-size: 2.5rem;
+        line-height: 2.75rem;
       }
     }
 
