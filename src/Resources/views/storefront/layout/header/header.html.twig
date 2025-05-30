@@ -1,12 +1,5 @@
 {% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
-{# {% block layout_header_navigation_toggle %}
-	<div class="col d-sm-none">
-		<div class="menu-button">
-			{% block layout_header_navigation_toggle_button %}
-				{{ parent() }}
-			{% endblock %}
-		</div>
-        {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
-	</div>
+{% block layout_header_navigation_toggle %}
+    {{ parent() }}
+     {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
 {% endblock %}
- #}
