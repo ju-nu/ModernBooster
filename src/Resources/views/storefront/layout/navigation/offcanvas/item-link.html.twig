@@ -1,10 +1,15 @@
 {% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' %}
 
 {% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_text %}
-    {{ parent() }}
-
-    {% set badgeCategoryId = config('JunuModernBooster.config.junuBadgeCategory') %}
-    {% if badgeCategoryId and item.category.id == badgeCategoryId %}
-        <span class="sale-badge">{{ "junu.navigation.badge"|trans }}</span>
-    {% endif %}
+	<span itemprop="name">{{ name }}
+		{% set badgeCategoryId = config('JunuModernBooster.config.junuBadgeCategory') %}
+		{% if badgeCategoryId and item.category.id == badgeCategoryId %}
+			<span class="sale-badge">{{ "junu.navigation.badge"|trans }}</span>
+		{% endif %}
+	</span>
+	{% if hasChildren %}
+		{% block layout_navigation_offcanvas_navigation_categories_list_category_item_link_icon %}
+			{{ parent() }}
+		{% endblock %}
+	{% endif %}
 {% endblock %}
