@@ -29,7 +29,7 @@
         object-position: center center;
         z-index: 0; /* Below the gradient */
         @include media-breakpoint-down(lg) {
-            max-height: 50%;
+          max-height: 50%;
         }
       }
     }
@@ -39,6 +39,10 @@
       position: relative;
       z-index: 2; /* Above the gradient overlay */
       width: 100%; /* Ensure it spans the full width for proper alignment */
+      @include media-breakpoint-down(lg) {
+        align-items: unset;
+        justify-content: unset;
+      }
     }
 
     // Breakpoint: lg (≥992px) - Image starts at 10%
