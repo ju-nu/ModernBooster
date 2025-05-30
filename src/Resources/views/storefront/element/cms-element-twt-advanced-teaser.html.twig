@@ -30,7 +30,8 @@
                     title: (element.data.media.translated.title ?: title),
                     width: (element.data.media.metaData.width ?: ''),
                     height: (element.data.media.metaData.height ?: ''),
-                    loading: lazyloading
+                    loading: lazyloading,
+					fetchpriority: 'high'
                 } %}
 
 				{% if twtAdvncdTsrDisplayMode == 'cover' or twtAdvncdTsrDisplayMode == 'contain' %}
