@@ -9,6 +9,9 @@
     .header-actions-col .col.d-sm-none {
       display: flex;
     }
+    .header-logo-col {
+      display: none;
+    }
   }
   @media (max-width: 1199px) {
     header.header-main .twt-sticky-header-menu-button {
@@ -27,9 +30,6 @@
     }
     .header-logo-main-img {
       max-height: 2.75rem;
-    }
-    .header-logo-col {
-      display: none;
     }
   }
 }
