@@ -1,104 +1,113 @@
 .junu {
-    .junu-cat-hero .content {
-        max-width: 1300px !important;
-        width: 100%;
-        margin: -60px auto 0;
+  .junu-cat-hero .content {
+    max-width: 1300px !important;
+    width: 100%;
+    margin: -60px auto 0;
 
-        .headline {
-            font-size: 3rem;
-            line-height: 3.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .text {
-            font-size: 1.25rem;
-        }
+    .headline {
+      font-size: 3rem;
+      line-height: 3.25rem;
+      margin-bottom: 0.5rem;
     }
 
-    .junu-cat-sidebar-banner {
+    .text {
+      font-size: 1.25rem;
+    }
+  }
 
-        position: sticky;
-        top: 5rem;
-        margin-bottom: 2rem;
+  .junu-cat-sidebar-banner {
+    position: sticky;
+    top: 5rem;
+    margin-bottom: 2rem;
 
-        img {
-            border-radius: 16px;
-        }
+    img {
+      border-radius: 16px;
+    }
+  }
+
+  .twt-hero-teaser-content {
+    margin: 0 !important;
+    align-content: center;
+  }
+
+  .cms-element-category-navigation .category-navigation-box {
+    border-radius: 16px;
+    overflow: overlay;
+    padding: 0.25rem 0;
+  }
+
+  .junu-cat-content {
+    &.cms-block-image-text .cms-block-container-row {
+      align-items: center;
+    }
+    img {
+      border-radius: 16px;
     }
 
-    .twt-hero-teaser-content {
-        margin: 0 !important;
-        align-content: center;
+    .cms-element-text .cms-element-alignment {
+      max-width: 28rem;
+      margin: 0 auto;
     }
 
-    .cms-element-category-navigation .category-navigation-box {
-        border-radius: 16px;
-        overflow: overlay;
-        padding: 0.25rem 0;
+    &.reverse.cms-block {
+      .cms-block-container .cms-block-container-row {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .cms-element-html:has(.junu-category-usps),
+  .junu-category-usps {
+    width: 100%;
+    height: 100%;
+  }
+
+  .junu-category-usps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .junu-usp-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.75rem;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0.5rem;
+
+    i {
+      font-size: 2.5rem;
+      height: 5rem;
+      width: 5rem;
+      align-content: center;
+      text-align: center;
+      border-radius: 99999px;
     }
 
-    .junu-cat-content {
-        &.cms-block-image-text .cms-block-container-row {
-            align-items: center;
-        }
-        img {
-            border-radius: 16px;
-        }
-
-        .cms-element-text .cms-element-alignment {
-            max-width: 28rem;
-            margin: 0 auto;
-        }
-
-        &.reverse.cms-block {
-            .cms-block-container .cms-block-container-row {
-                flex-direction: row-reverse;
-            }
-
-        }
+    .usp-headline {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
     }
 
-    .cms-element-html:has(.junu-category-usps),
-    .junu-category-usps {
-        width: 100%;
-        height: 100%;
+    .usp-text {
+      font-size: 0.95rem;
+      font-weight: 400;
     }
+  }
 
-    .junu-category-usps {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
+  @include media-breakpoint-down(md) {
+    .twt-is-cms-product-list {
+      .card-body .product-image-wrapper {
+        margin-top: 0;
+      }
+      .pos-3 .twt-column.left {
+        margin-bottom: 1.5rem;
+      }
     }
-
-    .junu-usp-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        row-gap: 0.75rem;
-        border-radius: 10px;
-        text-align: center;
-        padding: 0.5rem;
-
-        i {
-            font-size: 2.5rem;
-            height: 5rem;
-            width: 5rem;
-            align-content: center;
-            text-align: center;
-            border-radius: 99999px;
-        }
-
-        .usp-headline {
-            font-size: 1.15rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .usp-text {
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-    }
+  }
 }
