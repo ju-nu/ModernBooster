@@ -1,3 +1,11 @@
 .junu {
-    
+  .navigation-offcanvas {
+    .offcanvas.offcanvas-start .offcanvas-close {
+      background-color: #fff;
+    }
+    .navigation-offcanvas-link {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
 }
