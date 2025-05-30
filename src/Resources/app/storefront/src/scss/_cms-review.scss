@@ -125,4 +125,11 @@
       }
     }
   }
+  &.is-ctl-product {
+    .twt-testimonial-image-container {
+      img {
+        max-height: 12.5rem;
+      }
+    }
+  }
 }
