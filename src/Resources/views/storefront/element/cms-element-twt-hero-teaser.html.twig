@@ -4,3 +4,24 @@
 		{{ parent() }}
 	</div>
 {% endblock %}
+
+{% block element_twt_hero_teaser_image_media %}
+	{# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+	{% set attributes = {
+                                        class: imageClasses,
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: title),
+                                        width: (element.data.media.metaData.width ?: ''),
+                                        height: (element.data.media.metaData.height ?: ''),
+                                        loading: lazyloading,
+										fetchpriority: 'high'
+                                    } %}
+
+	{% if twtHrTsrDisplayMode == 'cover' or twtHrTsrDisplayMode == 'contain' %}
+		{% set attributes = attributes|merge({ 'data-object-fit': twtHrTsrDisplayMode }) %}
+	{% endif %}
+
+	{% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+{% endblock %}
