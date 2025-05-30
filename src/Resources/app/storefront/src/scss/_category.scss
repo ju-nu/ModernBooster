@@ -101,7 +101,7 @@
   }
 
   @include media-breakpoint-down(md) {
-    .twt-is-cms-product-list {
+    &.twt-is-cms-product-list {
       .card-body .product-image-wrapper {
         margin-top: 0;
       }
