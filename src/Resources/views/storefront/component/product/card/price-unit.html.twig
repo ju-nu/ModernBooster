@@ -1,32 +1,32 @@
 {% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
 
-{# {% block component_product_box_price_info %}
-    {% set cheapest = product.calculatedCheapestPrice %}
-    {% set real = product.calculatedPrice %}
-    {% if product.calculatedPrices.count > 0 %}
-        {% set real = product.calculatedPrices.last %}
-    {% endif %}
-    {% set referencePrice = real.referencePrice %}
-    {% set displayFrom = product.calculatedPrices.count > 1 %}
-    {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
-    {% if displayParent %}
-        {% set displayFromVariants = displayParent and real.unitPrice !== cheapest.unitPrice %}
-        {% set real = cheapest %}
-        {% set totalVariants = product.cheapestPriceContainer.value %}
-        {% set hasDifferentPrice = totalVariants|filter(variant => variant.default != null)|length > 0 %}
-    {% endif %}
+{% block component_product_box_price_info %}
+	{% set cheapest = product.calculatedCheapestPrice %}
+	{% set real = product.calculatedPrice %}
+	{% if product.calculatedPrices.count > 0 %}
+		{% set real = product.calculatedPrices.last %}
+	{% endif %}
+	{% set referencePrice = real.referencePrice %}
+	{% set displayFrom = product.calculatedPrices.count > 1 %}
+	{% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+	{% if displayParent %}
+		{% set displayFromVariants = displayParent and real.unitPrice !== cheapest.unitPrice %}
+		{% set real = cheapest %}
+		{% set totalVariants = product.cheapestPriceContainer.value %}
+		{% set hasDifferentPrice = totalVariants|filter(variant => variant.default != null)|length > 0 %}
+	{% endif %}
 
-    <div class="product-price-info">
-        {% block component_product_box_price_unit %}
-            <p class="product-price-unit">
-                {% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
-                {% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
-                {% if isCustomStepsActive and hasCustomProducts %}
-                    <section class="junu-product-steps" itemscope itemtype="http://schema.org/Product">
-                        <meta itemprop="name" content="{{ product.translated.name }}">
-                        <meta itemprop="sku" content="{{ product.productNumber }}">
-                        <div class="pricing-steps-grid">
-                            {% set steps = [
+	<div class="product-price-info">
+		{% block component_product_box_price_unit %}
+			<p class="product-price-unit">
+				{% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
+				{% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
+				{% if isCustomStepsActive and hasCustomProducts %}
+					<section class="junu-product-steps" itemscope itemtype="http://schema.org/Product">
+						<meta itemprop="name" content="{{ product.translated.name }}">
+						<meta itemprop="sku" content="{{ product.productNumber }}">
+						<div class="pricing-steps-grid">
+							{% set steps = [
                                 {
                                     'productId': product.customFields.junu_products_steps_products_1,
                                     'selector': 'step_1',
@@ -46,23 +46,23 @@
                                     'badge': 'best-value'
                                 }
                             ] %}
-                            {% set stepData = [] %}
-                            {% for step in steps %}
-                                {% if step.productId %}
-                                    {% set productData = searchProduct(step.productId, context) %}
-                                    {% if productData and productData.product %}
-                                        {% set referencedProduct = productData.product %}
-                                        {% set productUrl = productData.productUrl %}
-                                        {% set calculatedPrice = referencedProduct.calculatedPrice %}
-                                        {% set unitPrice = calculatedPrice.unitPrice|currency %}
-                                        {% set listPrice = calculatedPrice.listPrice ? calculatedPrice.listPrice.price|currency : null %}
-                                        {% set discount = calculatedPrice.listPrice and calculatedPrice.listPrice.price > 0 ? ((calculatedPrice.listPrice.price - calculatedPrice.unitPrice) / calculatedPrice.listPrice.price * 100)|round : null %}
-                                        {% set discountText = discount ? "#{discount}% Rabatt" : null %}
-                                        {% set referencePriceVal = calculatedPrice.referencePrice ? calculatedPrice.referencePrice.price|currency : null %}
-                                        {% set referenceUnit = calculatedPrice.referencePrice ? calculatedPrice.referencePrice.referenceUnit : null %}
-                                        {% set unitName = referencedProduct.unit ? referencedProduct.unit.shortCode : null %}
-                                        {% set basePriceText = referencePriceVal and referenceUnit and unitName ? "(#{referencePriceVal} / #{referenceUnit} #{unitName})" : null %}
-                                        {% set stepData = stepData|merge([{
+							{% set stepData = [] %}
+							{% for step in steps %}
+								{% if step.productId %}
+									{% set productData = searchProduct(step.productId, context) %}
+									{% if productData and productData.product %}
+										{% set referencedProduct = productData.product %}
+										{% set productUrl = productData.productUrl %}
+										{% set calculatedPrice = referencedProduct.calculatedPrice %}
+										{% set unitPrice = calculatedPrice.unitPrice|currency %}
+										{% set listPrice = calculatedPrice.listPrice ? calculatedPrice.listPrice.price|currency : null %}
+										{% set discount = calculatedPrice.listPrice and calculatedPrice.listPrice.price > 0 ? ((calculatedPrice.listPrice.price - calculatedPrice.unitPrice) / calculatedPrice.listPrice.price * 100)|round : null %}
+										{% set discountText = discount ? "#{discount}% Rabatt" : null %}
+										{% set referencePriceVal = calculatedPrice.referencePrice ? calculatedPrice.referencePrice.price|currency : null %}
+										{% set referenceUnit = calculatedPrice.referencePrice ? calculatedPrice.referencePrice.referenceUnit : null %}
+										{% set unitName = referencedProduct.unit ? referencedProduct.unit.shortCode : null %}
+										{% set basePriceText = referencePriceVal and referenceUnit and unitName ? "(#{referencePriceVal} / #{referenceUnit} #{unitName})" : null %}
+										{% set stepData = stepData|merge([{
                                             unitPrice: unitPrice,
                                             listPrice: listPrice,
                                             discountText: discountText,
@@ -71,320 +71,309 @@
                                             productUrl: productUrl,
                                             quantity: 1
                                         }]) %}
-                                        <div class="pricing-step {{ referencedProduct.id == product.id ? 'selected' : '' }}"
-                                             data-product-id="{{ referencedProduct.id }}"
-                                             data-step-index="{{ stepData|length - 1 }}"
-                                             data-quantity="1"
-                                             data-unit-price="{{ unitPrice }}"
-                                             role="button"
-                                             aria-label="Select {{ step.index }}x {{ step.badge ? step.badge : 'package' }} for {{ unitPrice }}"
-                                             tabindex="0"
-                                             style="cursor: pointer;"
-                                             itemprop="offers"
-                                             itemscope
-                                             itemtype="http://schema.org/Offer">
-                                            <meta itemprop="price" content="{{ calculatedPrice.unitPrice }}">
-                                            <meta itemprop="priceCurrency" content="{{ context.currency.isoCode }}">
-                                            <meta itemprop="itemCondition" content="http://schema.org/NewCondition">
-                                            <link itemprop="availability" href="http://schema.org/InStock">
-                                            {% if step.badge == 'recommended' %}
-                                                <strong class="badge recommended">Recommended</strong>
-                                            {% elseif step.badge == 'best-value' %}
-                                                <strong class="badge best-value">Best Value</strong>
-                                            {% endif %}
-                                            <div class="quantity">
-                                                {{ step.index }}x
-                                            </div>
-                                            <div class="unit-price">
-                                                <span class="price" itemprop="price">{{ unitPrice }}</span>
-                                                {% if listPrice %}
-                                                    <span class="old-price">/
-                                                        {% if referencedProduct.minPurchase > 1 and referencedProduct.packUnitPlural %}
-                                                            {{ referencedProduct.packUnitPlural }}
-                                                        {% elseif referencedProduct.packUnit %}
-                                                            {{ referencedProduct.packUnit }}
-                                                        {% else %}
-                                                            {{ 'piece'|trans }}
-                                                        {% endif %}
-                                                    </span>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', () => {
-                                const pricingSteps = document.querySelectorAll('.pricing-step');
-                                const form = document.querySelector('.buy-widget');
-                                let buyButton = form ? form.querySelector('.btn-buy') : document.querySelector('.btn-buy');
+										<div class="pricing-step {{ referencedProduct.id == product.id ? 'selected' : '' }}" data-product-id="{{ referencedProduct.id }}" data-step-index="{{ stepData|length - 1 }}" data-quantity="1" data-unit-price="{{ unitPrice }}" role="button" aria-label="Select {{ step.index }}x {{ step.badge ? step.badge : 'package' }} for {{ unitPrice }}" tabindex="0" style="cursor: pointer;" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+											<meta itemprop="price" content="{{ calculatedPrice.unitPrice }}">
+											<meta itemprop="priceCurrency" content="{{ context.currency.isoCode }}">
+											<meta itemprop="itemCondition" content="http://schema.org/NewCondition">
+											<link itemprop="availability" href="http://schema.org/InStock">
+											{% if step.badge == 'recommended' %}
+												<strong class="badge recommended">Recommended</strong>
+											{% elseif step.badge == 'best-value' %}
+												<strong class="badge best-value">Best Value</strong>
+											{% endif %}
+											<div class="quantity">
+												{{ step.index }}x
+											</div>
+											<div class="unit-price">
+												<span class="price" itemprop="price">{{ unitPrice }}</span>
+												{% if listPrice %}
+													<span class="old-price">/
+														{% if referencedProduct.minPurchase > 1 and referencedProduct.packUnitPlural %}
+															{{ referencedProduct.packUnitPlural }}
+														{% elseif referencedProduct.packUnit %}
+															{{ referencedProduct.packUnit }}
+														{% else %}
+															{{ 'piece'|trans }}
+														{% endif %}
+													</span>
+												{% endif %}
+											</div>
+										</div>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</div>
+						<script>
+							document.addEventListener('DOMContentLoaded', () => {
+const pricingSteps = document.querySelectorAll('.pricing-step');
+const form = document.querySelector('.buy-widget');
+let buyButton = form ? form.querySelector('.btn-buy') : document.querySelector('.btn-buy');
 
-                                // Initialize selected step
-                                const selectedStep = document.querySelector('.pricing-step.selected');
-                                if (selectedStep && form) {
-                                    const productId = selectedStep.dataset.productId;
-                                    const quantity = parseInt(selectedStep.dataset.quantity);
+// Initialize selected step
+const selectedStep = document.querySelector('.pricing-step.selected');
+if (selectedStep && form) {
+const productId = selectedStep.dataset.productId;
+const quantity = parseInt(selectedStep.dataset.quantity);
 
-                                    form.dataset.productId = productId;
-                                    const productIdInput = form.querySelector('input.product-id-input');
-                                    const referencedIdInput = form.querySelector('input.referenced-id-input');
-                                    const quantityInput = form.querySelector('input.quantity-input');
-                                    const typeInput = form.querySelector('input.type-input');
-                                    const stackableInput = form.querySelector('input.stackable-input');
-                                    const removableInput = form.querySelector('input.removable-input');
+form.dataset.productId = productId;
+const productIdInput = form.querySelector('input.product-id-input');
+const referencedIdInput = form.querySelector('input.referenced-id-input');
+const quantityInput = form.querySelector('input.quantity-input');
+const typeInput = form.querySelector('input.type-input');
+const stackableInput = form.querySelector('input.stackable-input');
+const removableInput = form.querySelector('input.removable-input');
 
-                                    if (productIdInput) {
-                                        productIdInput.value = productId;
-                                        productIdInput.name = `lineItems[${productId}][id]`;
-                                    }
-                                    if (referencedIdInput) {
-                                        referencedIdInput.value = productId;
-                                        referencedIdInput.name = `lineItems[${productId}][referencedId]`;
-                                    }
-                                    if (quantityInput) {
-                                        quantityInput.value = quantity;
-                                        quantityInput.name = `lineItems[${productId}][quantity]`;
-                                    }
-                                    if (typeInput) {
-                                        typeInput.name = `lineItems[${productId}][type]`;
-                                    }
-                                    if (stackableInput) {
-                                        stackableInput.name = `lineItems[${productId}][stackable]`;
-                                    }
-                                    if (removableInput) {
-                                        removableInput.name = `lineItems[${productId}][removable]`;
-                                    }
+if (productIdInput) {
+productIdInput.value = productId;
+productIdInput.name = `lineItems[${productId}][id]`;
+}
+if (referencedIdInput) {
+referencedIdInput.value = productId;
+referencedIdInput.name = `lineItems[${productId}][referencedId]`;
+}
+if (quantityInput) {
+quantityInput.value = quantity;
+quantityInput.name = `lineItems[${productId}][quantity]`;
+}
+if (typeInput) {
+typeInput.name = `lineItems[${productId}][type]`;
+}
+if (stackableInput) {
+stackableInput.name = `lineItems[${productId}][stackable]`;
+}
+if (removableInput) {
+removableInput.name = `lineItems[${productId}][removable]`;
+}
 
-                                    if (buyButton) {
-                                        buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-                                    }
-                                }
+if (buyButton) {
+buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
+}
+}
 
-                                pricingSteps.forEach(step => {
-                                    const handleInteraction = (event) => {
-                                        event.preventDefault();
-                                        event.stopPropagation();
+pricingSteps.forEach(step => {
+const handleInteraction = (event) => {
+event.preventDefault();
+event.stopPropagation();
 
-                                        // Toggle selection
-                                        pricingSteps.forEach(s => s.classList.remove('selected'));
-                                        step.classList.add('selected');
+// Toggle selection
+pricingSteps.forEach(s => s.classList.remove('selected'));
+step.classList.add('selected');
 
-                                        // Animation
-                                        step.classList.remove('clicked');
-                                        void step.offsetHeight;
-                                        step.classList.add('clicked');
+// Animation
+step.classList.remove('clicked');
+void step.offsetHeight;
+step.classList.add('clicked');
 
-                                        // Update form inputs and data-product-id
-                                        const productId = step.dataset.productId;
-                                        const quantity = parseInt(step.dataset.quantity);
-                                        if (form) {
-                                            // Update form's data-product-id
-                                            form.dataset.productId = productId;
+// Update form inputs and data-product-id
+const productId = step.dataset.productId;
+const quantity = parseInt(step.dataset.quantity);
+if (form) { // Update form's data-product-id
+form.dataset.productId = productId;
 
-                                            const productIdInput = form.querySelector('input.product-id-input');
-                                            const referencedIdInput = form.querySelector('input.referenced-id-input');
-                                            const quantityInput = form.querySelector('input.quantity-input');
-                                            const typeInput = form.querySelector('input.type-input');
-                                            const stackableInput = form.querySelector('input.stackable-input');
-                                            const removableInput = form.querySelector('input.removable-input');
+const productIdInput = form.querySelector('input.product-id-input');
+const referencedIdInput = form.querySelector('input.referenced-id-input');
+const quantityInput = form.querySelector('input.quantity-input');
+const typeInput = form.querySelector('input.type-input');
+const stackableInput = form.querySelector('input.stackable-input');
+const removableInput = form.querySelector('input.removable-input');
 
-                                            if (productIdInput) {
-                                                productIdInput.value = productId;
-                                                productIdInput.name = `lineItems[${productId}][id]`;
-                                            }
-                                            if (referencedIdInput) {
-                                                referencedIdInput.value = productId;
-                                                referencedIdInput.name = `lineItems[${productId}][referencedId]`;
-                                            }
-                                            if (quantityInput) {
-                                                quantityInput.value = quantity;
-                                                quantityInput.name = `lineItems[${productId}][quantity]`;
-                                            }
-                                            if (typeInput) {
-                                                typeInput.name = `lineItems[${productId}][type]`;
-                                            }
-                                            if (stackableInput) {
-                                                stackableInput.name = `lineItems[${productId}][stackable]`;
-                                            }
-                                            if (removableInput) {
-                                                removableInput.name = `lineItems[${productId}][removable]`;
-                                            }
-                                        }
+if (productIdInput) {
+productIdInput.value = productId;
+productIdInput.name = `lineItems[${productId}][id]`;
+}
+if (referencedIdInput) {
+referencedIdInput.value = productId;
+referencedIdInput.name = `lineItems[${productId}][referencedId]`;
+}
+if (quantityInput) {
+quantityInput.value = quantity;
+quantityInput.name = `lineItems[${productId}][quantity]`;
+}
+if (typeInput) {
+typeInput.name = `lineItems[${productId}][type]`;
+}
+if (stackableInput) {
+stackableInput.name = `lineItems[${productId}][stackable]`;
+}
+if (removableInput) {
+removableInput.name = `lineItems[${productId}][removable]`;
+}
+}
 
-                                        // Update buy button text
-                                        if (buyButton) {
-                                            buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-                                        }
-                                    };
+// Update buy button text
+if (buyButton) {
+buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
+}
+};
 
-                                    step.addEventListener('click', handleInteraction);
-                                    step.addEventListener('touchstart', (event) => {
-                                        step.dispatchEvent(new Event('click'));
-                                    });
+step.addEventListener('click', handleInteraction);
+step.addEventListener('touchstart', (event) => {
+step.dispatchEvent(new Event('click'));
+});
 
-                                    // Keyboard accessibility
-                                    step.addEventListener('keydown', (event) => {
-                                        if (event.key === 'Enter' || event.key === ' ') {
-                                            event.preventDefault();
-                                            handleInteraction(event);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
-                    </section>
-                {% else %}
-                    {% if product.calculatedPrices|length > 0 %}
-                        <section class="junu-product-steps">
-                            <div class="pricing-steps-quantity">Menge:</div>
-                            <div class="pricing-steps-grid">
-                                {% for tierPrice in product.calculatedPrices %}
-                                    {% set unitPrice = tierPrice.unitPrice|currency %}
-                                    {% set listPrice = tierPrice.listPrice ? tierPrice.listPrice.price|currency : '' %}
-                                    {% set discount = tierPrice.listPrice and tierPrice.listPrice.price > 0 ? ((tierPrice.listPrice.price - tierPrice.unitPrice) / tierPrice.listPrice.price * 100)|round : null %}
-                                    {% set discountText = discount ? "#{discount}% Rabatt" : '' %}
-                                    {% set referencePriceVal = tierPrice.referencePrice ? tierPrice.referencePrice.price|currency : '' %}
-                                    {% set referenceUnit = tierPrice.referencePrice ? tierPrice.referencePrice.referenceUnit : '' %}
-                                    {% set unitName = product.unit ? product.unit.shortCode : '' %}
-                                    {% set basePriceText = referencePriceVal and referenceUnit and unitName ? "(#{referencePriceVal} / #{referenceUnit} #{unitName})" : '' %}
-                                    <div class="pricing-step {{ loop.first ? 'selected' : '' }}"
-                                         data-quantity="{{ loop.index }}"
-                                         data-unit-price="{{ unitPrice }}"
-                                         data-list-price="{{ listPrice }}"
-                                         data-discount-text="{{ discountText }}"
-                                         data-base-price-text="{{ basePriceText }}"
-                                         role="button"
-                                         aria-label="Select {{ loop.index }}x for {{ unitPrice }}"
-                                         tabindex="0"
-                                         style="cursor: pointer;">
-                                        {% if loop.index == 2 %}
-                                            <span class="badge recommended">Recommended</span>
-                                        {% elseif loop.index == 3 %}
-                                            <span class="badge best-value">Best Value</span>
-                                        {% endif %}
-                                        <div class="quantity">
-                                            {{ loop.index }}x
-                                        </div>
-                                        <div class="unit-price">
-                                            <span class="price">{{ unitPrice }}</span>
-                                            {% if listPrice %}
-                                                <span class="old-price">/
-                                                    {% if product.minPurchase > 1 and product.packUnitPlural %}
-                                                        {{ product.packUnitPlural }}
-                                                    {% elseif product.packUnit %}
-                                                        {{ product.packUnit }}
-                                                    {% else %}
-                                                        {{ 'piece'|trans }}
-                                                    {% endif %}
-                                                </span>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <script>
-                                document.addEventListener('DOMContentLoaded', () => {
-                                    const pricingSteps = document.querySelectorAll('.pricing-step');
-                                    const form = document.querySelector('.buy-widget');
-                                    let buyButton = form ? form.querySelector('.btn-buy') : document.querySelector('.btn-buy');
-
-                                    // Initialize selected step
-                                    const selectedStep = document.querySelector('.pricing-step.selected');
-                                    if (selectedStep && form) {
-                                        const quantity = parseInt(selectedStep.dataset.quantity);
-                                        const quantityInput = form.querySelector('input.quantity-input');
-                                        if (quantityInput) {
-                                            quantityInput.value = quantity;
-                                            const changeEvent = new Event('change', {bubbles: true});
-                                            quantityInput.dispatchEvent(changeEvent);
-                                            const inputEvent = new Event('input', {bubbles: true});
-                                            quantityInput.dispatchEvent(inputEvent);
-                                        }
-                                        if (buyButton) {
-                                            buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-                                        }
-                                    }
-
-                                    pricingSteps.forEach(step => {
-                                        step.addEventListener('click', (event) => {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-
-                                            pricingSteps.forEach(s => s.classList.remove('selected'));
-                                            step.classList.add('selected');
-
-                                            step.classList.remove('clicked');
-                                            void step.offsetHeight;
-                                            step.classList.add('clicked');
-
-                                            // Update form inputs
-                                            const quantity = parseInt(step.dataset.quantity);
-                                            if (form) {
-                                                const quantityInput = form.querySelector('input.quantity-input');
-                                                if (quantityInput) {
-                                                    quantityInput.value = quantity;
-                                                    const changeEvent = new Event('change', {bubbles: true});
-                                                    quantityInput.dispatchEvent(changeEvent);
-                                                    const inputEvent = new Event('input', {bubbles: true});
-                                                    quantityInput.dispatchEvent(inputEvent);
-                                                }
-                                            }
-
-                                            // Update buy button text
-                                            if (buyButton) {
-                                                buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-                                            }
-
-                                            // Analytics
-                                            if (window.gtag) {
-                                                gtag('event', 'select_pack', {
-                                                    'event_category': 'Product',
-                                                    'event_label': `Pack ${quantity}x`,
-                                                    'value': step.dataset.unitPrice
-                                                });
-                                            }
-                                        });
-
-                                        // Keyboard accessibility
-                                        step.addEventListener('keydown', (event) => {
-                                            if (event.key === 'Enter' || event.key === ' ') {
-                                                event.preventDefault();
-                                                step.dispatchEvent(new Event('click'));
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
-                        </section>
-                    {% else %}
-                        <section class="junu-product-steps">
-                            <div class="current-price-container">
-                                {% if real.listPrice %}
-                                    <div class="list-price-wrapper">
-                                        <span class="list-price-label">Regulärer Preis:</span>
-                                        <span class="list-price-price" style="color: grey; text-decoration: line-through;">{{ real.listPrice.price|currency }}</span>
-                                    </div>
-                                {% else %}
-                                    <div class="list-price-wrapper" style="display: none;">
-                                        <span class="list-price-label">Regulärer Preis:</span>
-                                        <span class="list-price-price" style="color: grey; text-decoration: line-through;"></span>
-                                    </div>
-                                {% endif %}
-                                <div class="price-and-discount">
-                                    <span class="current-price {{ real.listPrice ? 'reduced' : '' }}">{{ real.unitPrice|currency }}</span>
-                                    {% if real.listPrice %}
-                                        {% set discount = ((real.listPrice.price - real.unitPrice) / real.listPrice.price * 100)|round %}
-                                        <span class="discount-badge">{{ discount }}% Rabatt</span>
-                                    {% else %}
-                                        <span class="discount-badge" style="display: none;"></span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </section>
-                    {% endif %}
-                {% endif %}
-            </p>
-        {% endblock %}
-    </div>
-{% endblock %} #}
+// Keyboard accessibility
+step.addEventListener('keydown', (event) => {
+if (event.key === 'Enter' || event.key === ' ') {
+event.preventDefault();
+handleInteraction(event);
+}
+});
+});
+});
+						</script>
+					</section>
+				{% else %}
+					{{parent()}}
+					{# {% if product.calculatedPrices|length > 0 %}
+					                        <section class="junu-product-steps">
+					                            <div class="pricing-steps-quantity">Menge:</div>
+					                            <div class="pricing-steps-grid">
+					                                {% for tierPrice in product.calculatedPrices %}
+					                                    {% set unitPrice = tierPrice.unitPrice|currency %}
+					                                    {% set listPrice = tierPrice.listPrice ? tierPrice.listPrice.price|currency : '' %}
+					                                    {% set discount = tierPrice.listPrice and tierPrice.listPrice.price > 0 ? ((tierPrice.listPrice.price - tierPrice.unitPrice) / tierPrice.listPrice.price * 100)|round : null %}
+					                                    {% set discountText = discount ? "#{discount}% Rabatt" : '' %}
+					                                    {% set referencePriceVal = tierPrice.referencePrice ? tierPrice.referencePrice.price|currency : '' %}
+					                                    {% set referenceUnit = tierPrice.referencePrice ? tierPrice.referencePrice.referenceUnit : '' %}
+					                                    {% set unitName = product.unit ? product.unit.shortCode : '' %}
+					                                    {% set basePriceText = referencePriceVal and referenceUnit and unitName ? "(#{referencePriceVal} / #{referenceUnit} #{unitName})" : '' %}
+					                                    <div class="pricing-step {{ loop.first ? 'selected' : '' }}"
+					                                         data-quantity="{{ loop.index }}"
+					                                         data-unit-price="{{ unitPrice }}"
+					                                         data-list-price="{{ listPrice }}"
+					                                         data-discount-text="{{ discountText }}"
+					                                         data-base-price-text="{{ basePriceText }}"
+					                                         role="button"
+					                                         aria-label="Select {{ loop.index }}x for {{ unitPrice }}"
+					                                         tabindex="0"
+					                                         style="cursor: pointer;">
+					                                        {% if loop.index == 2 %}
+					                                            <span class="badge recommended">Recommended</span>
+					                                        {% elseif loop.index == 3 %}
+					                                            <span class="badge best-value">Best Value</span>
+					                                        {% endif %}
+					                                        <div class="quantity">
+					                                            {{ loop.index }}x
+					                                        </div>
+					                                        <div class="unit-price">
+					                                            <span class="price">{{ unitPrice }}</span>
+					                                            {% if listPrice %}
+					                                                <span class="old-price">/
+					                                                    {% if product.minPurchase > 1 and product.packUnitPlural %}
+					                                                        {{ product.packUnitPlural }}
+					                                                    {% elseif product.packUnit %}
+					                                                        {{ product.packUnit }}
+					                                                    {% else %}
+					                                                        {{ 'piece'|trans }}
+					                                                    {% endif %}
+					                                                </span>
+					                                            {% endif %}
+					                                        </div>
+					                                    </div>
+					                                {% endfor %}
+					                            </div>
+					                            <script>
+					                                document.addEventListener('DOMContentLoaded', () => {
+					                                    const pricingSteps = document.querySelectorAll('.pricing-step');
+					                                    const form = document.querySelector('.buy-widget');
+					                                    let buyButton = form ? form.querySelector('.btn-buy') : document.querySelector('.btn-buy');
+					
+					                                    // Initialize selected step
+					                                    const selectedStep = document.querySelector('.pricing-step.selected');
+					                                    if (selectedStep && form) {
+					                                        const quantity = parseInt(selectedStep.dataset.quantity);
+					                                        const quantityInput = form.querySelector('input.quantity-input');
+					                                        if (quantityInput) {
+					                                            quantityInput.value = quantity;
+					                                            const changeEvent = new Event('change', {bubbles: true});
+					                                            quantityInput.dispatchEvent(changeEvent);
+					                                            const inputEvent = new Event('input', {bubbles: true});
+					                                            quantityInput.dispatchEvent(inputEvent);
+					                                        }
+					                                        if (buyButton) {
+					                                            buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
+					                                        }
+					                                    }
+					
+					                                    pricingSteps.forEach(step => {
+					                                        step.addEventListener('click', (event) => {
+					                                            event.preventDefault();
+					                                            event.stopPropagation();
+					
+					                                            pricingSteps.forEach(s => s.classList.remove('selected'));
+					                                            step.classList.add('selected');
+					
+					                                            step.classList.remove('clicked');
+					                                            void step.offsetHeight;
+					                                            step.classList.add('clicked');
+					
+					                                            // Update form inputs
+					                                            const quantity = parseInt(step.dataset.quantity);
+					                                            if (form) {
+					                                                const quantityInput = form.querySelector('input.quantity-input');
+					                                                if (quantityInput) {
+					                                                    quantityInput.value = quantity;
+					                                                    const changeEvent = new Event('change', {bubbles: true});
+					                                                    quantityInput.dispatchEvent(changeEvent);
+					                                                    const inputEvent = new Event('input', {bubbles: true});
+					                                                    quantityInput.dispatchEvent(inputEvent);
+					                                                }
+					                                            }
+					
+					                                            // Update buy button text
+					                                            if (buyButton) {
+					                                                buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
+					                                            }
+					
+					                                            // Analytics
+					                                            if (window.gtag) {
+					                                                gtag('event', 'select_pack', {
+					                                                    'event_category': 'Product',
+					                                                    'event_label': `Pack ${quantity}x`,
+					                                                    'value': step.dataset.unitPrice
+					                                                });
+					                                            }
+					                                        });
+					
+					                                        // Keyboard accessibility
+					                                        step.addEventListener('keydown', (event) => {
+					                                            if (event.key === 'Enter' || event.key === ' ') {
+					                                                event.preventDefault();
+					                                                step.dispatchEvent(new Event('click'));
+					                                            }
+					                                        });
+					                                    });
+					                                });
+					                            </script>
+					                        </section>
+					                    {% else %}
+					                        <section class="junu-product-steps">
+					                            <div class="current-price-container">
+					                                {% if real.listPrice %}
+					                                    <div class="list-price-wrapper">
+					                                        <span class="list-price-label">Regulärer Preis:</span>
+					                                        <span class="list-price-price" style="color: grey; text-decoration: line-through;">{{ real.listPrice.price|currency }}</span>
+					                                    </div>
+					                                {% else %}
+					                                    <div class="list-price-wrapper" style="display: none;">
+					                                        <span class="list-price-label">Regulärer Preis:</span>
+					                                        <span class="list-price-price" style="color: grey; text-decoration: line-through;"></span>
+					                                    </div>
+					                                {% endif %}
+					                                <div class="price-and-discount">
+					                                    <span class="current-price {{ real.listPrice ? 'reduced' : '' }}">{{ real.unitPrice|currency }}</span>
+					                                    {% if real.listPrice %}
+					                                        {% set discount = ((real.listPrice.price - real.unitPrice) / real.listPrice.price * 100)|round %}
+					                                        <span class="discount-badge">{{ discount }}% Rabatt</span>
+					                                    {% else %}
+					                                        <span class="discount-badge" style="display: none;"></span>
+					                                    {% endif %}
+					                                </div>
+					                            </div>
+					                        </section>
+					                    {% endif %} #}
+				{% endif %}
+			</p>
+		{% endblock %}
+	</div>
+{% endblock %}
