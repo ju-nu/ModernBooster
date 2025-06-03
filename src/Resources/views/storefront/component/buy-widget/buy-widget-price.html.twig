@@ -111,9 +111,9 @@
                                     <link itemprop="availability" href="http://schema.org/InStock">
                                     <link itemprop="url" href="{{ productUrl }}">
                                     {% if step.badge == 'recommended' %}
-                                        <strong class="badge recommended">Recommended</strong>
+                                        <strong class="badge recommended">Recommended -{{ discount }}%</strong>
                                     {% elseif step.badge == 'best-value' %}
-                                        <strong class="badge best-value">Best Value</strong>
+                                        <strong class="badge best-value">Best Value -{{ discount }}%</strong>
                                     {% endif %}
                                     <div class="quantity">
                                         {{ loop.index }}x
