@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const buyButton = form?.querySelector('.btn-buy');
 
             if (!form) {
-                console.error('Form not found for pricing step:', step);
+/*                 console.error('Form not found for pricing step:', step); */
                 return;
             }
 
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyButton.innerHTML = `In den Warenkorb`;
             }
 
-            // Debug form data
+/*             // Debug form data
             console.log('Form updated with:', {
                 productId: productIdInput?.value,
                 referencedId: referencedIdInput?.value,
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 removable: removableInput?.value,
                 quantity: quantityInput?.value,
                 redirectParameters: redirectParametersInput?.value
-            });
+            }); */
         };
 
         step.addEventListener('click', handleInteraction);
