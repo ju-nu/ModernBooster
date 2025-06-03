@@ -63,10 +63,10 @@
 									<meta itemprop="priceCurrency" content="{{ context.currency.isoCode }}">
 									<meta itemprop="itemCondition" content="http://schema.org/NewCondition">
 									<link itemprop="availability" href="http://schema.org/InStock">
-									{% if step.badge == 'recommended' and discount %}
-										<strong class="badge recommended">Recommended -{{ discount }}%</strong>
-									{% elseif step.badge == 'best-value' and discount %}
-										<strong class="badge best-value">Best Value -{{ discount }}%</strong>
+									{% if step.badge == 'recommended' and discountText %}
+										<strong class="badge recommended">Recommended -{{ discountText }}%</strong>
+									{% elseif step.badge == 'best-value' and discountText %}
+										<strong class="badge best-value">Best Value -{{ discountText }}%</strong>
 									{% elseif step.badge == 'recommended' %}
 										<strong class="badge recommended">Recommended</strong>
 									{% elseif step.badge == 'best-value' %}
