@@ -15,12 +15,13 @@
 		{% set totalVariants = product.cheapestPriceContainer.value %}
 		{% set hasDifferentPrice = totalVariants|filter(variant => variant.default != null)|length > 0 %}
 	{% endif %}
+	{% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
+	{% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
+
 	{% if isCustomStepsActive and hasCustomProducts %}
 		<div class="product-price-info">
 			{% block component_product_box_price_unit %}
 				<p class="product-price-unit">
-					{% set isCustomStepsActive = product.customFields.junu_products_steps_active %}
-					{% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
 					{% if isCustomStepsActive and hasCustomProducts %}
 						<section class="junu-product-steps" itemscope itemtype="http://schema.org/Product">
 							<meta itemprop="name" content="{{ product.translated.name }}">
@@ -190,9 +191,11 @@ if (bitGtagIdInput)
 bitGtagIdInput.value = productId;
 
 
+
 const bitGtagPriceInput = form.querySelector('input[name="bit-gtag-price"]');
 if (bitGtagPriceInput) 
 bitGtagPriceInput.value = step.dataset.unitPrice.replace(' €', '').replace(',', '.');
+
 
 
 const bitGtagUnitPriceInput = form.querySelector('input[name="bit-gtag-unit_price"]');
@@ -200,9 +203,11 @@ if (bitGtagUnitPriceInput)
 bitGtagUnitPriceInput.value = step.dataset.unitPrice.replace(' €', '').replace(',', '.');
 
 
+
 const bitGtagQuantityInput = form.querySelector('input[name="bit-gtag-quantity"]');
 if (bitGtagQuantityInput) 
 bitGtagQuantityInput.value = quantity;
+
 
 
 // Update buy button text
