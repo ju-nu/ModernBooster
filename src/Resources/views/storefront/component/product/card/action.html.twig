@@ -9,92 +9,46 @@
         {% set hasCustomProducts = product.customFields.junu_products_steps_products_1 or product.customFields.junu_products_steps_products_2 or product.customFields.junu_products_steps_products_3 %}
 
         {% if displayBuyButton and config('core.listing.allowBuyInListing') %}
-            {% block component_product_box_action_buy %}
-                <form action="{{ path('frontend.checkout.line-item.add') }}"
-                      method="post"
-                      class="buy-widget"
-                      data-add-to-cart="true"
-                      data-product-id="{{ id }}">
-                    {% block component_product_box_action_form %}
-                        {% block component_product_box_action_buy_redirect_input %}
-                            <input type="hidden"
-                                   name="redirectTo"
-                                   value="frontend.detail.page">
-                            <input type="hidden"
-                                   name="redirectParameters"
-                                   data-redirect-parameters="true"
-                                   value="{{ {productId: id}|json_encode }}">
-                        {% endblock %}
-                        {% block component_product_box_action_buy_info %}
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][id]"
-                                   value="{{ id }}"
-                                   class="product-id-input"
-                                   data-line-item-id="{{ id }}">
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][referencedId]"
-                                   value="{{ id }}"
-                                   class="referenced-id-input"
-                                   data-line-item-id="{{ id }}">
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][type]"
-                                   value="product"
-                                   class="type-input"
-                                   data-line-item-id="{{ id }}">
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][stackable]"
-                                   value="1"
-                                   class="stackable-input"
-                                   data-line-item-id="{{ id }}">
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][removable]"
-                                   value="1"
-                                   class="removable-input"
-                                   data-line-item-id="{{ id }}">
-                            <input type="hidden"
-                                   name="lineItems[{{ id }}][quantity]"
-                                   value="{{ product.minPurchase }}"
-                                   class="quantity-input"
-                                   data-line-item-id="{{ id }}">
-                        {% endblock %}
-                        {% block component_product_box_action_buy_meta %}
-                            <input type="hidden"
-                                   name="product-name"
-                                   value="{{ product.translated.name }}">
-                        {% endblock %}
-                        {% block component_product_box_action_buy_button %}
-                            <div class="d-grid">
-                                <button class="btn btn-buy"
-                                        title="{{ 'listing.boxAddProduct'|trans|striptags }}">
-                                    {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
-                                </button>
-                            </div>
-                        {% endblock %}
-                    {% endblock %}
-                </form>
-            {% endblock %}
-        {% else %}
-            {% block component_product_box_action_detail %}
+            <form action="{{ path('frontend.checkout.line-item.add') }}"
+                  method="post"
+                  class="buy-widget"
+                  data-add-to-cart="true"
+                  data-product-id="{{ id }}">
+                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+                <input type="hidden" name="redirectParameters" data-redirect-parameters="true" value="{{ {productId: id}|json_encode }}">
+                <input type="hidden" name="lineItems[{{ id }}][id]" value="{{ id }}" class="product-id-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="lineItems[{{ id }}][referencedId]" value="{{ id }}" class="referenced-id-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="lineItems[{{ id }}][type]" value="product" class="type-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="lineItems[{{ id }}][stackable]" value="1" class="stackable-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="lineItems[{{ id }}][removable]" value="1" class="removable-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="lineItems[{{ id }}][quantity]" value="{{ product.minPurchase }}" class="quantity-input" data-line-item-id="{{ id }}">
+                <input type="hidden" name="product-name" value="{{ product.translated.name }}">
+                <!-- Bit-Gtag fields -->
+                <input type="hidden" name="bit-gtag-id" value="{{ id }}">
+                <input type="hidden" name="bit-gtag-name" value="{{ product.translated.name }}">
+                <input type="hidden" name="bit-gtag-price" value="{{ product.calculatedPrice.unitPrice }}">
+                <input type="hidden" name="bit-gtag-unit_price" value="{{ product.calculatedPrice.unitPrice }}">
+                <input type="hidden" name="bit-gtag-quantity" value="{{ product.minPurchase }}">
+                <input type="hidden" name="bit-gtag-brand" value="HANFOSAN">
                 <div class="d-grid">
-                    <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
-                       class="btn btn-light btn-detail"
-                       title="{{ 'listing.boxProductDetails'|trans|striptags }}">
-                        {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
-                    </a>
+                    <button class="btn btn-buy" title="{{ 'listing.boxAddProduct'|trans|striptags }}">
+                        {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
+                    </button>
                 </div>
-            {% endblock %}
+            </form>
+        {% else %}
+            <div class="d-grid">
+                <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+                   class="btn btn-light btn-detail"
+                   title="{{ 'listing.boxProductDetails'|trans|striptags }}">
+                    {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                </a>
+            </div>
         {% endif %}
     </div>
 
     {% if not feature('v6.7.0.0') %}
-        {% block component_product_box_action_meta %}
-            <input type="hidden"
-                   name="product-name"
-                   value="{{ product.translated.name }}">
-            <input type="hidden"
-                   name="product-id"
-                   value="{{ id }}">
-        {% endblock %}
+        <input type="hidden" name="product-name" value="{{ product.translated.name }}">
+        <input type="hidden" name="product-id" value="{{ id }}">
     {% endif %}
 {% endblock %}
-
