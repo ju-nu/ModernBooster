@@ -73,9 +73,9 @@
                                     <meta itemprop="itemCondition" content="http://schema.org/NewCondition">
                                     <link itemprop="availability" href="http://schema.org/InStock">
                                     {% if step.badge == 'recommended' %}
-                                        <strong class="badge recommended">Recommended -{{ discount }}%</strong>
+                                        <strong class="badge recommended">Empfohlen: -{{ discount }}%</strong>
                                     {% elseif step.badge == 'best-value' %}
-                                        <strong class="badge best-value">Best Value -{{ discount }}%</strong>
+                                        <strong class="badge best-value">Beste Wahl: -{{ discount }}%</strong>
                                     {% endif %}
                                     <div class="quantity">
                                         {{ loop.index }}x
