@@ -80,7 +80,7 @@
 									<span class="price" itemprop="price">{{ (calculatedPrice.unitPrice / loop.index) | currency }}</span>
 									{% if listPrice %}
 										<span class="old-price">/
-											{% if referencedProduct.minPurchase > 1 and referencedProduct.packUnitPlural %}
+											{% if loop.index > 1 and referencedProduct.packUnitPlural %}
 												{{ referencedProduct.packUnitPlural }}
 											{% elseif referencedProduct.packUnit %}
 												{{ referencedProduct.packUnit }}
