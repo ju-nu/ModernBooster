@@ -406,61 +406,40 @@ quantityInput.dispatchEvent(inputEvent);
 });
 			</script>
 		{% else %}
-			{% set price = product.calculatedPrice %}
-			{% if product.calculatedPrices|length == 1 %}
-				{% set price = product.calculatedPrices.first %}
-			{% endif %}
-
-			<meta itemprop="price" content="{{ price.unitPrice }}">
-
-			<div class="product-detail-price">
-				{% if price.listPrice and price.listPrice.percentage > 0 %}
+			<div class="current-price-container">
+				{% if product.calculatedPrice.listPrice %}
 					<div class="list-price-wrapper">
 						<span class="list-price-label">Regulär:</span>
-						<span class="list-price-price" style="color: grey; text-decoration: line-through;">{{ price.listPrice.price|currency }}</span>
+						<span class="list-price-price" style="color: grey; text-decoration: line-through;">{{ product.calculatedPrice.listPrice.price|currency }}</span>
+					</div>
+				{% else %}
+					<div class="list-price-wrapper" style="display: none;">
+						<span class="list-price-label">Regulär:</span>
+						<span class="list-price-price" style="color: grey; text-decoration: line-through;"></span>
 					</div>
 				{% endif %}
 				<div class="price-and-discount">
-					<span class="current-price {{ price.listPrice and price.listPrice.percentage > 0 ? 'reduced' : '' }}">{{ price.unitPrice|currency }}</span>
-					{% if price.referencePrice %}
+					<span class="current-price {{ product.calculatedPrice.listPrice ? 'reduced' : '' }}">{{ product.calculatedPrice.unitPrice|currency }}</span>
+					{% if product.calculatedPrice.listPrice %}
+						{% set discount = ((product.calculatedPrice.listPrice.price - product.calculatedPrice.unitPrice) / product.calculatedPrice.listPrice.price * 100)|round %}
+						<span class="discount-badge">{{ discount }}% Rabatt</span>
+					{% else %}
+						<span class="discount-badge" style="display: none;"></span>
+					{% endif %}
+					{% if product.calculatedPrice.referencePrice %}
 						<span class="base-price">
-							({{ price.referencePrice.price|currency }}
+							({{ product.calculatedPrice.referencePrice.price|currency }}
 							/
-							{{ price.referencePrice.referenceUnit }}
+							{{ product.calculatedPrice.referencePrice.referenceUnit }}
 							{{ product.unit.shortCode }})
 						</span>
+					{% else %}
+						<span class="base-price" style="display: none;"></span>
 					{% endif %}
 				</div>
 			</div>
 
-			{% if price.listPrice and price.listPrice.percentage > 0 %}
-				<span class="product-detail-list-price-wrapper">
-					{% if 'listing.beforeListPrice'|trans|length > 0 %}
-						{{ 'listing.beforeListPrice'|trans|trim }}
-					{% endif %}
-					<span class="list-price-price">{{ price.listPrice.price|currency }}</span>
-					<span class="list-price-percentage">{{ 'detail.listPricePercentage'|trans({'%price%': price.listPrice.percentage})|sw_sanitize }}</span>
-					{% if 'listing.afterListPrice'|trans|length > 0 %}
-						{{ 'listing.afterListPrice'|trans|trim }}
-					{% endif %}
-				</span>
-			{% endif %}
 
-			{% if price.regulationPrice %}
-				<span class="product-detail-list-price-wrapper">
-					<span class="regulation-price">{{ 'general.listPricePreviously'|trans({'%price%': price.regulationPrice.price|currency}) }}</span>
-				</span>
-			{% endif %}
-
-			{% if product.purchaseUnit %}
-				<div class="product-detail-price-unit">
-					<span class="price-unit-label">{{ 'detail.priceUnitName'|trans|sw_sanitize }}</span>
-					<span class="price-unit-content">
-						{{ product.purchaseUnit }}
-						{{ product.unit.translated.name }}
-					</span>
-				</div>
-			{% endif %}
 		{% endif %}
 	{% endif %}
 {% endblock %}
