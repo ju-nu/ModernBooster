@@ -250,7 +250,7 @@ handleInteraction(event);
 	{% else %}
 		{% if product.calculatedPrices|length > 0 %}
 			<div class="junu-product-steps">
-				<h3 class="pricing-steps-title">Buy more and Save</h3>
+				<h3 class="pricing-steps-title">Mehr nehmen, weniger zahlen</h3>
 				<div class="pricing-steps-grid">
 					{% set tierData = [] %}
 					{% for tierPrice in product.calculatedPrices %}
@@ -273,9 +273,9 @@ handleInteraction(event);
 
 						<div class="pricing-step {{ isSelected ? 'selected' : '' }}" data-quantity="{{ loop.index }}" data-step-index="{{ loop.index0 }}" style="cursor: pointer;">
 							{% if loop.index == 2 %}
-								<span class="badge recommended">Recommended</span>
+								<strong class="badge recommended">Beste Wahl: -{{ discount }}%</strong>
 							{% elseif loop.index == 3 %}
-								<span class="badge best-value">Best Value</span>
+								<strong class="badge best-value">Sparhit: -{{ discount }}%</strong>
 							{% endif %}
 							<div class="quantity">
 								{{ loop.index }}x
@@ -406,7 +406,7 @@ quantityInput.dispatchEvent(inputEvent);
 });
 			</script>
 		{% else %}
-        
+
 			{% set price = product.calculatedPrice %}
 			{% if product.calculatedPrices|length == 1 %}
 				{% set price = product.calculatedPrices.first %}
