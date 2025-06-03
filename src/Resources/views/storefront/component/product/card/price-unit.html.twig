@@ -72,7 +72,7 @@
                                             productUrl: productUrl,
                                             quantity: step.index
                                         }]) %}
-											<div class="pricing-step {{ referencedProduct.id == product.id ? 'selected' : '' }}" data-product-id="{{ referencedProduct.id }}" data-step-index="{{ stepData|length - 1 }}" data-quantity="{{ step.index }}" data-unit-price="{{ unitPrice }}" role="button" aria-label="Select {{ step.index }}x {{ step.badge ? step.badge : 'package' }} for {{ unitPrice }}" tabindex="0" style="cursor: pointer;" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+											<div class="pricing-step {{ referencedProduct.id == product.id ? '' : '' }}" data-product-id="{{ referencedProduct.id }}" data-step-index="{{ stepData|length - 1 }}" data-quantity="{{ step.index }}" data-unit-price="{{ unitPrice }}" role="button" aria-label="Select {{ step.index }}x {{ step.badge ? step.badge : 'package' }} for {{ unitPrice }}" tabindex="0" style="cursor: pointer;" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 												<meta itemprop="price" content="{{ calculatedPrice.unitPrice }}">
 												<meta itemprop="priceCurrency" content="{{ context.currency.isoCode }}">
 												<meta itemprop="itemCondition" content="http://schema.org/NewCondition">
