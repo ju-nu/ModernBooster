@@ -68,7 +68,7 @@
 								{% endif %}
 
 								{% if step.badge == 'recommended' %}
-									<strong class="badge recommended">Beliebt: -{{ discount }}%</strong>
+									<strong class="badge recommended">Beste Wahl: -{{ discount }}%</strong>
 								{% elseif step.badge == 'best-value' %}
 									<strong class="badge best-value">Sparhit: -{{ discount }}%</strong>
 								{% endif %}
@@ -80,7 +80,7 @@
 									<span class="price" itemprop="price">{{ (calculatedPrice.unitPrice / loop.index) | currency }}</span>
 									{% if listPrice %}
 										<span class="old-price">/
-											{% if loop.index > 1 and referencedProduct.packUnitPlural %}
+											{% if referencedProduct.minPurchase > 1 and referencedProduct.packUnitPlural %}
 												{{ referencedProduct.packUnitPlural }}
 											{% elseif referencedProduct.packUnit %}
 												{{ referencedProduct.packUnit }}
