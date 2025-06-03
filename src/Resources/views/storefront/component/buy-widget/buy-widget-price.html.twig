@@ -119,7 +119,7 @@
                                         {{ loop.index }}x
                                     </div>
                                     <div class="unit-price">
-                                        <span class="price" itemprop="price">{{ unitPrice/loop.index }}</span>
+                                        <span class="price" itemprop="price">{{ calculatedPrice.unitPrice/loop.index }}</span>
                                         {% if listPrice %}
                                             <span class="old-price">/
                                                 {% if referencedProduct.minPurchase > 1 and referencedProduct.packUnitPlural %}
