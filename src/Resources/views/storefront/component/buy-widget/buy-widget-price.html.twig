@@ -130,7 +130,7 @@
 			</div>
 
 			<script>
-				/* document.addEventListener('DOMContentLoaded', () => {
+				document.addEventListener('DOMContentLoaded', () => {
 const pricingSteps = document.querySelectorAll('.pricing-step');
 const currentPriceElement = document.querySelector('.current-price');
 const discountBadgeElement = document.querySelector('.discount-badge');
@@ -145,6 +145,7 @@ pricingSteps.forEach(step => {
 const handleInteraction = (event) => {
 if (isRedirecting) 
 return;
+
 
 
 isRedirecting = true;
@@ -180,8 +181,10 @@ if (discountBadgeElement)
 discountBadgeElement.style.display = 'none';
 
 
+
 if (listPriceWrapper) 
 listPriceWrapper.style.display = 'none';
+
 
 
 currentPriceElement.classList.remove('reduced');
@@ -227,6 +230,7 @@ if (isRedirecting)
 return;
 
 
+
 step.dispatchEvent(new Event('click'));
 });
 
@@ -240,7 +244,7 @@ handleInteraction(event);
 });
 }
 });
-}); */
+});
 			</script>
 		</section>
 	{% else %}
@@ -337,7 +341,7 @@ const listPriceElement = document.querySelector('.list-price-price');
 const listPriceWrapper = document.querySelector('.list-price-wrapper');
 const basePriceElement = document.querySelector('.base-price');
 
-const quantityInput = document.querySelector('input[name="lineItems[     {{ product.id }}][quantity]"]') || document.querySelector('input.quantity-input');
+const quantityInput = document.querySelector('input[name^="lineItems["][name$="[quantity]"]') || document.querySelector('input.quantity-input');
 
 const tierData = {{ tierData|json_encode|raw }};
 
@@ -370,8 +374,10 @@ if (discountBadgeElement)
 discountBadgeElement.style.display = 'none';
 
 
+
 if (listPriceWrapper) 
 listPriceWrapper.style.display = 'none';
+
 
 
 currentPriceElement.classList.remove('reduced');
