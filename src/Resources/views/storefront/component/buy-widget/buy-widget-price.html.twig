@@ -59,27 +59,27 @@
 
 							{% set elementTag = isSelected ? 'div' : 'a' %}
 							{% set elementAttrs = {
-    'class': 'pricing-step' ~ (isSelected ? ' selected' : ''),
-    'data-product-id': product.id,
-    'data-step-index': loop.index0,
-    'itemprop': 'offers',
-    'itemscope': '',
-    'itemtype': 'http://schema.org/Offer'
-} %}
+                                'class': 'pricing-step' ~ (isSelected ? ' selected' : ''),
+                                'data-product-id': product.id,
+                                'data-step-index': loop.index0,
+                                'itemprop': 'offers',
+                                'itemscope': '',
+                                'itemtype': 'http://schema.org/Offer'
+                            } %}
 
 							{% if isSelected %}
 								{% set elementAttrs = elementAttrs|merge({
-        'role': 'button',
-        'aria-label': "Selected: #{loop.index}x #{step.badge ?: 'package'} for #{unitPrice}",
-        'tabindex': '0',
-        'style': 'cursor: pointer;'
-    }) %}
+                                    'role': 'button',
+                                    'aria-label': "Selected: #{loop.index}x #{step.badge ?: 'package'} for #{unitPrice}",
+                                    'tabindex': '0',
+                                    'style': 'cursor: pointer;'
+                                }) %}
 							{% else %}
 								{% set elementAttrs = elementAttrs|merge({
-        'href': productUrl,
-        'aria-label': "Select #{loop.index}x #{step.badge ?: 'package'} for #{unitPrice}",
-        'title': "View #{loop.index}x #{step.badge ?: 'package'} details"
-    }) %}
+                                    'href': productUrl,
+                                    'aria-label': "Select #{loop.index}x #{step.badge ?: 'package'} for #{unitPrice}",
+                                    'title': "View #{loop.index}x #{step.badge ?: 'package'} details"
+                                }) %}
 							{% endif %}
 
 							<{{elementTag}} {{ elementAttrs|map((value, key) => "#{key}=\"#{value} \"" )|join(' ') }}>
@@ -169,6 +169,7 @@ if (isRedirecting)
 return;
 
 
+
 isRedirecting = true;
 event.preventDefault();
 event.stopPropagation();
@@ -202,8 +203,10 @@ if (discountBadgeElement)
 discountBadgeElement.style.display = 'none';
 
 
+
 if (listPriceWrapper) 
 listPriceWrapper.style.display = 'none';
+
 
 
 currentPriceElement.classList.remove('reduced');
@@ -247,6 +250,7 @@ step.addEventListener('click', handleInteraction);
 step.addEventListener('touchstart', (event) => {
 if (isRedirecting) 
 return;
+
 
 
 step.dispatchEvent(new Event('click'));
@@ -359,7 +363,7 @@ const listPriceElement = document.querySelector('.list-price-price');
 const listPriceWrapper = document.querySelector('.list-price-wrapper');
 const basePriceElement = document.querySelector('.base-price');
 
-const quantityInput = document.querySelector('input[name="lineItems[     {{ product.id }}][quantity]"]') || document.querySelector('input.quantity-input');
+const quantityInput = document.querySelector('input[name="lineItems[      {{ product.id }}][quantity]"]') || document.querySelector('input.quantity-input');
 
 const tierData = {{ tierData|json_encode|raw }};
 
@@ -392,8 +396,10 @@ if (discountBadgeElement)
 discountBadgeElement.style.display = 'none';
 
 
+
 if (listPriceWrapper) 
 listPriceWrapper.style.display = 'none';
+
 
 
 currentPriceElement.classList.remove('reduced');
