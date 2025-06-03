@@ -104,122 +104,69 @@
 							{% endfor %}
 						</div>
 						<script>
-							document.addEventListener('DOMContentLoaded', () => {
-const pricingSteps = document.querySelectorAll('.pricing-step');
-const form = document.querySelector('.buy-widget');
-let buyButton = form ? form.querySelector('.btn-buy') : document.querySelector('.btn-buy');
+document.addEventListener('DOMContentLoaded', () => {
+    const pricingSteps = document.querySelectorAll('.pricing-step');
 
-// Initialize selected step
-const selectedStep = document.querySelector('.pricing-step.selected');
-if (selectedStep && form) {
-const productId = selectedStep.dataset.productId;
-const quantity = parseInt(selectedStep.dataset.quantity);
+    pricingSteps.forEach(step => {
+        const handleInteraction = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
 
-form.dataset.productId = productId;
-const productIdInput = form.querySelector('input.product-id-input');
-const referencedIdInput = form.querySelector('input.referenced-id-input');
-const quantityInput = form.querySelector('input.quantity-input');
-const typeInput = form.querySelector('input.type-input');
-const stackableInput = form.querySelector('input.stackable-input');
-const removableInput = form.querySelector('input.removable-input');
+            const wrapper = step.closest('.card-body');
+            const form = wrapper?.querySelector('.buy-widget');
+            const buyButton = form?.querySelector('.btn-buy');
 
-if (productIdInput) {
-productIdInput.value = productId;
-productIdInput.name = `lineItems[${productId}][id]`;
-}
-if (referencedIdInput) {
-referencedIdInput.value = productId;
-referencedIdInput.name = `lineItems[${productId}][referencedId]`;
-}
-if (quantityInput) {
-quantityInput.value = quantity;
-quantityInput.name = `lineItems[${productId}][quantity]`;
-}
-if (typeInput) {
-typeInput.name = `lineItems[${productId}][type]`;
-}
-if (stackableInput) {
-stackableInput.name = `lineItems[${productId}][stackable]`;
-}
-if (removableInput) {
-removableInput.name = `lineItems[${productId}][removable]`;
-}
+            if (!form) return;
 
-if (buyButton) {
-buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-}
-}
+            // Remove selection from all siblings in this card only
+            wrapper.querySelectorAll('.pricing-step').forEach(s => s.classList.remove('selected'));
+            step.classList.add('selected');
 
-pricingSteps.forEach(step => {
-const handleInteraction = (event) => {
-event.preventDefault();
-event.stopPropagation();
+            // Animate
+            step.classList.remove('clicked');
+            void step.offsetHeight;
+            step.classList.add('clicked');
 
-// Toggle selection
-pricingSteps.forEach(s => s.classList.remove('selected'));
-step.classList.add('selected');
+            // Update inputs
+            const productId = step.dataset.productId;
+            const quantity = parseInt(step.dataset.quantity);
 
-// Animation
-step.classList.remove('clicked');
-void step.offsetHeight;
-step.classList.add('clicked');
+            const updateField = (selector, attrName) => {
+                const el = form.querySelector(selector);
+                if (el) {
+                    el.value = productId;
+                    el.name = `lineItems[${productId}][${attrName}]`;
+                }
+            };
 
-// Update form inputs and data-product-id
-const productId = step.dataset.productId;
-const quantity = parseInt(step.dataset.quantity);
-if (form) { // Update form's data-product-id
-form.dataset.productId = productId;
+            updateField('.product-id-input', 'id');
+            updateField('.referenced-id-input', 'referencedId');
+            updateField('.type-input', 'type');
+            updateField('.stackable-input', 'stackable');
+            updateField('.removable-input', 'removable');
 
-const productIdInput = form.querySelector('input.product-id-input');
-const referencedIdInput = form.querySelector('input.referenced-id-input');
-const quantityInput = form.querySelector('input.quantity-input');
-const typeInput = form.querySelector('input.type-input');
-const stackableInput = form.querySelector('input.stackable-input');
-const removableInput = form.querySelector('input.removable-input');
+            const quantityInput = form.querySelector('.quantity-input');
+            if (quantityInput) {
+                quantityInput.value = quantity;
+                quantityInput.name = `lineItems[${productId}][quantity]`;
+            }
 
-if (productIdInput) {
-productIdInput.value = productId;
-productIdInput.name = `lineItems[${productId}][id]`;
-}
-if (referencedIdInput) {
-referencedIdInput.value = productId;
-referencedIdInput.name = `lineItems[${productId}][referencedId]`;
-}
-if (quantityInput) {
-quantityInput.value = quantity;
-quantityInput.name = `lineItems[${productId}][quantity]`;
-}
-if (typeInput) {
-typeInput.name = `lineItems[${productId}][type]`;
-}
-if (stackableInput) {
-stackableInput.name = `lineItems[${productId}][stackable]`;
-}
-if (removableInput) {
-removableInput.name = `lineItems[${productId}][removable]`;
-}
-}
+            // Update Buy Button Text
+            if (buyButton) {
+                buyButton.innerHTML = `In den Warenkorb`;
+            }
+        };
 
-// Update buy button text
-if (buyButton) {
-buyButton.innerHTML = `{{ 'listing.boxAddProduct'|trans|sw_sanitize }}`;
-}
-};
-
-step.addEventListener('click', handleInteraction);
-step.addEventListener('touchstart', (event) => {
-step.dispatchEvent(new Event('click'));
+        step.addEventListener('click', handleInteraction);
+        step.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                handleInteraction(event);
+            }
+        });
+    });
 });
 
-// Keyboard accessibility
-step.addEventListener('keydown', (event) => {
-if (event.key === 'Enter' || event.key === ' ') {
-event.preventDefault();
-handleInteraction(event);
-}
-});
-});
-});
 						</script>
 					</section>
 				{% else %}
